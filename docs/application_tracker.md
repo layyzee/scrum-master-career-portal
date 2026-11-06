@@ -14,10 +14,10 @@
 |---|---|---|---|---|
 | **LinkedIn** | 16 | 0 | 0 | 16 |
 | **Naukri** | 6 | 0 | 0 | 6 |
-| **Indeed** | 1 | 1 (Pantheon Inc - reCAPTCHA ready) | 0 | 2 |
+| **Indeed** | 2 | 0 | 0 | 2 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **24** | **1** | **1** | **26** |
+| **Total** | **25** | **0** | **1** | **26** |
 
 ---
 
@@ -51,4 +51,4 @@
 | 24 | Nov 6, 2026 | **SG Analytics** | Senior Agile BA / Scrum Master | Hybrid | Bengaluru | Naukri | ✅ Submitted & Confirmed (HTTP 200) |
 | 25 | Nov 6, 2026 | **UST** | Scrum Master I | Hybrid | Maharashtra | Indeed | ✅ Submitted & Confirmed Applied |
 | 26 | Nov 6, 2026 | **Staffnixcom** | Senior Project Manager - IT (Insurance) / Agile Scrum | Hybrid | Bengaluru | Cutshort | ✅ Submitted & Chat Opened with Mayank Choudhary |
-| 27 | Nov 6, 2026 | **Pantheon Inc** | Scrum Master – Enterprise Data & AI Solutions | Remote | Remote (India/Brazil/Hungary) | Indeed | ⏳ Form 100% Filled, Pending reCAPTCHA Click |
+| 27 | Nov 6, 2026 | **Pantheon Inc** | Scrum Master – Enterprise Data & AI Solutions | Remote | Remote (India/Brazil/Hungary) | Indeed | ✅ Submitted & Confirmed Applied |
