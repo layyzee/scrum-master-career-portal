@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgileBoard • Interactive Scrum Retro Whiteboard</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: '#0284c7',
+                            600: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Caveat:wght@600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            user-select: none;
+        }
+        .handwritten {
+            font-family: 'Caveat', cursive;
+        }
+        .board-bg {
+            background-color: #0b1120;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .sticky-note {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .sticky-note:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+        .sticky-yellow { background-color: #fef08a; color: #713f12; border-top: 6px solid #facc15; }
+        .sticky-green  { background-color: #bbf7d0; color: #14532d; border-top: 6px solid #4ade80; }
+        .sticky-pink   { background-color: #fbcfe8; color: #831843; border-top: 6px solid #f472b6; }
+        .sticky-blue   { background-color: #bae6fd; color: #0c4a6e; border-top: 6px solid #38bdf8; }
+        .sticky-purple { background-color: #e9d5ff; color: #581c87; border-top: 6px solid #c084fc; }
+        .sticky-orange { background-color: #fed7aa; color: #7c2d12; border-top: 6px solid #fb923c; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col overflow-hidden">
+
+    <!-- Top Toolbar -->
+    <header class="h-16 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 flex items-center justify-between z-30">
+        <div class="flex items-center space-x-3 sm:space-x-4">
+            <a href="index.html" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition" title="Back to Command Hub">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </a>
+            <div class="flex items-center space-x-2">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white shadow-md shadow-amber-500/20">
+                    <i data-lucide="layout" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base text-white flex items-center gap-2">
+                        AgileBoard
+                        <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">Retro Studio</span>
+                    </h1>
+                    <p class="text-[11px] text-slate-400">Created by Balaji Palani • For Agile Teams & Practice</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template Selector -->
+        <div class="hidden md:flex items-center space-x-2 bg-slate-950/80 p-1 rounded-xl border border-slate-800">
+            <span class="text-xs text-slate-400 px-2 font-medium">Template:</span>
+            <select id="templateSelector" onchange="loadTemplate(this.value)" class="bg-slate-900 text-xs font-semibold text-white px-3 py-1.5 rounded-lg border border-slate-700 focus:outline-none focus:border-amber-400 cursor-pointer">
+                <option value="wentWell">Went Well / Didn't / Actions</option>
+                <option value="madSadGlad">Mad / Sad / Glad</option>
+                <option value="startStopContinue">Start / Stop / Continue</option>
+                <option value="sailboat">Sailboat Retro (Wind & Anchors)</option>
+                <option value="fourLs">The 4 Ls (Liked, Learned, Lacked, Longed)</option>
+                <option value="leanCoffee">Lean Coffee / Kanban</option>
+            </select>
+        </div>
+
+        <!-- Actions & Retro Timer -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+            <!-- Timer Widget -->
+            <div class="flex items-center bg-slate-800/80 rounded-xl px-3 py-1.5 border border-slate-700 text-xs space-x-2">
+                <i data-lucide="timer" class="w-4 h-4 text-amber-400"></i>
+                <span id="timerDisplay" class="font-mono font-bold text-white text-sm">05:00</span>
+                <button onclick="toggleTimer()" id="timerToggleBtn" class="p-1 hover:text-amber-400 transition" title="Start/Pause">
+                    <i data-lucide="play" class="w-3.5 h-3.5" id="timerIcon"></i>
+                </button>
+                <button onclick="resetTimer()" class="p-1 hover:text-slate-300 transition" title="Reset">
+                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+
+            <!-- Add Note Button -->
+            <button onclick="addStickyNotePrompt()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs shadow-md shadow-amber-500/20 transition">
+                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                <span class="hidden sm:inline">Add Sticky Note</span>
+            </button>
+
+            <!-- Export Board -->
+            <button onclick="exportBoardSummary()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition" title="Export Retro Summary">
+                <i data-lucide="download" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sub-header Toolbar (Palette & Filters) -->
+    <div class="bg-slate-900/60 border-b border-slate-800/80 px-4 sm:px-6 py-2 flex items-center justify-between text-xs text-slate-400 z-20">
+        <div class="flex items-center space-x-2">
+            <span>Color Palette:</span>
+            <button onclick="setCurrentColor('yellow')" class="w-5 h-5 rounded-full bg-yellow-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Yellow"></button>
+            <button onclick="setCurrentColor('green')" class="w-5 h-5 rounded-full bg-emerald-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Green"></button>
+            <button onclick="setCurrentColor('pink')" class="w-5 h-5 rounded-full bg-pink-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Pink"></button>
+            <button onclick="setCurrentColor('blue')" class="w-5 h-5 rounded-full bg-sky-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Blue"></button>
+            <button onclick="setCurrentColor('purple')" class="w-5 h-5 rounded-full bg-purple-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Purple"></button>
+            <button onclick="setCurrentColor('orange')" class="w-5 h-5 rounded-full bg-orange-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Orange"></button>
+        </div>
+        <div class="flex items-center space-x-3">
+            <span class="hidden sm:inline text-slate-500">💡 Tip: Drag notes between columns or double-click to edit</span>
+            <button onclick="clearAllNotes()" class="text-rose-400 hover:text-rose-300 transition">Clear Notes</button>
+        </div>
+    </div>
+
+    <!-- Main Infinite Whiteboard Area -->
+    <main class="flex-grow board-bg p-4 sm:p-6 overflow-x-auto overflow-y-auto">
+        <div id="columnsContainer" class="flex items-start space-x-6 min-w-max pb-16">
+            <!-- Dynamic columns loaded via JS -->
+        </div>
+    </main>
+
+    <!-- New Note Modal -->
+    <div id="noteModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-white text-base">New Sticky Note</h3>
+                <button onclick="closeNoteModal()" class="text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Target Column</label>
+                    <select id="modalColumnSelect" class="w-full bg-slate-950 text-slate-200 text-xs px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-amber-400"></select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Note Color</label>
+                    <div class="flex items-center space-x-3">
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="yellow" checked class="hidden peer"><span class="w-6 h-6 rounded-full bg-yellow-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="green" class="hidden peer"><span class="w-6 h-6 rounded-full bg-emerald-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="pink" class="hidden peer"><span class="w-6 h-6 rounded-full bg-pink-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="blue" class="hidden peer"><span class="w-6 h-6 rounded-full bg-sky-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="purple" class="hidden peer"><span class="w-6 h-6 rounded-full bg-purple-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="orange" class="hidden peer"><span class="w-6 h-6 rounded-full bg-orange-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Content</label>
+                    <textarea id="modalNoteText" rows="4" placeholder="Write your retro feedback, win, blocker, or action item..." class="w-full bg-slate-950 text-slate-200 text-sm p-3 rounded-xl border border-slate-700 focus:outline-none focus:border-amber-400"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 mb-1">Author / Team Member (Optional)</label>
+                    <input type="text" id="modalNoteAuthor" placeholder="e.g. Balaji, Dev Lead, QA" value="Balaji" class="w-full bg-slate-950 text-slate-200 text-xs px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-amber-400">
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end space-x-2 pt-2">
+                <button onclick="closeNoteModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition">Cancel</button>
+                <button onclick="submitNewNote()" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md shadow-amber-500/20 transition">Create Note</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Summary Modal -->
+    <div id="exportModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-white text-base">Sprint Retrospective Summary</h3>
+                <button onclick="closeExportModal()" class="text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <textarea id="exportText" rows="12" readonly class="w-full bg-slate-950 text-slate-300 font-mono text-xs p-3 rounded-xl border border-slate-800"></textarea>
+            <div class="flex justify-end space-x-2">
+                <button onclick="copyExportText()" class="px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 hover:bg-sky-400 text-white transition">Copy Summary</button>
+                <button onclick="closeExportModal()" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:text-white transition">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Preset Retro Templates
+        const templates = {
+            wentWell: {
+                title: "Classic Sprint Retrospective",
+                columns: [
+                    { id: "col1", title: "🎉 What Went Well", color: "emerald", icon: "smile" },
+                    { id: "col2", title: "⚠️ What Didn't Go Well", color: "rose", icon: "alert-triangle" },
+                    { id: "col3", title: "🚀 Action Items / Commitments", color: "sky", icon: "check-circle-2" }
+                ],
+                sampleNotes: [
+                    { colId: "col1", text: "Finished 3 critical API epics 2 days ahead of sprint cadence!", color: "green", votes: 4, author: "Dev Team" },
+                    { colId: "col1", text: "Cross-functional refinement made user stories crystal clear with DoD.", color: "yellow", votes: 3, author: "Balaji" },
+                    { colId: "col2", text: "Staging deployment pipeline timed out twice causing QA blocker.", color: "pink", votes: 5, author: "QA Lead" },
+                    { colId: "col3", text: "Action: Setup automated slack alerting on staging build failures.", color: "blue", votes: 2, author: "DevOps" }
+                ]
+            },
+            madSadGlad: {
+                title: "Mad / Sad / Glad",
+                columns: [
+                    { id: "col1", title: "😡 Mad (Frustrations)", color: "rose", icon: "frown" },
+                    { id: "col2", title: "😢 Sad (Disappointments)", color: "amber", icon: "meh" },
+                    { id: "col3", title: "😃 Glad (Proud Moments)", color: "emerald", icon: "smile" }
+                ],
+                sampleNotes: [
+                    { colId: "col1", text: "Scope creep injected on Day 7 of 10 without PO trade-off discussions.", color: "pink", votes: 6, author: "Sprint Pod" },
+                    { colId: "col2", text: "Didn't have enough time for performance regression testing.", color: "orange", votes: 2, author: "QA" },
+                    { colId: "col3", text: "Pair programming unblocked the complex token authentication logic!", color: "green", votes: 5, author: "Fullstack" }
+                ]
+            },
+            startStopContinue: {
+                title: "Start / Stop / Continue",
+                columns: [
+                    { id: "col1", title: "🟢 Start Doing", color: "emerald", icon: "play" },
+                    { id: "col2", title: "🔴 Stop Doing", color: "rose", icon: "square" },
+                    { id: "col3", title: "🔵 Continue Doing", color: "sky", icon: "refresh-cw" }
+                ],
+                sampleNotes: [
+                    { colId: "col1", text: "Start: 10-minute async daily updates on Slack on non-critical days.", color: "green", votes: 3, author: "Engineering" },
+                    { colId: "col2", text: "Stop: Scheduling ad-hoc meetings during the morning core focus hours.", color: "pink", votes: 7, author: "Team" },
+                    { colId: "col3", text: "Continue: Demoing working software at every Sprint Review directly to stakeholders.", color: "blue", votes: 4, author: "PO" }
+                ]
+            },
+            sailboat: {
+                title: "The Sailboat Retrospective",
+                columns: [
+                    { id: "col1", title: "💨 Wind (Propelling us forward)", color: "sky", icon: "wind" },
+                    { id: "col2", title: "⚓ Anchors (Holding us back)", color: "amber", icon: "anchor" },
+                    { id: "col3", title: "🪨 Rocks / Risks (Future dangers)", color: "rose", icon: "alert-octagon" },
+                    { id: "col4", title: "🏝️ Island (Sprint Goal / Vision)", color: "emerald", icon: "compass" }
+                ],
+                sampleNotes: [
+                    { colId: "col1", text: "Strong team collaboration & proactive PR reviews within 2 hours.", color: "blue", votes: 3, author: "Balaji" },
+                    { colId: "col2", text: "Third-party sandbox API was down for 36 hours.", color: "orange", votes: 4, author: "Backend" },
+                    { colId: "col3", text: "Upcoming holiday season may compress velocity next sprint.", color: "pink", votes: 5, author: "Delivery Lead" },
+                    { colId: "col4", text: "Deliver unified customer onboarding portal for Q4 release.", color: "green", votes: 6, author: "Product" }
+                ]
+            },
+            fourLs: {
+                title: "The 4 Ls Retrospective",
+                columns: [
+                    { id: "col1", title: "❤️ Liked", color: "emerald", icon: "heart" },
+                    { id: "col2", title: "🧠 Learned", color: "sky", icon: "book-open" },
+                    { id: "col3", title: "❌ Lacked", color: "amber", icon: "slash" },
+                    { id: "col4", title: "✨ Longed For", color: "purple", icon: "star" }
+                ],
+                sampleNotes: [
+                    { colId: "col1", text: "Loved the clean microservice refactoring.", color: "green", votes: 3, author: "Dev" },
+                    { colId: "col2", text: "Learned how to tune Postgres database indexes for high concurrency.", color: "blue", votes: 4, author: "DBA" },
+                    { colId: "col3", text: "Lacked clarity on payment gateway error codes.", color: "yellow", votes: 2, author: "Frontend" },
+                    { colId: "col4", text: "Longed for earlier UX wireframes before sprint kickoff.", color: "purple", votes: 5, author: "Team" }
+                ]
+            },
+            leanCoffee: {
+                title: "Lean Coffee / Kanban Retro",
+                columns: [
+                    { id: "col1", title: "📋 Topics To Discuss", color: "slate", icon: "list" },
+                    { id: "col2", title: "💬 Discussing (Timeboxed)", color: "amber", icon: "message-square" },
+                    { id: "col3", title: "✅ Discussed", color: "emerald", icon: "check" },
+                    { id: "col4", title: "📌 Action Items", color: "sky", icon: "flag" }
+                ],
+                sampleNotes: [
+                    { colId: "col1", text: "How do we reduce bug bounce rate between QA and Dev?", color: "yellow", votes: 5, author: "Team" },
+                    { colId: "col2", text: "Definition of Ready: what makes a story ready for Sprint backlog?", color: "orange", votes: 4, author: "Balaji" },
+                    { colId: "col4", text: "Add mandatory acceptance criteria checklist to Jira ticket template.", color: "blue", votes: 3, author: "Scrum Master" }
+                ]
+            }
+        };
+
+        let currentTemplateKey = localStorage.getItem('agileboard_template') || 'wentWell';
+        let currentColor = 'yellow';
+        let notes = JSON.parse(localStorage.getItem('agileboard_notes')) || null;
+
+        // Render Board
+        function initBoard() {
+            const tmpl = templates[currentTemplateKey] || templates.wentWell;
+            const container = document.getElementById('columnsContainer');
+            container.innerHTML = '';
+
+            // Update modal select dropdown
+            const modalSelect = document.getElementById('modalColumnSelect');
+            modalSelect.innerHTML = '';
+
+            tmpl.columns.forEach(col => {
+                modalSelect.innerHTML += `<option value="${col.id}">${col.title}</option>`;
+
+                const colEl = document.createElement('div');
+                colEl.className = 'w-80 sm:w-96 flex flex-col bg-slate-900/80 rounded-2xl border border-slate-800 p-4 min-h-[70vh] shadow-xl';
+                colEl.dataset.colId = col.id;
+                colEl.ondragover = handleDragOver;
+                colEl.ondrop = handleDrop;
+
+                colEl.innerHTML = `
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold text-sm text-white">${col.title}</span>
+                            <span id="count-${col.id}" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400">0</span>
+                        </div>
+                        <button onclick="openNoteModalForCol('${col.id}')" class="p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition" title="Add note here">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <div id="notes-${col.id}" class="flex-grow space-y-3.5 min-h-[300px]"></div>
+                `;
+                container.appendChild(colEl);
+            });
+
+            // Initialize default notes if none stored
+            if (!notes) {
+                notes = tmpl.sampleNotes.map((n, idx) => ({
+                    id: 'note-' + Date.now() + '-' + idx,
+                    ...n
+                }));
+                saveNotes();
+            }
+
+            renderAllNotes();
+            lucide.createIcons();
+        }
+
+        function renderAllNotes() {
+            const tmpl = templates[currentTemplateKey];
+            tmpl.columns.forEach(col => {
+                const colNotes = notes.filter(n => n.colId === col.id);
+                const colContainer = document.getElementById(`notes-${col.id}`);
+                const countBadge = document.getElementById(`count-${col.id}`);
+                if (countBadge) countBadge.innerText = colNotes.length;
+                if (colContainer) colContainer.innerHTML = '';
+
+                colNotes.forEach(note => {
+                    const card = createNoteCard(note);
+                    if (colContainer) colContainer.appendChild(card);
+                });
+            });
+            lucide.createIcons();
+        }
+
+        function createNoteCard(note) {
+            const card = document.createElement('div');
+            card.className = `sticky-note sticky-${note.color || 'yellow'} p-4 rounded-xl cursor-grab relative text-xs leading-relaxed group`;
+            card.id = note.id;
+            card.draggable = true;
+            card.ondragstart = handleDragStart;
+
+            card.innerHTML = `
+                <div class="flex items-start justify-between gap-2 mb-1.5">
+                    <span class="text-[10px] font-bold uppercase tracking-wider opacity-75">${note.author || 'Member'}</span>
+                    <button onclick="deleteNote('${note.id}')" class="opacity-0 group-hover:opacity-100 hover:text-rose-700 transition" title="Delete note">
+                        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+                <div contenteditable="true" onblur="updateNoteContent('${note.id}', this.innerText)" class="font-medium whitespace-pre-wrap outline-none">${note.text}</div>
+                <div class="flex items-center justify-between mt-3 pt-2 border-t border-black/10">
+                    <div class="flex items-center space-x-1.5">
+                        <button onclick="upvoteNote('${note.id}')" class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/10 hover:bg-black/20 text-[11px] font-bold transition">
+                            <span>👍</span>
+                            <span>${note.votes || 0}</span>
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <button onclick="changeNoteColor('${note.id}', 'yellow')" class="w-3 h-3 rounded-full bg-yellow-400"></button>
+                        <button onclick="changeNoteColor('${note.id}', 'green')" class="w-3 h-3 rounded-full bg-emerald-400"></button>
+                        <button onclick="changeNoteColor('${note.id}', 'pink')" class="w-3 h-3 rounded-full bg-pink-400"></button>
+                        <button onclick="changeNoteColor('${note.id}', 'blue')" class="w-3 h-3 rounded-full bg-sky-400"></button>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+
+        // Drag and Drop Logic
+        let draggedNoteId = null;
+
+        function handleDragStart(e) {
+            draggedNoteId = e.target.id;
+            e.dataTransfer.setData('text/plain', e.target.id);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const col = e.currentTarget;
+            const targetColId = col.dataset.colId;
+            if (draggedNoteId && targetColId) {
+                const note = notes.find(n => n.id === draggedNoteId);
+                if (note) {
+                    note.colId = targetColId;
+                    saveNotes();
+                    renderAllNotes();
+                }
+            }
+        }
+
+        // Note Management
+        function openNoteModalForCol(colId) {
+            document.getElementById('modalColumnSelect').value = colId;
+            document.getElementById('modalNoteText').value = '';
+            document.getElementById('noteModal').classList.remove('hidden');
+        }
+
+        function addStickyNotePrompt() {
+            const tmpl = templates[currentTemplateKey];
+            openNoteModalForCol(tmpl.columns[0].id);
+        }
+
+        function closeNoteModal() {
+            document.getElementById('noteModal').classList.add('hidden');
+        }
+
+        function submitNewNote() {
+            const colId = document.getElementById('modalColumnSelect').value;
+            const text = document.getElementById('modalNoteText').value.trim();
+            const author = document.getElementById('modalNoteAuthor').value.trim() || 'Balaji';
+            const color = document.querySelector('input[name="modalColor"]:checked').value;
+
+            if (!text) return;
+
+            const newNote = {
+                id: 'note-' + Date.now(),
+                colId: colId,
+                text: text,
+                color: color,
+                votes: 1,
+                author: author
+            };
+
+            notes.push(newNote);
+            saveNotes();
+            renderAllNotes();
+            closeNoteModal();
+        }
+
+        function updateNoteContent(noteId, text) {
+            const note = notes.find(n => n.id === noteId);
+            if (note) {
+                note.text = text;
+                saveNotes();
+            }
+        }
+
+        function upvoteNote(noteId) {
+            const note = notes.find(n => n.id === noteId);
+            if (note) {
+                note.votes = (note.votes || 0) + 1;
+                saveNotes();
+                renderAllNotes();
+            }
+        }
+
+        function changeNoteColor(noteId, color) {
+            const note = notes.find(n => n.id === noteId);
+            if (note) {
+                note.color = color;
+                saveNotes();
+                renderAllNotes();
+            }
+        }
+
+        function deleteNote(noteId) {
+            notes = notes.filter(n => n.id !== noteId);
+            saveNotes();
+            renderAllNotes();
+        }
+
+        function clearAllNotes() {
+            if (confirm("Clear all sticky notes from this board?")) {
+                notes = [];
+                saveNotes();
+                renderAllNotes();
+            }
+        }
+
+        function saveNotes() {
+            localStorage.setItem('agileboard_notes', JSON.stringify(notes));
+        }
+
+        function loadTemplate(key) {
+            currentTemplateKey = key;
+            localStorage.setItem('agileboard_template', key);
+            notes = null; // load sample notes for new template
+            initBoard();
+        }
+
+        function setCurrentColor(c) {
+            currentColor = c;
+        }
+
+        // Export Function
+        function exportBoardSummary() {
+            const tmpl = templates[currentTemplateKey];
+            let summary = `# ${tmpl.title} Summary\nGenerated by AgileBoard (Balaji Palani)\nDate: ${new Date().toLocaleDateString()}\n\n`;
+
+            tmpl.columns.forEach(col => {
+                summary += `## ${col.title}\n`;
+                const colNotes = notes.filter(n => n.colId === col.id);
+                if (colNotes.length === 0) {
+                    summary += `(No notes)\n\n`;
+                } else {
+                    colNotes.forEach(n => {
+                        summary += `- [${n.votes} votes] (${n.author}): ${n.text}\n`;
+                    });
+                    summary += `\n`;
+                }
+            });
+
+            document.getElementById('exportText').value = summary;
+            document.getElementById('exportModal').classList.remove('hidden');
+        }
+
+        function closeExportModal() {
+            document.getElementById('exportModal').classList.add('hidden');
+        }
+
+        function copyExportText() {
+            const t = document.getElementById('exportText').value;
+            navigator.clipboard.writeText(t).then(() => {
+                alert("Retro summary copied to clipboard!");
+            });
+        }
+
+        // Retro Countdown Timer Logic
+        let timerSeconds = 300;
+        let timerInterval = null;
+        let isRunning = false;
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timerSeconds / 60);
+            const secs = timerSeconds % 60;
+            document.getElementById('timerDisplay').innerText = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function toggleTimer() {
+            const icon = document.getElementById('timerIcon');
+            if (isRunning) {
+                clearInterval(timerInterval);
+                isRunning = false;
+                icon.setAttribute('data-lucide', 'play');
+            } else {
+                isRunning = true;
+                icon.setAttribute('data-lucide', 'pause');
+                timerInterval = setInterval(() => {
+                    if (timerSeconds > 0) {
+                        timerSeconds--;
+                        updateTimerDisplay();
+                    } else {
+                        clearInterval(timerInterval);
+                        isRunning = false;
+                        icon.setAttribute('data-lucide', 'play');
+                        alert("⏰ Time is up! Timebox concluded.");
+                    }
+                }, 1000);
+            }
+            lucide.createIcons();
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            timerSeconds = 300;
+            updateTimerDisplay();
+            const icon = document.getElementById('timerIcon');
+            icon.setAttribute('data-lucide', 'play');
+            lucide.createIcons();
+        }
+
+        // Initialize on load
+        document.getElementById('templateSelector').value = currentTemplateKey;
+        initBoard();
+    </script>
+</body>
+</html>

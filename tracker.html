@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppTracker Pro • Scrum Master Job Pipeline & Interview Manager</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            500: '#0284c7',
+                            600: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            user-select: none;
+        }
+        .pipeline-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .pipeline-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col overflow-hidden">
+
+    <!-- Top Toolbar -->
+    <header class="h-16 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 flex items-center justify-between z-30">
+        <div class="flex items-center space-x-3 sm:space-x-4">
+            <a href="index.html" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition" title="Back to Command Hub">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </a>
+            <div class="flex items-center space-x-2">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-sky-500/20">
+                    <i data-lucide="kanban" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base text-white flex items-center gap-2">
+                        AppTracker Pro
+                        <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">Live Pipeline</span>
+                    </h1>
+                    <p class="text-[11px] text-slate-400">Real-Time Interview Tracking & Notes for Balaji Palani</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search & Filter -->
+        <div class="hidden md:flex items-center space-x-3">
+            <div class="relative">
+                <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-2.5"></i>
+                <input type="text" id="searchInput" placeholder="Search company, title, or platform..." onkeyup="filterCards()" class="bg-slate-950 text-xs text-slate-200 pl-9 pr-4 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400 w-64">
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+            <button onclick="openNewAppModal()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold text-xs shadow-md shadow-sky-500/20 transition">
+                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                <span class="hidden sm:inline">Add Application</span>
+            </button>
+            <button onclick="exportData()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition" title="Export Tracker Data (JSON)">
+                <i data-lucide="download" class="w-4 h-4"></i>
+            </button>
+            <button onclick="resetToDefaults()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-rose-400 border border-slate-700 transition" title="Reset to Verified 24 Applications">
+                <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Pipeline View Navigation -->
+    <div class="bg-slate-900/60 border-b border-slate-800/80 px-4 sm:px-6 py-2 flex items-center justify-between text-xs text-slate-400 z-20">
+        <div class="flex items-center space-x-4">
+            <span class="text-slate-300 font-semibold flex items-center gap-1">
+                <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span id="totalActiveCount">24</span> Applications Active
+            </span>
+            <span class="hidden sm:inline text-slate-500">•</span>
+            <span class="hidden sm:inline text-slate-400">Click any card to add recruiter notes, interview dates & comments</span>
+        </div>
+        <div class="flex items-center space-x-2">
+            <span class="text-slate-500 text-[11px]">Auto-saved to Browser LocalStorage</span>
+        </div>
+    </div>
+
+    <!-- Main Kanban Board -->
+    <main class="flex-grow p-4 sm:p-6 overflow-x-auto overflow-y-auto bg-slate-950">
+        <div id="pipelineContainer" class="flex items-start space-x-5 min-w-max pb-16">
+            <!-- Columns generated via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Application Detail & Edit Modal -->
+    <div id="appModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex items-start justify-between">
+                <div>
+                    <h3 id="modalCompany" class="font-bold text-white text-lg leading-tight">Company Name</h3>
+                    <p id="modalRole" class="text-xs text-sky-400 font-medium">Role Title</p>
+                </div>
+                <button onclick="closeAppModal()" class="text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3.5 text-xs">
+                <!-- Status & Stage -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-400 mb-1">Pipeline Stage</label>
+                        <select id="modalStageSelect" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                            <option value="applied">Applied (Submitted)</option>
+                            <option value="screening">Recruiter Screening</option>
+                            <option value="technical">Technical / HM Round</option>
+                            <option value="final">Final Round / Culture</option>
+                            <option value="offer">Offer Extended 🎉</option>
+                            <option value="archived">Archived / Rejected</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-400 mb-1">Next Interview Date / Follow-up</label>
+                        <input type="date" id="modalInterviewDate" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                    </div>
+                </div>
+
+                <!-- Recruiter Contact Details -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-400 mb-1">Recruiter / Contact Person</label>
+                        <input type="text" id="modalContactPerson" placeholder="e.g. Kartheek G" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-400 mb-1">Recruiter Email / Phone</label>
+                        <input type="text" id="modalContactInfo" placeholder="e.g. kartheek.g@itcinfotech.com" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                    </div>
+                </div>
+
+                <!-- Notes & Comments -->
+                <div>
+                    <label class="block font-semibold text-slate-400 mb-1">Interview Notes, Feedback & Discussion Comments</label>
+                    <textarea id="modalNotes" rows="5" placeholder="Add notes here (e.g. Discussed SAFe PI planning experience, asked about Notice Period, salary expectation aligned, follow-up scheduled for next Tuesday)..." class="w-full bg-slate-950 text-slate-200 p-3 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400 leading-relaxed"></textarea>
+                </div>
+
+                <!-- Tags / Metadata -->
+                <div class="flex items-center justify-between text-slate-500 pt-1">
+                    <span id="modalMeta">Applied: Nov 6, 2026 • Platform: LinkedIn</span>
+                    <button onclick="deleteCurrentApp()" class="text-rose-400 hover:text-rose-300 font-semibold transition flex items-center gap-1">
+                        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                        <span>Delete</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end space-x-2 pt-2 border-t border-slate-800">
+                <button onclick="closeAppModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition">Cancel</button>
+                <button onclick="saveAppModalChanges()" class="px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 hover:bg-sky-400 text-white shadow-md shadow-sky-500/20 transition">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Application Modal -->
+    <div id="newAppModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <div class="flex items-center justify-between">
+                <h3 class="font-bold text-white text-base">Add New Application</h3>
+                <button onclick="closeNewAppModal()" class="text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-400 mb-1">Company Name *</label>
+                    <input type="text" id="newCompany" placeholder="e.g. Snowflake, Razorpay" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-400 mb-1">Role Title *</label>
+                    <input type="text" id="newRole" value="Scrum Master" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-400 mb-1">Platform</label>
+                        <select id="newPlatform" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Naukri">Naukri</option>
+                            <option value="Indeed">Indeed</option>
+                            <option value="Cutshort">Cutshort</option>
+                            <option value="HackerNews">Hacker News</option>
+                            <option value="DirectEmail">Direct Email</option>
+                            <option value="Wellfound">Wellfound</option>
+                            <option value="CompanySite">Company Portal</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-400 mb-1">Location & Mode</label>
+                        <input type="text" id="newLocation" placeholder="e.g. Remote / Mumbai / Hybrid" value="Remote" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-400 mb-1">Initial Comment / Notes</label>
+                    <textarea id="newNotes" rows="3" placeholder="Recruiter name, referral info, or specific requirements..." class="w-full bg-slate-950 text-slate-200 p-2.5 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400"></textarea>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-end space-x-2 pt-2">
+                <button onclick="closeNewAppModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition">Cancel</button>
+                <button onclick="submitNewApp()" class="px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 hover:bg-sky-400 text-white shadow-md shadow-sky-500/20 transition">Add to Pipeline</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Default Verified Application Dataset (Initial seed from conversation)
+        const defaultApplications = [
+            { id: "app-1", company: "ITC Infotech", role: "Senior Scrum Master", location: "Hybrid • Bengaluru", platform: "DirectEmail", stage: "screening", date: "2026-11-06", contact: "Kartheek G (kartheek.g@itcinfotech.com)", notes: "Direct outreach email sent to recruiter with full candidate profile and resume reference. Follow-up scheduled." },
+            { id: "app-2", company: "Themesoft Inc.", role: "Scrum Master", location: "Remote • Ontario / Global", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Submitted via LinkedIn Easy Apply. Global remote client delivery." },
+            { id: "app-3", company: "Miratech (Req 4482521057)", role: "Scrum Master", location: "Remote • India / Global", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Applied via LinkedIn Easy Apply with full notice and gross compensation details." },
+            { id: "app-4", company: "Miratech (Req 4482503638)", role: "Scrum Master", location: "Remote • India / Global", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Applied via LinkedIn Easy Apply." },
+            { id: "app-5", company: "Claidroid", role: "Scrum Master – Automation & Agile Delivery", location: "Hybrid • Thiruvananthapuram", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied via LinkedIn Easy Apply." },
+            { id: "app-6", company: "Magnet HR Tech Digital", role: "Scrum Master", location: "On-site • Bengaluru", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Applied via LinkedIn with 0 days notice and Bengaluru location confirmed." },
+            { id: "app-7", company: "Magnet HR Tech Digital", role: "Scrum Master", location: "On-site • Pune Division", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Applied via LinkedIn." },
+            { id: "app-8", company: "ValueLabs", role: "IAM Scrum Master", location: "Remote • India", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." },
+            { id: "app-9", company: "Barclays", role: "Scrum Master - AVP", location: "Hybrid • Bengaluru", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." },
+            { id: "app-10", company: "Persistent Systems", role: "Senior Scrum Master", location: "On-site • Pune City", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." },
+            { id: "app-11", company: "Capgemini", role: "FBS Scrum Master II.", location: "Hybrid • Hyderabad", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." },
+            { id: "app-12", company: "ArcelorMittal Digital Consulting", role: "Scrum Master / Agile Delivery Lead", location: "On-site • Hyderabad", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." },
+            { id: "app-13", company: "Nagarro", role: "AGILE-COACH / Scrum Master", location: "Hybrid • Bengaluru", platform: "Naukri", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied via Naukri (HTTP 200)." },
+            { id: "app-14", company: "TekWissen", role: "Agile Delivery Manager", location: "Hybrid • Bengaluru", platform: "Naukri", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied via Naukri." },
+            { id: "app-15", company: "CGI", role: "ServiceNow Scrum Master", location: "Hybrid • Hyderabad", platform: "Naukri", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied via Naukri." },
+            { id: "app-16", company: "SG Analytics", role: "Senior Agile BA / Scrum Master", location: "Hybrid • Bengaluru", platform: "Naukri", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied via Naukri." },
+            { id: "app-17", company: "UST", role: "Scrum Master I", location: "Hybrid • Maharashtra", platform: "Indeed", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied via Indeed." },
+            { id: "app-18", company: "Staffnixcom", role: "Senior Project Manager - IT / Agile", location: "Hybrid • Bengaluru", platform: "Cutshort", stage: "screening", date: "2026-11-06", contact: "Mayank Choudhary", notes: "Direct conversational application submitted on Cutshort. Chat opened with founder/hiring lead." },
+            { id: "app-19", company: "Pantheon Inc", role: "Scrum Master – Enterprise Data & AI", location: "Remote • Global (India/Brazil/HU)", platform: "Indeed", stage: "applied", date: "2026-11-06", contact: "", notes: "SmartApply form 100% pre-filled with technical questions." },
+            { id: "app-20", company: "Fulcrum Digital Inc", role: "Agile Scrum Master", location: "On-site • Pune Division", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." },
+            { id: "app-21", company: "Vaisesika", role: "Scrum Master", location: "Hybrid • Bangalore Rural", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." },
+            { id: "app-22", company: "Innova ESI", role: "Scrum Master", location: "On-site • Mumbai", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." },
+            { id: "app-23", company: "Jobgether", role: "Scrum Master", location: "Remote • Worldwide", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." },
+            { id: "app-24", company: "JiBe ERP", role: "Scrum Master", location: "On-site • Navi Mumbai", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Confirmed applied." }
+        ];
+
+        // Pipeline Stages
+        const stages = [
+            { id: "applied", title: "Applied / In Review", color: "sky", icon: "send" },
+            { id: "screening", title: "Recruiter Screening", color: "amber", icon: "phone-call" },
+            { id: "technical", title: "Technical / HM Round", color: "indigo", icon: "code-2" },
+            { id: "final", title: "Final / Leadership", color: "purple", icon: "users" },
+            { id: "offer", title: "Offer Extended 🎉", color: "emerald", icon: "award" },
+            { id: "archived", title: "Archived / Rejected", color: "slate", icon: "archive" }
+        ];
+
+        let applications = JSON.parse(localStorage.getItem('apptracker_data')) || defaultApplications;
+        let selectedAppId = null;
+
+        function saveApplications() {
+            localStorage.setItem('apptracker_data', JSON.stringify(applications));
+            document.getElementById('totalActiveCount').innerText = applications.filter(a => a.stage !== 'archived').length;
+        }
+
+        function initPipeline() {
+            const container = document.getElementById('pipelineContainer');
+            container.innerHTML = '';
+
+            stages.forEach(stage => {
+                const stageApps = applications.filter(a => a.stage === stage.id);
+
+                const col = document.createElement('div');
+                col.className = 'w-80 flex flex-col bg-slate-900/70 rounded-2xl border border-slate-800 p-3.5 min-h-[75vh] shadow-xl';
+                col.dataset.stageId = stage.id;
+                col.ondragover = handleDragOver;
+                col.ondrop = handleDrop;
+
+                col.innerHTML = `
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-3 px-1">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold text-xs uppercase tracking-wider text-slate-300">${stage.title}</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400" id="badge-${stage.id}">${stageApps.length}</span>
+                        </div>
+                    </div>
+                    <div id="stage-cards-${stage.id}" class="flex-grow space-y-2.5 min-h-[300px]"></div>
+                `;
+
+                container.appendChild(col);
+
+                const cardsContainer = col.querySelector(`#stage-cards-${stage.id}`);
+                stageApps.forEach(app => {
+                    cardsContainer.appendChild(createCardElement(app));
+                });
+            });
+
+            saveApplications();
+            lucide.createIcons();
+        }
+
+        function createCardElement(app) {
+            const card = document.createElement('div');
+            card.className = 'pipeline-card bg-slate-900 border border-slate-800/80 rounded-xl p-3.5 cursor-pointer text-xs space-y-2 group';
+            card.id = app.id;
+            card.draggable = true;
+            card.ondragstart = handleDragStart;
+            card.onclick = (e) => {
+                if (e.target.closest('button')) return;
+                openAppModal(app.id);
+            };
+
+            const platformBadge = getPlatformBadge(app.platform);
+
+            card.innerHTML = `
+                <div class="flex items-start justify-between gap-1">
+                    <span class="font-bold text-white text-sm group-hover:text-sky-400 transition leading-snug">${app.company}</span>
+                    ${platformBadge}
+                </div>
+                <div class="text-[11px] text-slate-300 font-medium">${app.role}</div>
+                <div class="flex items-center gap-1 text-[11px] text-slate-400">
+                    <i data-lucide="map-pin" class="w-3 h-3 text-slate-500"></i>
+                    <span>${app.location}</span>
+                </div>
+                ${app.contact ? `
+                    <div class="text-[10px] text-emerald-400 flex items-center gap-1 font-medium bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                        <i data-lucide="user" class="w-3 h-3"></i>
+                        <span class="truncate">${app.contact}</span>
+                    </div>
+                ` : ''}
+                ${app.notes ? `
+                    <div class="text-[11px] text-slate-400 bg-slate-950/60 p-2 rounded-lg border border-slate-800/60 line-clamp-2">
+                        ${app.notes}
+                    </div>
+                ` : ''}
+                <div class="flex items-center justify-between text-[10px] text-slate-500 pt-1">
+                    <span>${app.date || 'Nov 6, 2026'}</span>
+                    <span class="text-sky-400 font-semibold group-hover:underline">Edit Notes →</span>
+                </div>
+            `;
+            return card;
+        }
+
+        function getPlatformBadge(platform) {
+            switch(platform) {
+                case 'LinkedIn': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">LinkedIn</span>';
+                case 'Naukri': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20">Naukri</span>';
+                case 'Indeed': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Indeed</span>';
+                case 'Cutshort': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">Cutshort</span>';
+                case 'DirectEmail': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-red-500/10 text-red-400 border border-red-500/20">Direct Email</span>';
+                default: return `<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-300">${platform}</span>`;
+            }
+        }
+
+        // Drag & Drop
+        let draggedAppId = null;
+
+        function handleDragStart(e) {
+            draggedAppId = e.target.id;
+            e.dataTransfer.setData('text/plain', e.target.id);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const col = e.currentTarget;
+            const targetStage = col.dataset.stageId;
+            if (draggedAppId && targetStage) {
+                const app = applications.find(a => a.id === draggedAppId);
+                if (app) {
+                    app.stage = targetStage;
+                    saveApplications();
+                    initPipeline();
+                }
+            }
+        }
+
+        // Modal Management
+        function openAppModal(id) {
+            selectedAppId = id;
+            const app = applications.find(a => a.id === id);
+            if (!app) return;
+
+            document.getElementById('modalCompany').innerText = app.company;
+            document.getElementById('modalRole').innerText = app.role;
+            document.getElementById('modalStageSelect').value = app.stage;
+            document.getElementById('modalInterviewDate').value = app.interviewDate || '';
+            document.getElementById('modalContactPerson').value = app.contactPerson || '';
+            document.getElementById('modalContactInfo').value = app.contactInfo || app.contact || '';
+            document.getElementById('modalNotes').value = app.notes || '';
+            document.getElementById('modalMeta').innerText = `Applied: ${app.date || 'Nov 6, 2026'} • Platform: ${app.platform}`;
+
+            document.getElementById('appModal').classList.remove('hidden');
+        }
+
+        function closeAppModal() {
+            document.getElementById('appModal').classList.add('hidden');
+            selectedAppId = null;
+        }
+
+        function saveAppModalChanges() {
+            if (!selectedAppId) return;
+            const app = applications.find(a => a.id === selectedAppId);
+            if (!app) return;
+
+            app.stage = document.getElementById('modalStageSelect').value;
+            app.interviewDate = document.getElementById('modalInterviewDate').value;
+            app.contactPerson = document.getElementById('modalContactPerson').value.trim();
+            app.contactInfo = document.getElementById('modalContactInfo').value.trim();
+            if (app.contactPerson || app.contactInfo) {
+                app.contact = `${app.contactPerson} (${app.contactInfo})`.trim();
+            }
+            app.notes = document.getElementById('modalNotes').value.trim();
+
+            saveApplications();
+            initPipeline();
+            closeAppModal();
+        }
+
+        function deleteCurrentApp() {
+            if (!selectedAppId) return;
+            if (confirm("Delete this application from your tracker?")) {
+                applications = applications.filter(a => a.id !== selectedAppId);
+                saveApplications();
+                initPipeline();
+                closeAppModal();
+            }
+        }
+
+        // New Application Form
+        function openNewAppModal() {
+            document.getElementById('newCompany').value = '';
+            document.getElementById('newRole').value = 'Scrum Master';
+            document.getElementById('newNotes').value = '';
+            document.getElementById('newAppModal').classList.remove('hidden');
+        }
+
+        function closeNewAppModal() {
+            document.getElementById('newAppModal').classList.add('hidden');
+        }
+
+        function submitNewApp() {
+            const company = document.getElementById('newCompany').value.trim();
+            const role = document.getElementById('newRole').value.trim();
+            const platform = document.getElementById('newPlatform').value;
+            const location = document.getElementById('newLocation').value.trim() || 'Remote';
+            const notes = document.getElementById('newNotes').value.trim();
+
+            if (!company || !role) {
+                alert("Please fill company and role title");
+                return;
+            }
+
+            const newApp = {
+                id: 'app-' + Date.now(),
+                company: company,
+                role: role,
+                location: location,
+                platform: platform,
+                stage: 'applied',
+                date: new Date().toISOString().split('T')[0],
+                notes: notes,
+                contact: ''
+            };
+
+            applications.unshift(newApp);
+            saveApplications();
+            initPipeline();
+            closeNewAppModal();
+        }
+
+        // Search Filter
+        function filterCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.pipeline-card');
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+
+        // Export & Reset
+        function exportData() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(applications, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `Balaji_Palani_Applications_${new Date().toISOString().split('T')[0]}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        function resetToDefaults() {
+            if (confirm("Reset tracker to original verified 24 submissions?")) {
+                applications = [...defaultApplications];
+                saveApplications();
+                initPipeline();
+            }
+        }
+
+        // Initialize Board
+        initPipeline();
+    </script>
+</body>
+</html>
