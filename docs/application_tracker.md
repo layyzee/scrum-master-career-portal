@@ -4,7 +4,7 @@
 > **Contact:** +91-7540015522 | `staxsondeckk@gmail.com` | `balajinia@gmail.com`  
 > **LinkedIn:** [linkedin.com/in/balajipalani92](https://www.linkedin.com/in/balajipalani92)  
 > **Location:** Mumbai, India (Immediate Joiner / 0 Days Notice)  
-> **Current CTC:** ₹20 LPA | **Expected CTC:** ₹24–25 LPA  
+> **Compensation:** Confidential / Disclosed directly to recruiters in 1-on-1 discussion  
 
 ---
 
