@@ -14,10 +14,11 @@
 |---|---|---|---|---|
 | **LinkedIn** | 18 | 5 | 0 | 23 |
 | **Naukri** | 19 | 2 | 0 | 21 |
+| **Hirist** | 6 | 0 | 0 | 6 |
 | **Indeed** | 2 | 3 | 0 | 5 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **40** | **10** | **1** | **51** |
+| **Total** | **46** | **10** | **1** | **57** |
 
 ---
 
@@ -67,6 +68,12 @@
 | 40 | Nov 7, 2026 | **Large Electrical Equipment MNC** | Technical Scrum Master (9-14 Yrs, ₹15-22 LPA) | Hybrid | Chennai | Naukri | ⚡ Interest Shared Directly with Recruiter |
 | 41 | Nov 7, 2026 | **Foreign IT Consulting MNC** | Scrum Master (10-19 Yrs, ₹17-27 LPA) | Hybrid | Mumbai / BLR | Naukri | ⚡ Interest Shared Directly with Recruiter |
 | 42 | Nov 7, 2026 | **Large IT MNC** | Scrum Master Lead (7-12 Yrs, ₹15-22 LPA) | Hybrid | Hyd / Pune / BLR | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 43 | Nov 7, 2026 | **Allianz** | Scrum Master - Agile Methodologies | Hybrid | Pune / Maharashtra | Hirist | ✅ Submitted & Confirmed (Tony Francis HR) |
+| 44 | Nov 7, 2026 | **Hiring Eye** | Senior Scrum Master - Agile Delivery (25-30 LPA) | On-site | Bangalore | Hirist | ✅ Submitted & Confirmed (Screening Form Completed) |
+| 45 | Nov 7, 2026 | **bswift** | Scrum Master - Project Management | Hybrid | Bangalore | Hirist | ✅ Submitted & Confirmed Applied |
+| 46 | Nov 7, 2026 | **Allshore Technologies** | Technical Scrum Master - Agile Methodologies | Hybrid | Multiple Locations | Hirist | ✅ Submitted & Confirmed Applied |
+| 47 | Nov 7, 2026 | **Allshore Technologies** | Technical Scrum Master | Hybrid | Hyderabad | Hirist | ✅ Submitted & Confirmed Applied |
+| 48 | Nov 7, 2026 | **Talent Carpet HR Solutions** | Agile Delivery Lead | Contractual | Chennai | Hirist | ✅ Submitted & Confirmed Applied |
 
 ---
 
