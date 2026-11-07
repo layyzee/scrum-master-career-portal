@@ -10,18 +10,18 @@
 
 ## 1. Application Summary by Platform
 
-| Platform | Confirmed Applied | In Progress / Pending 1-Click | Direct Outreach | Total |
+| Platform | Confirmed Applied / Interest Shared | In Progress / Pending Direct ATS | Direct Outreach | Total Actioned |
 |---|---|---|---|---|
-| **LinkedIn** | 16 | 0 | 0 | 16 |
-| **Naukri** | 6 | 0 | 0 | 6 |
-| **Indeed** | 2 | 0 | 0 | 2 |
+| **LinkedIn** | 18 | 5 | 0 | 23 |
+| **Naukri** | 19 | 2 | 0 | 21 |
+| **Indeed** | 2 | 3 | 0 | 5 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **25** | **0** | **1** | **26** |
+| **Total** | **40** | **10** | **1** | **51** |
 
 ---
 
-## 2. Complete Submission Log
+## 2. Complete Submission & Action Log
 
 | # | Date | Company | Exact Role Title | Work Mode | Location | Platform | Application Status |
 |---|---|---|---|---|---|---|---|
@@ -52,3 +52,33 @@
 | 25 | Nov 6, 2026 | **UST** | Scrum Master I | Hybrid | Maharashtra | Indeed | ✅ Submitted & Confirmed Applied |
 | 26 | Nov 6, 2026 | **Staffnixcom** | Senior Project Manager - IT (Insurance) / Agile Scrum | Hybrid | Bengaluru | Cutshort | ✅ Submitted & Chat Opened with Mayank Choudhary |
 | 27 | Nov 6, 2026 | **Pantheon Inc** | Scrum Master – Enterprise Data & AI Solutions | Remote | Remote (India/Brazil/Hungary) | Indeed | ✅ Submitted & Confirmed Applied |
+| 28 | Nov 7, 2026 | **TechDoQuest** | Scrum Master Data Strategy | Remote | India (Remote) | LinkedIn | ✅ Submitted via Easy Apply (Jira 5y, Azure 3y, CTC 20LPA, 0 NP) |
+| 29 | Nov 7, 2026 | **Mizuho** | Fixed Income / Derivs Dev - Scrum Master | Hybrid | Pune City | LinkedIn | ✅ Submitted via Easy Apply (NY 1 PM Overlap: Yes, Immediate Joiner) |
+| 30 | Nov 7, 2026 | **Foreign MNC in Medical Equipment** | Scrum Master Specialist (7-12 Yrs, ₹17-20 LPA) | On-site / Hybrid | Pune | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 31 | Nov 7, 2026 | **Global B2B IT Services MNC** | Technical Scrum Master (10-14 Yrs, ₹17-26 LPA) | On-site / Hybrid | Pune | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 32 | Nov 7, 2026 | **Foreign IT Consulting MNC** | Sr. Scrum Master Project Manager (7-12 Yrs, ₹19-26 LPA) | Hybrid | Hyd / Pune / BLR | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 33 | Nov 7, 2026 | **Foreign IT Consulting MNC** | Technical Scrum Master (10-15 Yrs, ₹17-26 LPA) | Hybrid | Pune / Bengaluru | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 34 | Nov 7, 2026 | **Firm in IT Services Sector** | Scrum Master (10-14 Yrs, ₹22-31 LPA) | Hybrid | Mumbai / Kochi / BLR | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 35 | Nov 7, 2026 | **Firm in IT Services Sector** | Scrum Master (10-17 Yrs, ₹23-33 LPA) | Hybrid | Pune / BLR / Noida | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 36 | Nov 7, 2026 | **Global B2B IT Services** | Technical Scrum Master Manager (10-14 Yrs, ₹23-33 LPA) | Hybrid | Pune | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 37 | Nov 7, 2026 | **Mid-sized Cloud & IT Providers** | Scrum Master (8-12 Yrs, ₹14-19 LPA) | Hybrid | Mumbai / Navi Mumbai | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 38 | Nov 7, 2026 | **Foreign IT Consulting MNC** | Scrum Master & Manager (11-15 Yrs, ₹16-26 LPA) | Hybrid | Hyd / BLR / Chennai | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 39 | Nov 7, 2026 | **Foreign IT Consulting MNC** | Scrum Master Specialist (7-11 Yrs, ₹13-18 LPA) | Hybrid | Pune | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 40 | Nov 7, 2026 | **Large Electrical Equipment MNC** | Technical Scrum Master (9-14 Yrs, ₹15-22 LPA) | Hybrid | Chennai | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 41 | Nov 7, 2026 | **Foreign IT Consulting MNC** | Scrum Master (10-19 Yrs, ₹17-27 LPA) | Hybrid | Mumbai / BLR | Naukri | ⚡ Interest Shared Directly with Recruiter |
+| 42 | Nov 7, 2026 | **Large IT MNC** | Scrum Master Lead (7-12 Yrs, ₹15-22 LPA) | Hybrid | Hyd / Pune / BLR | Naukri | ⚡ Interest Shared Directly with Recruiter |
+
+---
+
+## 3. Discovered Postings Requiring External ATS Direct Submission / Manual Verification
+
+| # | Company | Exact Role Title | Platform | Direct Job URL | Action Required |
+|---|---|---|---|---|---|
+| 1 | **NOV Inc.** | Scrum Master | LinkedIn & Indeed | [Oracle Cloud ATS](https://egay.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/job/45366/) \| [Indeed Link](https://in.indeed.com/viewjob?jk=abb4315eeb8e3196) | Submit via Oracle Cloud ATS (Kochi Hybrid, Posted 4h ago) |
+| 2 | **Brillio** | Scrum Master (Req R01573514) | LinkedIn | [LinkedIn View](https://www.linkedin.com/jobs/view/4486606083/) | Apply via Brillio Workday (Bengaluru, Posted 16h ago) |
+| 3 | **Brillio** | Scrum Master (Req R01573447) | LinkedIn | [LinkedIn View](https://www.linkedin.com/jobs/view/4486606083/) | Apply via Brillio Workday (Hyderabad, Posted 16h ago) |
+| 4 | **Avaya** | Scrum Master | LinkedIn & Indeed | [Indeed Link](https://in.indeed.com/viewjob?jk=d50c4ebbd2015a9b) | Submit via Avaya Careers (Pune Division, Posted 15h ago) |
+| 5 | **HCLTech** | Project Lead - Scrum Master | Indeed | [Indeed Link](https://in.indeed.com/viewjob?jk=837c7061ec1c30a1) | Submit via HCLTech Portal (Pune, Posted 1d ago) |
+| 6 | **YASH Technologies**| Project Lead - Scrum Master | LinkedIn | [LinkedIn Search](https://www.linkedin.com/jobs/search-results/?keywords=%22Scrum+Master%22&f_TPR=r86400) | Submit via YASH Careers (Bengaluru, Posted 23h ago) |
+| 7 | **Harman International** | Software Engineer - Scrum Master | Naukri | [Naukri Link](https://www.naukri.com/job-listings-software-engineer-scrum-master-harman-india-bengaluru-3-to-6-years-051126501979) | Submit via Harman Workday (Bengaluru, 3-6 Yrs) |
+| 8 | **Capgemini** | Technical Manager - Scrum Master (PEGA) | Naukri | [Naukri Link](https://www.naukri.com/job-listings-openings-for-technical-manager-scrum-master-with-pega-background-cg-capgemini-hyderabad-10-to-15-years-051126026606) | Submit via Capgemini Portal (Hyderabad, 10-15 Yrs) |
