@@ -439,7 +439,13 @@
             { id: "app-29", company: "bswift", role: "Scrum Master - Project Management", location: "Hybrid • Bangalore", platform: "Hirist", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via Hirist 1-click apply." },
             { id: "app-30", company: "Allshore Technologies", role: "Technical Scrum Master - Agile Methodologies", location: "Hybrid • Multiple Locations", platform: "Hirist", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via Hirist." },
             { id: "app-31", company: "Allshore Technologies", role: "Technical Scrum Master", location: "Hybrid • Hyderabad", platform: "Hirist", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via Hirist." },
-            { id: "app-32", company: "Talent Carpet HR Solutions", role: "Agile Delivery Lead", location: "Contractual • Chennai", platform: "Hirist", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via Hirist. Cross-functional agile delivery across cloud, devops & QA." }
+            { id: "app-32", company: "Talent Carpet HR Solutions", role: "Agile Delivery Lead", location: "Contractual • Chennai", platform: "Hirist", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via Hirist. Cross-functional agile delivery across cloud, devops & QA." },
+            { id: "app-33", company: "Capgemini", role: "FBS Scrum Master II", location: "Hybrid • Hyderabad", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. Capgemini Financial Services Business (FBS). 4-7 yrs exp." },
+            { id: "app-34", company: "ANSR", role: "Scrum Lead, IT [T500-30575]", location: "On-site • Hyderabad", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. IT Scrum Lead for Global Delivery." },
+            { id: "app-35", company: "Exalto Consulting", role: "Scrum Master (LIMS/ELN)", location: "Remote • India / Global", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. 100% remote 12-month contract." },
+            { id: "app-36", company: "UST", role: "Senior Scrum Master", location: "On-site • Bengaluru", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. Confirmed 0-day immediate joiner requirement and 5-day onsite availability." },
+            { id: "app-37", company: "ANSR", role: "Scrum Lead, IT [T500-30214]", location: "On-site • Hyderabad", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. Verified job posting." },
+            { id: "app-38", company: "ANSR", role: "Scrum Lead, IT [T500-30295]", location: "On-site • Hyderabad", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. Global technology team delivery." }
         ];
 
         // 6 Pipeline Stages
@@ -461,7 +467,7 @@
         // Initialize Data
         function initData() {
             try {
-                const stored = localStorage.getItem('apptracker_data_v2');
+                const stored = localStorage.getItem('apptracker_data_v3');
                 if (stored) {
                     applications = JSON.parse(stored);
                 } else {
@@ -477,7 +483,7 @@
 
         function saveData() {
             try {
-                localStorage.setItem('apptracker_data_v2', JSON.stringify(applications));
+                localStorage.setItem('apptracker_data_v3', JSON.stringify(applications));
             } catch (e) {
                 console.error("Save error:", e);
             }
@@ -947,7 +953,7 @@
         }
 
         function resetToDefaults() {
-            if (confirm("Reset tracker to the verified 32 applications? Any custom edits will be restored to default.")) {
+            if (confirm("Reset tracker to the verified 38 applications? Any custom edits will be restored to default.")) {
                 applications = [...defaultApplications];
                 saveData();
                 render();

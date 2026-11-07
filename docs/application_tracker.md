@@ -12,13 +12,13 @@
 
 | Platform | Confirmed Applied / Interest Shared | In Progress / Pending Direct ATS | Direct Outreach | Total Actioned |
 |---|---|---|---|---|
-| **LinkedIn** | 18 | 5 | 0 | 23 |
+| **LinkedIn** | 24 | 5 | 0 | 29 |
 | **Naukri** | 19 | 2 | 0 | 21 |
 | **Hirist** | 6 | 0 | 0 | 6 |
 | **Indeed** | 2 | 3 | 0 | 5 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **46** | **10** | **1** | **57** |
+| **Total** | **52** | **10** | **1** | **63** |
 
 ---
 
@@ -74,6 +74,12 @@
 | 46 | Nov 7, 2026 | **Allshore Technologies** | Technical Scrum Master - Agile Methodologies | Hybrid | Multiple Locations | Hirist | ✅ Submitted & Confirmed Applied |
 | 47 | Nov 7, 2026 | **Allshore Technologies** | Technical Scrum Master | Hybrid | Hyderabad | Hirist | ✅ Submitted & Confirmed Applied |
 | 48 | Nov 7, 2026 | **Talent Carpet HR Solutions** | Agile Delivery Lead | Contractual | Chennai | Hirist | ✅ Submitted & Confirmed Applied |
+| 49 | Nov 7, 2026 | **Capgemini** | FBS Scrum Master II | Hybrid | Hyderabad | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply) |
+| 50 | Nov 7, 2026 | **ANSR** | Scrum Lead, IT [T500-30575] | On-site | Hyderabad | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply) |
+| 51 | Nov 7, 2026 | **Exalto Consulting** | Scrum Master (LIMS/ELN) - 100% Remote | Remote | India / Global | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 12m Contract) |
+| 52 | Nov 7, 2026 | **UST** | Senior Scrum Master | On-site | Bengaluru | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 0-Day Notice) |
+| 53 | Nov 7, 2026 | **ANSR** | Scrum Lead, IT [T500-30214] | On-site | Hyderabad | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply) |
+| 54 | Nov 7, 2026 | **ANSR** | Scrum Lead, IT [T500-30295] | On-site | Hyderabad | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply) |
 
 ---
 
