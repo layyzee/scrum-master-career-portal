@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppTracker Pro • Scrum Master Job Pipeline & Interview Manager</title>
+    <title>AppTracker Pro • Scrum Master Career Pipeline</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,9 +12,17 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            500: '#0284c7',
-                            600: '#0369a1',
+                        navy: {
+                            950: '#070B14',
+                            900: '#0B1120',
+                            850: '#0F172A',
+                            800: '#1E293B',
+                            700: '#334155'
+                        },
+                        cyan: {
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2'
                         }
                     }
                 }
@@ -22,101 +30,255 @@
         }
     </script>
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            user-select: none;
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        :root {
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: #070B14;
+            color: #F1F5F9;
+            background-image: 
+                radial-gradient(at 15% 15%, rgba(14, 165, 233, 0.08) 0px, transparent 50%),
+                radial-gradient(at 85% 85%, rgba(139, 92, 246, 0.06) 0px, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.6) 0%, #070B14 100%);
+            background-attachment: fixed;
+        }
+
+        /* Custom Sleek Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(71, 85, 105, 0.5);
+            border-radius: 9999px;
+            transition: background 0.2s ease;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(148, 163, 184, 0.8);
+        }
+
+        /* Card micro-interactions */
         .pipeline-card {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
         .pipeline-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-            border-color: rgba(56, 189, 248, 0.4);
+            border-color: rgba(56, 189, 248, 0.45);
+            box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.6), 0 4px 10px -2px rgba(14, 165, 233, 0.15);
+        }
+        .pipeline-card.is-dragging {
+            opacity: 0.45;
+            transform: scale(0.97);
+            border-style: dashed;
+            border-color: #38bdf8;
+        }
+        .drag-target-active {
+            background: rgba(14, 165, 233, 0.08) !important;
+            border-color: rgba(56, 189, 248, 0.6) !important;
+            box-shadow: inset 0 0 20px rgba(14, 165, 233, 0.15);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col overflow-hidden">
+<body class="min-h-screen text-slate-100 flex flex-col antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
 
-    <!-- Top Toolbar -->
-    <header class="h-16 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 sm:px-6 flex items-center justify-between z-30">
-        <div class="flex items-center space-x-3 sm:space-x-4">
-            <a href="index.html" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition" title="Back to Command Hub">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            </a>
+    <!-- Top Navigation & Command Bar -->
+    <header class="sticky top-0 z-40 bg-navy-900/90 backdrop-blur-xl border-b border-slate-800/80 px-4 sm:px-6 py-3 transition-all">
+        <div class="max-w-[1920px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
+            
+            <!-- Left: Brand & Hub Return -->
+            <div class="flex items-center space-x-3.5">
+                <a href="index.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700/60 transition text-xs font-semibold group shadow-sm">
+                    <i data-lucide="arrow-left" class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform"></i>
+                    <span>Career Hub</span>
+                </a>
+                <div class="h-5 w-[1px] bg-slate-800"></div>
+                <div class="flex items-center space-x-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 via-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/20">
+                        <i data-lucide="kanban" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="font-bold text-sm sm:text-base text-white tracking-tight">AppTracker Pro</h1>
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                                Real-Time CRM
+                            </span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 hidden sm:block">Balaji Palani • Scrum Master & Agile Delivery Pipeline</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: View Switcher & Search Bar -->
+            <div class="flex items-center space-x-2 sm:space-x-3 flex-1 max-w-xl mx-0 md:mx-4">
+                <!-- Search -->
+                <div class="relative flex-1">
+                    <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5"></i>
+                    <input type="text" id="searchInput" placeholder="Search company, title, location, or notes..." onkeyup="handleSearch()" class="w-full bg-navy-950/80 text-xs text-slate-200 placeholder-slate-500 pl-9 pr-8 py-2 rounded-xl border border-slate-700/80 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/30 transition shadow-inner">
+                    <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-2.5 top-2.5 text-slate-500 hover:text-slate-300">
+                        <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+
+                <!-- View Switcher -->
+                <div class="flex items-center p-0.5 bg-navy-950 rounded-xl border border-slate-800">
+                    <button id="viewBtnBoard" onclick="switchView('board')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-white shadow-sm transition">
+                        <i data-lucide="columns-3" class="w-3.5 h-3.5 text-cyan-400"></i>
+                        <span class="hidden sm:inline">Board</span>
+                    </button>
+                    <button id="viewBtnTable" onclick="switchView('table')" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition">
+                        <i data-lucide="table" class="w-3.5 h-3.5"></i>
+                        <span class="hidden sm:inline">Table</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: Action Buttons -->
             <div class="flex items-center space-x-2">
-                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-sky-500/20">
-                    <i data-lucide="kanban" class="w-5 h-5"></i>
+                <button onclick="openNewAppModal()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold text-xs shadow-md shadow-cyan-500/20 hover:shadow-cyan-500/30 transition active:scale-95">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                    <span>Add Role</span>
+                </button>
+                
+                <!-- Export Dropdown / Menu -->
+                <div class="relative inline-block text-left">
+                    <button onclick="exportDataJSON()" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition shadow-sm" title="Download JSON Backup">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                    </button>
                 </div>
-                <div>
-                    <h1 class="font-bold text-base text-white flex items-center gap-2">
-                        AppTracker Pro
-                        <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/20">Live Pipeline</span>
-                    </h1>
-                    <p class="text-[11px] text-slate-400">Real-Time Interview Tracking & Notes for Balaji Palani</p>
-                </div>
+                <button onclick="exportDataCSV()" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60 transition shadow-sm" title="Export to Excel / CSV">
+                    <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5 text-emerald-400"></i>
+                </button>
+                <button onclick="resetToDefaults()" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-400 hover:text-rose-400 border border-slate-700/60 transition shadow-sm" title="Reset Dataset to Verified 32 Roles">
+                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                </button>
             </div>
-        </div>
-
-        <!-- Search & Filter -->
-        <div class="hidden md:flex items-center space-x-3">
-            <div class="relative">
-                <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-2.5"></i>
-                <input type="text" id="searchInput" placeholder="Search company, title, or platform..." onkeyup="filterCards()" class="bg-slate-950 text-xs text-slate-200 pl-9 pr-4 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400 w-64">
-            </div>
-        </div>
-
-        <!-- Actions -->
-        <div class="flex items-center space-x-2 sm:space-x-3">
-            <button onclick="openNewAppModal()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold text-xs shadow-md shadow-sky-500/20 transition">
-                <i data-lucide="plus-circle" class="w-4 h-4"></i>
-                <span class="hidden sm:inline">Add Application</span>
-            </button>
-            <button onclick="exportData()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition" title="Export Tracker Data (JSON)">
-                <i data-lucide="download" class="w-4 h-4"></i>
-            </button>
-            <button onclick="resetToDefaults()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-rose-400 border border-slate-700 transition" title="Reset to Verified 24 Applications">
-                <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-            </button>
         </div>
     </header>
 
-    <!-- Pipeline View Navigation -->
-    <div class="bg-slate-900/60 border-b border-slate-800/80 px-4 sm:px-6 py-2 flex items-center justify-between text-xs text-slate-400 z-20">
-        <div class="flex items-center space-x-4">
-            <span class="text-slate-300 font-semibold flex items-center gap-1">
-                <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-400"></i>
-                <span id="totalActiveCount">24</span> Applications Active
-            </span>
-            <span class="hidden sm:inline text-slate-500">•</span>
-            <span class="hidden sm:inline text-slate-400">Click any card to add recruiter notes, interview dates & comments</span>
-        </div>
-        <div class="flex items-center space-x-2">
-            <span class="text-slate-500 text-[11px]">Auto-saved to Browser LocalStorage</span>
+    <!-- Sub-Toolbar: KPI Metric Chips & Platform Filters -->
+    <div class="bg-navy-900/60 border-b border-slate-800/60 px-4 sm:px-6 py-2.5">
+        <div class="max-w-[1920px] mx-auto flex flex-wrap items-center justify-between gap-3 text-xs">
+            
+            <!-- Platform Filter Pills -->
+            <div class="flex items-center flex-wrap gap-1.5" id="platformFilterPills">
+                <span class="text-slate-400 font-semibold mr-1 flex items-center gap-1">
+                    <i data-lucide="filter" class="w-3 h-3 text-cyan-400"></i>
+                    <span>Filter:</span>
+                </span>
+                <button onclick="setPlatformFilter('all')" class="platform-filter-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition active" data-platform="all">
+                    All (<span id="count-all">0</span>)
+                </button>
+                <button onclick="setPlatformFilter('LinkedIn')" class="platform-filter-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition" data-platform="LinkedIn">
+                    LinkedIn (<span id="count-LinkedIn">0</span>)
+                </button>
+                <button onclick="setPlatformFilter('Hirist')" class="platform-filter-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition" data-platform="Hirist">
+                    Hirist (<span id="count-Hirist">0</span>)
+                </button>
+                <button onclick="setPlatformFilter('Naukri')" class="platform-filter-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition" data-platform="Naukri">
+                    Naukri (<span id="count-Naukri">0</span>)
+                </button>
+                <button onclick="setPlatformFilter('Indeed')" class="platform-filter-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition" data-platform="Indeed">
+                    Indeed (<span id="count-Indeed">0</span>)
+                </button>
+                <button onclick="setPlatformFilter('Cutshort')" class="platform-filter-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition" data-platform="Cutshort">
+                    Cutshort (<span id="count-Cutshort">0</span>)
+                </button>
+            </div>
+
+            <!-- Live Pipeline Stage Counts -->
+            <div class="flex items-center gap-3 text-slate-400">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                    <span>Applied: <strong class="text-white" id="statApplied">0</strong></span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                    <span>Screening: <strong class="text-white" id="statScreening">0</strong></span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-indigo-400"></span>
+                    <span>Tech / HM: <strong class="text-white" id="statTechnical">0</strong></span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>Offers: <strong class="text-white" id="statOffer">0</strong></span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Main Kanban Board -->
-    <main class="flex-grow p-4 sm:p-6 overflow-x-auto overflow-y-auto bg-slate-950">
-        <div id="pipelineContainer" class="flex items-start space-x-5 min-w-max pb-16">
-            <!-- Columns generated via JavaScript -->
+    <!-- MAIN VIEW AREA (Fully Scrollable) -->
+    <main class="flex-grow p-4 sm:p-6 overflow-y-auto">
+        <div class="max-w-[1920px] mx-auto">
+            
+            <!-- 1. KANBAN BOARD VIEW -->
+            <div id="boardView" class="transition-all">
+                <div id="pipelineContainer" class="flex items-start gap-4 overflow-x-auto pb-8 custom-scrollbar min-w-full">
+                    <!-- Columns generated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- 2. TABLE / LIST VIEW -->
+            <div id="tableView" class="hidden transition-all">
+                <div class="bg-navy-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-md">
+                    <div class="p-4 border-b border-slate-800 flex items-center justify-between">
+                        <div class="text-xs text-slate-400">
+                            Showing <span id="tableFilteredCount" class="font-bold text-white">0</span> applications
+                        </div>
+                        <div class="text-xs text-slate-500">
+                            Click any row to view full notes, recruiter details & interview status
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-left text-xs border-collapse">
+                            <thead>
+                                <tr class="bg-slate-900/90 text-slate-400 border-b border-slate-800 uppercase text-[10px] tracking-wider font-semibold">
+                                    <th class="py-3 px-4">Company</th>
+                                    <th class="py-3 px-4">Role Title</th>
+                                    <th class="py-3 px-4">Platform</th>
+                                    <th class="py-3 px-4">Location</th>
+                                    <th class="py-3 px-4">Current Stage</th>
+                                    <th class="py-3 px-4">Date Added</th>
+                                    <th class="py-3 px-4">Recruiter / Notes</th>
+                                    <th class="py-3 px-4 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody" class="divide-y divide-slate-800/60">
+                                <!-- Generated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <!-- Application Detail & Edit Modal -->
-    <div id="appModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div class="flex items-start justify-between">
-                <div>
-                    <h3 id="modalCompany" class="font-bold text-white text-lg leading-tight">Company Name</h3>
-                    <p id="modalRole" class="text-xs text-sky-400 font-medium">Role Title</p>
+    <!-- Detail / Edit Application Modal -->
+    <div id="appModal" class="fixed inset-0 bg-navy-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-navy-900 border border-slate-700/80 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl my-8 relative">
+            <div class="flex items-start justify-between border-b border-slate-800 pb-3">
+                <div class="space-y-0.5">
+                    <div class="flex items-center gap-2">
+                        <h3 id="modalCompany" class="font-bold text-white text-lg tracking-tight">Company Name</h3>
+                        <span id="modalPlatformBadge"></span>
+                    </div>
+                    <p id="modalRole" class="text-xs text-cyan-400 font-medium">Scrum Master</p>
                 </div>
-                <button onclick="closeAppModal()" class="text-slate-400 hover:text-white">
-                    <i data-lucide="x" class="w-5 h-5"></i>
+                <button onclick="closeAppModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition">
+                    <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
             </div>
 
@@ -124,110 +286,127 @@
                 <!-- Status & Stage -->
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-400 mb-1">Pipeline Stage</label>
-                        <select id="modalStageSelect" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                        <label class="block font-semibold text-slate-300 mb-1">Pipeline Stage</label>
+                        <select id="modalStageSelect" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
                             <option value="applied">Applied (Submitted)</option>
                             <option value="screening">Recruiter Screening</option>
                             <option value="technical">Technical / HM Round</option>
-                            <option value="final">Final Round / Culture</option>
+                            <option value="final">Final Round / Leadership</option>
                             <option value="offer">Offer Extended 🎉</option>
-                            <option value="archived">Archived / Rejected</option>
+                            <option value="archived">Archived / Closed</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block font-semibold text-slate-400 mb-1">Next Interview Date / Follow-up</label>
-                        <input type="date" id="modalInterviewDate" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                        <label class="block font-semibold text-slate-300 mb-1">Next Interview / Follow-up</label>
+                        <input type="date" id="modalInterviewDate" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
                     </div>
                 </div>
 
                 <!-- Recruiter Contact Details -->
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-400 mb-1">Recruiter / Contact Person</label>
-                        <input type="text" id="modalContactPerson" placeholder="e.g. Kartheek G" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                        <label class="block font-semibold text-slate-300 mb-1">Recruiter Name</label>
+                        <input type="text" id="modalContactPerson" placeholder="e.g. Tony Francis" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
                     </div>
                     <div>
-                        <label class="block font-semibold text-slate-400 mb-1">Recruiter Email / Phone</label>
-                        <input type="text" id="modalContactInfo" placeholder="e.g. kartheek.g@itcinfotech.com" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                        <label class="block font-semibold text-slate-300 mb-1">Recruiter Email / Phone</label>
+                        <input type="text" id="modalContactInfo" placeholder="e.g. tony.f@allianz.com" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
                     </div>
+                </div>
+
+                <!-- Location & Mode -->
+                <div>
+                    <label class="block font-semibold text-slate-300 mb-1">Location & Work Mode</label>
+                    <input type="text" id="modalLocation" placeholder="e.g. Hybrid • Pune / Maharashtra" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
                 </div>
 
                 <!-- Notes & Comments -->
                 <div>
-                    <label class="block font-semibold text-slate-400 mb-1">Interview Notes, Feedback & Discussion Comments</label>
-                    <textarea id="modalNotes" rows="5" placeholder="Add notes here (e.g. Discussed SAFe PI planning experience, asked about Notice Period, salary expectation aligned, follow-up scheduled for next Tuesday)..." class="w-full bg-slate-950 text-slate-200 p-3 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400 leading-relaxed"></textarea>
+                    <label class="block font-semibold text-slate-300 mb-1">Interview Discussion, Questions & Notes</label>
+                    <textarea id="modalNotes" rows="5" placeholder="Log details: interview feedback, agile assessment topics, salary alignment, follow-up dates..." class="w-full bg-navy-950 text-slate-200 p-3 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400 leading-relaxed custom-scrollbar"></textarea>
                 </div>
 
                 <!-- Tags / Metadata -->
-                <div class="flex items-center justify-between text-slate-500 pt-1">
-                    <span id="modalMeta">Applied: Nov 6, 2026 • Platform: LinkedIn</span>
-                    <button onclick="deleteCurrentApp()" class="text-rose-400 hover:text-rose-300 font-semibold transition flex items-center gap-1">
+                <div class="flex items-center justify-between text-slate-500 pt-1 border-t border-slate-800">
+                    <span id="modalMeta" class="text-[11px]">Applied: Nov 7, 2026</span>
+                    <button onclick="deleteCurrentApp()" class="text-rose-400 hover:text-rose-300 font-semibold transition flex items-center gap-1 hover:bg-rose-500/10 px-2 py-1 rounded-lg">
                         <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                        <span>Delete</span>
+                        <span>Delete Role</span>
                     </button>
                 </div>
             </div>
 
             <div class="flex items-center justify-end space-x-2 pt-2 border-t border-slate-800">
                 <button onclick="closeAppModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition">Cancel</button>
-                <button onclick="saveAppModalChanges()" class="px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 hover:bg-sky-400 text-white shadow-md shadow-sky-500/20 transition">Save Changes</button>
+                <button onclick="saveAppModalChanges()" class="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20 transition">Save Changes</button>
             </div>
         </div>
     </div>
 
     <!-- New Application Modal -->
-    <div id="newAppModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-            <div class="flex items-center justify-between">
-                <h3 class="font-bold text-white text-base">Add New Application</h3>
-                <button onclick="closeNewAppModal()" class="text-slate-400 hover:text-white">
-                    <i data-lucide="x" class="w-5 h-5"></i>
+    <div id="newAppModal" class="fixed inset-0 bg-navy-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-navy-900 border border-slate-700/80 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl my-8 relative">
+            <div class="flex items-start justify-between border-b border-slate-800 pb-3">
+                <div>
+                    <h3 class="font-bold text-white text-base">Add New Application</h3>
+                    <p class="text-xs text-slate-400">Track a new Scrum Master job opportunity</p>
+                </div>
+                <button onclick="closeNewAppModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition">
+                    <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
             </div>
 
             <div class="space-y-3 text-xs">
                 <div>
-                    <label class="block font-semibold text-slate-400 mb-1">Company Name *</label>
-                    <input type="text" id="newCompany" placeholder="e.g. Snowflake, Razorpay" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                    <label class="block font-semibold text-slate-300 mb-1">Company Name *</label>
+                    <input type="text" id="newCompany" placeholder="e.g. Razorpay, Spotify, Juspay" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-400 mb-1">Role Title *</label>
-                    <input type="text" id="newRole" value="Scrum Master" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                    <label class="block font-semibold text-slate-300 mb-1">Exact Role Title *</label>
+                    <input type="text" id="newRole" placeholder="e.g. Senior Scrum Master / Agile Lead" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-slate-400 mb-1">Platform</label>
-                        <select id="newPlatform" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                        <label class="block font-semibold text-slate-300 mb-1">Platform</label>
+                        <select id="newPlatform" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
                             <option value="LinkedIn">LinkedIn</option>
+                            <option value="Hirist">Hirist</option>
                             <option value="Naukri">Naukri</option>
                             <option value="Indeed">Indeed</option>
                             <option value="Cutshort">Cutshort</option>
-                            <option value="HackerNews">Hacker News</option>
                             <option value="DirectEmail">Direct Email</option>
-                            <option value="Wellfound">Wellfound</option>
-                            <option value="CompanySite">Company Portal</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block font-semibold text-slate-400 mb-1">Location & Mode</label>
-                        <input type="text" id="newLocation" placeholder="e.g. Remote / Mumbai / Hybrid" value="Remote" class="w-full bg-slate-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400">
+                        <label class="block font-semibold text-slate-300 mb-1">Initial Stage</label>
+                        <select id="newStage" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
+                            <option value="applied">Applied (Submitted)</option>
+                            <option value="screening">Recruiter Screening</option>
+                            <option value="technical">Technical / HM Round</option>
+                        </select>
                     </div>
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-400 mb-1">Initial Comment / Notes</label>
-                    <textarea id="newNotes" rows="3" placeholder="Recruiter name, referral info, or specific requirements..." class="w-full bg-slate-950 text-slate-200 p-2.5 rounded-xl border border-slate-700 focus:outline-none focus:border-sky-400"></textarea>
+                    <label class="block font-semibold text-slate-300 mb-1">Location & Work Mode</label>
+                    <input type="text" id="newLocation" placeholder="e.g. Remote • India or Hybrid • Bengaluru" class="w-full bg-navy-950 text-slate-200 px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-300 mb-1">Notes / Recruiter Info</label>
+                    <textarea id="newNotes" rows="3" placeholder="Initial discussion notes, application link, salary scope..." class="w-full bg-navy-950 text-slate-200 p-3 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400 custom-scrollbar"></textarea>
                 </div>
             </div>
 
-            <div class="flex items-center justify-end space-x-2 pt-2">
+            <div class="flex items-center justify-end space-x-2 pt-2 border-t border-slate-800">
                 <button onclick="closeNewAppModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition">Cancel</button>
-                <button onclick="submitNewApp()" class="px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 hover:bg-sky-400 text-white shadow-md shadow-sky-500/20 transition">Add to Pipeline</button>
+                <button onclick="addNewApplication()" class="px-4 py-2 rounded-xl text-xs font-bold bg-cyan-500 hover:bg-cyan-400 text-slate-950 shadow-md shadow-cyan-500/20 transition">Create Application</button>
             </div>
         </div>
     </div>
 
+    <!-- Application Logic & Data Store -->
     <script>
-        // Default Verified Application Dataset (Initial seed from conversation)
+        // Verified Seed Application Dataset
         const defaultApplications = [
             { id: "app-1", company: "ITC Infotech", role: "Senior Scrum Master", location: "Hybrid • Bengaluru", platform: "DirectEmail", stage: "screening", date: "2026-11-06", contact: "Kartheek G (kartheek.g@itcinfotech.com)", notes: "Direct outreach email sent to recruiter with full candidate profile and resume reference. Follow-up scheduled." },
             { id: "app-2", company: "Themesoft Inc.", role: "Scrum Master", location: "Remote • Ontario / Global", platform: "LinkedIn", stage: "applied", date: "2026-11-06", contact: "", notes: "Submitted via LinkedIn Easy Apply. Global remote client delivery." },
@@ -263,65 +442,146 @@
             { id: "app-32", company: "Talent Carpet HR Solutions", role: "Agile Delivery Lead", location: "Contractual • Chennai", platform: "Hirist", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via Hirist. Cross-functional agile delivery across cloud, devops & QA." }
         ];
 
-        // Pipeline Stages
+        // 6 Pipeline Stages
         const stages = [
-            { id: "applied", title: "Applied / In Review", color: "sky", icon: "send" },
-            { id: "screening", title: "Recruiter Screening", color: "amber", icon: "phone-call" },
-            { id: "technical", title: "Technical / HM Round", color: "indigo", icon: "code-2" },
-            { id: "final", title: "Final / Leadership", color: "purple", icon: "users" },
-            { id: "offer", title: "Offer Extended 🎉", color: "emerald", icon: "award" },
-            { id: "archived", title: "Archived / Rejected", color: "slate", icon: "archive" }
+            { id: "applied", title: "Applied / In Review", color: "cyan", border: "border-cyan-500/30", badge: "bg-cyan-500/10 text-cyan-400" },
+            { id: "screening", title: "Recruiter Screening", color: "amber", border: "border-amber-500/30", badge: "bg-amber-500/10 text-amber-400" },
+            { id: "technical", title: "Technical / HM Round", color: "indigo", border: "border-indigo-500/30", badge: "bg-indigo-500/10 text-indigo-400" },
+            { id: "final", title: "Final / Leadership", color: "purple", border: "border-purple-500/30", badge: "bg-purple-500/10 text-purple-400" },
+            { id: "offer", title: "Offer Extended 🎉", color: "emerald", border: "border-emerald-500/30", badge: "bg-emerald-500/10 text-emerald-400" },
+            { id: "archived", title: "Archived / Closed", color: "slate", border: "border-slate-700/40", badge: "bg-slate-800 text-slate-400" }
         ];
 
-        let applications = JSON.parse(localStorage.getItem('apptracker_data')) || defaultApplications;
+        let applications = [];
+        let currentPlatformFilter = 'all';
+        let currentSearchQuery = '';
+        let currentView = 'board';
         let selectedAppId = null;
 
-        function saveApplications() {
-            localStorage.setItem('apptracker_data', JSON.stringify(applications));
-            document.getElementById('totalActiveCount').innerText = applications.filter(a => a.stage !== 'archived').length;
+        // Initialize Data
+        function initData() {
+            try {
+                const stored = localStorage.getItem('apptracker_data_v2');
+                if (stored) {
+                    applications = JSON.parse(stored);
+                } else {
+                    applications = [...defaultApplications];
+                    saveData();
+                }
+            } catch (e) {
+                console.error("Storage error:", e);
+                applications = [...defaultApplications];
+            }
+            window.applications = applications;
         }
 
-        function initPipeline() {
+        function saveData() {
+            try {
+                localStorage.setItem('apptracker_data_v2', JSON.stringify(applications));
+            } catch (e) {
+                console.error("Save error:", e);
+            }
+            window.applications = applications;
+            updateKPIs();
+        }
+
+        function updateKPIs() {
+            // Stage stats
+            document.getElementById('statApplied').innerText = applications.filter(a => a.stage === 'applied').length;
+            document.getElementById('statScreening').innerText = applications.filter(a => a.stage === 'screening').length;
+            document.getElementById('statTechnical').innerText = applications.filter(a => a.stage === 'technical').length;
+            document.getElementById('statOffer').innerText = applications.filter(a => a.stage === 'offer').length;
+
+            // Platform counts
+            document.getElementById('count-all').innerText = applications.length;
+            ['LinkedIn', 'Hirist', 'Naukri', 'Indeed', 'Cutshort'].forEach(p => {
+                const el = document.getElementById(`count-${p}`);
+                if (el) el.innerText = applications.filter(a => a.platform === p).length;
+            });
+        }
+
+        // Render Views
+        function render() {
+            if (currentView === 'board') {
+                renderBoard();
+            } else {
+                renderTable();
+            }
+            updateKPIs();
+            if (window.lucide && typeof lucide.createIcons === 'function') {
+                try {
+                    lucide.createIcons();
+                } catch (e) {
+                    console.warn("Lucide icon creation warning:", e);
+                }
+            }
+        }
+
+        function getFilteredApplications() {
+            return applications.filter(app => {
+                const matchesPlatform = currentPlatformFilter === 'all' || app.platform.toLowerCase() === currentPlatformFilter.toLowerCase();
+                const q = currentSearchQuery.toLowerCase();
+                const matchesSearch = !q || 
+                    app.company.toLowerCase().includes(q) ||
+                    app.role.toLowerCase().includes(q) ||
+                    app.location.toLowerCase().includes(q) ||
+                    (app.notes && app.notes.toLowerCase().includes(q)) ||
+                    (app.contact && app.contact.toLowerCase().includes(q));
+                return matchesPlatform && matchesSearch;
+            });
+        }
+
+        function renderBoard() {
             const container = document.getElementById('pipelineContainer');
             container.innerHTML = '';
+            const filtered = getFilteredApplications();
 
             stages.forEach(stage => {
-                const stageApps = applications.filter(a => a.stage === stage.id);
+                const stageApps = filtered.filter(a => a.stage === stage.id);
 
                 const col = document.createElement('div');
-                col.className = 'w-80 flex flex-col bg-slate-900/70 rounded-2xl border border-slate-800 p-3.5 min-h-[75vh] shadow-xl';
+                col.className = `w-[320px] flex-shrink-0 flex flex-col bg-navy-900/70 border ${stage.border} rounded-2xl p-3 shadow-xl backdrop-blur-md transition-all`;
                 col.dataset.stageId = stage.id;
                 col.ondragover = handleDragOver;
+                col.ondragleave = handleDragLeave;
                 col.ondrop = handleDrop;
 
                 col.innerHTML = `
                     <div class="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-3 px-1">
                         <div class="flex items-center space-x-2">
-                            <span class="font-bold text-xs uppercase tracking-wider text-slate-300">${stage.title}</span>
-                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400" id="badge-${stage.id}">${stageApps.length}</span>
+                            <span class="font-bold text-xs uppercase tracking-wider text-slate-200">${stage.title}</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${stage.badge}">${stageApps.length}</span>
                         </div>
                     </div>
-                    <div id="stage-cards-${stage.id}" class="flex-grow space-y-2.5 min-h-[300px]"></div>
+                    <!-- Dedicated Scrollable Container per column: Fixes the vertical scrolling issue -->
+                    <div id="cards-${stage.id}" class="flex-grow space-y-2.5 max-h-[calc(100vh-270px)] min-h-[420px] overflow-y-auto pr-1 custom-scrollbar">
+                    </div>
                 `;
 
                 container.appendChild(col);
 
-                const cardsContainer = col.querySelector(`#stage-cards-${stage.id}`);
-                stageApps.forEach(app => {
-                    cardsContainer.appendChild(createCardElement(app));
-                });
+                const cardsContainer = col.querySelector(`#cards-${stage.id}`);
+                if (stageApps.length === 0) {
+                    cardsContainer.innerHTML = `
+                        <div class="h-32 border border-dashed border-slate-800/80 rounded-xl flex items-center justify-center text-slate-600 text-xs font-medium">
+                            No applications
+                        </div>
+                    `;
+                } else {
+                    stageApps.forEach(app => {
+                        cardsContainer.appendChild(createCard(app));
+                    });
+                }
             });
-
-            saveApplications();
-            lucide.createIcons();
         }
 
-        function createCardElement(app) {
+        function createCard(app) {
             const card = document.createElement('div');
-            card.className = 'pipeline-card bg-slate-900 border border-slate-800/80 rounded-xl p-3.5 cursor-pointer text-xs space-y-2 group';
+            card.className = 'pipeline-card bg-navy-950/90 border border-slate-800/90 hover:border-cyan-500/40 rounded-xl p-3.5 cursor-pointer text-xs space-y-2.5 group shadow-md';
             card.id = app.id;
             card.draggable = true;
             card.ondragstart = handleDragStart;
+            card.ondragend = handleDragEnd;
             card.onclick = (e) => {
                 if (e.target.closest('button')) return;
                 openAppModal(app.id);
@@ -330,29 +590,38 @@
             const platformBadge = getPlatformBadge(app.platform);
 
             card.innerHTML = `
-                <div class="flex items-start justify-between gap-1">
-                    <span class="font-bold text-white text-sm group-hover:text-sky-400 transition leading-snug">${app.company}</span>
+                <div class="flex items-start justify-between gap-1.5">
+                    <span class="font-bold text-white text-sm group-hover:text-cyan-300 transition leading-snug line-clamp-1">${app.company}</span>
                     ${platformBadge}
                 </div>
-                <div class="text-[11px] text-slate-300 font-medium">${app.role}</div>
-                <div class="flex items-center gap-1 text-[11px] text-slate-400">
-                    <i data-lucide="map-pin" class="w-3 h-3 text-slate-500"></i>
-                    <span>${app.location}</span>
+                <div class="text-[11px] text-slate-300 font-medium leading-snug line-clamp-1">${app.role}</div>
+                <div class="flex items-center gap-1.5 text-[11px] text-slate-400">
+                    <i data-lucide="map-pin" class="w-3 h-3 text-slate-500 flex-shrink-0"></i>
+                    <span class="truncate">${app.location}</span>
                 </div>
                 ${app.contact ? `
-                    <div class="text-[10px] text-emerald-400 flex items-center gap-1 font-medium bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                        <i data-lucide="user" class="w-3 h-3"></i>
+                    <div class="text-[10px] text-emerald-300 flex items-center gap-1.5 font-medium bg-emerald-500/10 px-2 py-0.5 rounded-lg border border-emerald-500/20 truncate">
+                        <i data-lucide="user" class="w-3 h-3 flex-shrink-0 text-emerald-400"></i>
                         <span class="truncate">${app.contact}</span>
                     </div>
                 ` : ''}
+                ${app.interviewDate ? `
+                    <div class="text-[10px] text-amber-300 flex items-center gap-1.5 font-semibold bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20">
+                        <i data-lucide="calendar" class="w-3 h-3 text-amber-400"></i>
+                        <span>Interview: ${app.interviewDate}</span>
+                    </div>
+                ` : ''}
                 ${app.notes ? `
-                    <div class="text-[11px] text-slate-400 bg-slate-950/60 p-2 rounded-lg border border-slate-800/60 line-clamp-2">
+                    <div class="text-[11px] text-slate-400 bg-navy-900/60 p-2 rounded-lg border border-slate-800/80 line-clamp-2 leading-relaxed">
                         ${app.notes}
                     </div>
                 ` : ''}
-                <div class="flex items-center justify-between text-[10px] text-slate-500 pt-1">
-                    <span>${app.date || 'Nov 6, 2026'}</span>
-                    <span class="text-sky-400 font-semibold group-hover:underline">Edit Notes →</span>
+                <div class="flex items-center justify-between text-[10px] text-slate-500 pt-1 border-t border-slate-800/60">
+                    <span>${app.date || 'Nov 7, 2026'}</span>
+                    <span class="text-cyan-400 font-semibold group-hover:underline flex items-center gap-0.5">
+                        <span>Details</span>
+                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                    </span>
                 </div>
             `;
             return card;
@@ -360,13 +629,136 @@
 
         function getPlatformBadge(platform) {
             switch(platform) {
-                case 'LinkedIn': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">LinkedIn</span>';
-                case 'Naukri': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20">Naukri</span>';
-                case 'Indeed': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Indeed</span>';
-                case 'Cutshort': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">Cutshort</span>';
-                case 'DirectEmail': return '<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-red-500/10 text-red-400 border border-red-500/20">Direct Email</span>';
-                default: return `<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-300">${platform}</span>`;
+                case 'LinkedIn':
+                    return '<span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/25">LinkedIn</span>';
+                case 'Hirist':
+                    return '<span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-purple-500/10 text-purple-300 border border-purple-500/25">Hirist</span>';
+                case 'Naukri':
+                    return '<span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">Naukri</span>';
+                case 'Indeed':
+                    return '<span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/25">Indeed</span>';
+                case 'Cutshort':
+                    return '<span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/25">Cutshort</span>';
+                case 'DirectEmail':
+                    return '<span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/25">Direct Pitch</span>';
+                default:
+                    return `<span class="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-800 text-slate-300">${platform}</span>`;
             }
+        }
+
+        // Table View Render
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            const filtered = getFilteredApplications();
+            document.getElementById('tableFilteredCount').innerText = filtered.length;
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center py-12 text-slate-500">
+                            No applications found matching your criteria.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            filtered.forEach(app => {
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-slate-800/40 transition cursor-pointer';
+                tr.onclick = (e) => {
+                    if (e.target.closest('select') || e.target.closest('button')) return;
+                    openAppModal(app.id);
+                };
+
+                const stageObj = stages.find(s => s.id === app.stage) || stages[0];
+
+                tr.innerHTML = `
+                    <td class="py-3 px-4 font-bold text-white">${app.company}</td>
+                    <td class="py-3 px-4 text-slate-200 font-medium">${app.role}</td>
+                    <td class="py-3 px-4">${getPlatformBadge(app.platform)}</td>
+                    <td class="py-3 px-4 text-slate-400 text-[11px]">${app.location}</td>
+                    <td class="py-3 px-4">
+                        <select onchange="updateStage('${app.id}', this.value)" class="bg-navy-950 text-slate-200 text-xs px-2.5 py-1 rounded-lg border border-slate-700 focus:outline-none focus:border-cyan-400">
+                            ${stages.map(s => `<option value="${s.id}" ${s.id === app.stage ? 'selected' : ''}>${s.title}</option>`).join('')}
+                        </select>
+                    </td>
+                    <td class="py-3 px-4 text-slate-400 text-[11px] font-mono">${app.date || 'Nov 7, 2026'}</td>
+                    <td class="py-3 px-4 text-slate-300 max-w-xs truncate">
+                        ${app.contact ? `<span class="text-emerald-400 font-semibold">[${app.contact}]</span> ` : ''}
+                        <span>${app.notes || '—'}</span>
+                    </td>
+                    <td class="py-3 px-4 text-right">
+                        <button onclick="openAppModal('${app.id}')" class="text-cyan-400 hover:text-cyan-300 font-semibold text-xs px-2 py-1 rounded hover:bg-cyan-500/10 transition">
+                            Edit →
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // View Switcher
+        function switchView(view) {
+            currentView = view;
+            const btnBoard = document.getElementById('viewBtnBoard');
+            const btnTable = document.getElementById('viewBtnTable');
+            const boardEl = document.getElementById('boardView');
+            const tableEl = document.getElementById('tableView');
+
+            if (view === 'board') {
+                btnBoard.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-white shadow-sm transition';
+                const iconB = btnBoard.querySelector('i, svg');
+                if (iconB) iconB.setAttribute('class', 'w-3.5 h-3.5 text-cyan-400');
+                btnTable.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition';
+                const iconT = btnTable.querySelector('i, svg');
+                if (iconT) iconT.setAttribute('class', 'w-3.5 h-3.5');
+                boardEl.classList.remove('hidden');
+                tableEl.classList.add('hidden');
+            } else {
+                btnTable.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-white shadow-sm transition';
+                const iconT = btnTable.querySelector('i, svg');
+                if (iconT) iconT.setAttribute('class', 'w-3.5 h-3.5 text-cyan-400');
+                btnBoard.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white transition';
+                const iconB = btnBoard.querySelector('i, svg');
+                if (iconB) iconB.setAttribute('class', 'w-3.5 h-3.5');
+                boardEl.classList.add('hidden');
+                tableEl.classList.remove('hidden');
+            }
+            render();
+        }
+
+        // Filter Controls
+        function setPlatformFilter(platform) {
+            currentPlatformFilter = platform;
+            document.querySelectorAll('.platform-filter-pill').forEach(btn => {
+                if (btn.dataset.platform === platform) {
+                    btn.className = 'platform-filter-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition active';
+                } else {
+                    btn.className = 'platform-filter-pill px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition';
+                }
+            });
+            render();
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value;
+            currentSearchQuery = query;
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (query.trim()) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+            render();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            currentSearchQuery = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            render();
         }
 
         // Drag & Drop
@@ -375,27 +767,51 @@
         function handleDragStart(e) {
             draggedAppId = e.target.id;
             e.dataTransfer.setData('text/plain', e.target.id);
+            e.target.classList.add('is-dragging');
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('is-dragging');
+            document.querySelectorAll('[data-stage-id]').forEach(col => col.classList.remove('drag-target-active'));
         }
 
         function handleDragOver(e) {
             e.preventDefault();
+            const col = e.currentTarget;
+            col.classList.add('drag-target-active');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-target-active');
         }
 
         function handleDrop(e) {
             e.preventDefault();
             const col = e.currentTarget;
+            col.classList.remove('drag-target-active');
             const targetStage = col.dataset.stageId;
-            if (draggedAppId && targetStage) {
-                const app = applications.find(a => a.id === draggedAppId);
-                if (app) {
+            const appId = e.dataTransfer.getData('text/plain') || draggedAppId;
+
+            if (appId && targetStage) {
+                const app = applications.find(a => a.id === appId);
+                if (app && app.stage !== targetStage) {
                     app.stage = targetStage;
-                    saveApplications();
-                    initPipeline();
+                    saveData();
+                    render();
                 }
             }
         }
 
-        // Modal Management
+        function updateStage(appId, newStage) {
+            const app = applications.find(a => a.id === appId);
+            if (app) {
+                app.stage = newStage;
+                saveData();
+                render();
+            }
+        }
+
+        // Modals
         function openAppModal(id) {
             selectedAppId = id;
             const app = applications.find(a => a.id === id);
@@ -403,12 +819,14 @@
 
             document.getElementById('modalCompany').innerText = app.company;
             document.getElementById('modalRole').innerText = app.role;
+            document.getElementById('modalPlatformBadge').innerHTML = getPlatformBadge(app.platform);
             document.getElementById('modalStageSelect').value = app.stage;
             document.getElementById('modalInterviewDate').value = app.interviewDate || '';
-            document.getElementById('modalContactPerson').value = app.contactPerson || '';
-            document.getElementById('modalContactInfo').value = app.contactInfo || app.contact || '';
+            document.getElementById('modalContactPerson').value = app.contactPerson || (app.contact ? app.contact.split('(')[0].trim() : '');
+            document.getElementById('modalContactInfo').value = app.contactInfo || '';
+            document.getElementById('modalLocation').value = app.location || '';
             document.getElementById('modalNotes').value = app.notes || '';
-            document.getElementById('modalMeta').innerText = `Applied: ${app.date || 'Nov 6, 2026'} • Platform: ${app.platform}`;
+            document.getElementById('modalMeta').innerText = `Created: ${app.date || 'Nov 7, 2026'} • ID: ${app.id}`;
 
             document.getElementById('appModal').classList.remove('hidden');
         }
@@ -427,30 +845,39 @@
             app.interviewDate = document.getElementById('modalInterviewDate').value;
             app.contactPerson = document.getElementById('modalContactPerson').value.trim();
             app.contactInfo = document.getElementById('modalContactInfo').value.trim();
-            if (app.contactPerson || app.contactInfo) {
-                app.contact = `${app.contactPerson} (${app.contactInfo})`.trim();
+            if (app.contactPerson) {
+                app.contact = app.contactInfo ? `${app.contactPerson} (${app.contactInfo})` : app.contactPerson;
+            } else {
+                app.contact = "";
             }
+            app.location = document.getElementById('modalLocation').value.trim() || app.location;
             app.notes = document.getElementById('modalNotes').value.trim();
 
-            saveApplications();
-            initPipeline();
+            saveData();
             closeAppModal();
+            render();
         }
 
         function deleteCurrentApp() {
             if (!selectedAppId) return;
-            if (confirm("Delete this application from your tracker?")) {
+            const app = applications.find(a => a.id === selectedAppId);
+            if (!app) return;
+
+            if (confirm(`Are you sure you want to delete ${app.company} (${app.role})?`)) {
                 applications = applications.filter(a => a.id !== selectedAppId);
-                saveApplications();
-                initPipeline();
+                saveData();
                 closeAppModal();
+                render();
             }
         }
 
-        // New Application Form
+        // New App Modal
         function openNewAppModal() {
             document.getElementById('newCompany').value = '';
             document.getElementById('newRole').value = 'Scrum Master';
+            document.getElementById('newPlatform').value = 'LinkedIn';
+            document.getElementById('newStage').value = 'applied';
+            document.getElementById('newLocation').value = 'Remote • India';
             document.getElementById('newNotes').value = '';
             document.getElementById('newAppModal').classList.remove('hidden');
         }
@@ -459,68 +886,110 @@
             document.getElementById('newAppModal').classList.add('hidden');
         }
 
-        function submitNewApp() {
+        function addNewApplication() {
             const company = document.getElementById('newCompany').value.trim();
             const role = document.getElementById('newRole').value.trim();
-            const platform = document.getElementById('newPlatform').value;
-            const location = document.getElementById('newLocation').value.trim() || 'Remote';
-            const notes = document.getElementById('newNotes').value.trim();
-
             if (!company || !role) {
-                alert("Please fill company and role title");
+                alert("Please fill in Company Name and Role Title.");
                 return;
             }
 
             const newApp = {
-                id: 'app-' + Date.now(),
+                id: "app-" + Date.now(),
                 company: company,
                 role: role,
-                location: location,
-                platform: platform,
-                stage: 'applied',
+                platform: document.getElementById('newPlatform').value,
+                stage: document.getElementById('newStage').value,
+                location: document.getElementById('newLocation').value.trim() || "Remote",
                 date: new Date().toISOString().split('T')[0],
-                notes: notes,
-                contact: ''
+                notes: document.getElementById('newNotes').value.trim(),
+                contact: ""
             };
 
             applications.unshift(newApp);
-            saveApplications();
-            initPipeline();
+            saveData();
             closeNewAppModal();
+            render();
         }
 
-        // Search Filter
-        function filterCards() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const cards = document.querySelectorAll('.pipeline-card');
-
-            cards.forEach(card => {
-                const text = card.innerText.toLowerCase();
-                card.style.display = text.includes(query) ? '' : 'none';
-            });
-        }
-
-        // Export & Reset
-        function exportData() {
+        // Export Options
+        function exportDataJSON() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(applications, null, 2));
-            const downloadAnchor = document.createElement('a');
-            downloadAnchor.setAttribute("href", dataStr);
-            downloadAnchor.setAttribute("download", `Balaji_Palani_Applications_${new Date().toISOString().split('T')[0]}.json`);
-            document.body.appendChild(downloadAnchor);
-            downloadAnchor.click();
-            downloadAnchor.remove();
+            const a = document.createElement('a');
+            a.setAttribute("href", dataStr);
+            a.setAttribute("download", `Balaji_ScrumMaster_Pipeline_${new Date().toISOString().split('T')[0]}.json`);
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        }
+
+        function exportDataCSV() {
+            const headers = ["ID", "Company", "Role", "Platform", "Stage", "Location", "Date", "Contact", "Notes"];
+            const rows = applications.map(a => [
+                `"${a.id}"`,
+                `"${(a.company || '').replace(/"/g, '""')}"`,
+                `"${(a.role || '').replace(/"/g, '""')}"`,
+                `"${(a.platform || '').replace(/"/g, '""')}"`,
+                `"${(a.stage || '').replace(/"/g, '""')}"`,
+                `"${(a.location || '').replace(/"/g, '""')}"`,
+                `"${(a.date || '').replace(/"/g, '""')}"`,
+                `"${(a.contact || '').replace(/"/g, '""')}"`,
+                `"${(a.notes || '').replace(/"/g, '""')}"`
+            ]);
+
+            const csvContent = "data:text/csv;charset=utf-8," + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+            const a = document.createElement('a');
+            a.setAttribute("href", encodeURI(csvContent));
+            a.setAttribute("download", `Balaji_ScrumMaster_Pipeline_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
         }
 
         function resetToDefaults() {
-            if (confirm("Reset tracker to original verified 32 submissions?")) {
+            if (confirm("Reset tracker to the verified 32 applications? Any custom edits will be restored to default.")) {
                 applications = [...defaultApplications];
-                saveApplications();
-                initPipeline();
+                saveData();
+                render();
             }
         }
 
-        // Initialize Board
-        initPipeline();
+        // Close modal on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeAppModal();
+                closeNewAppModal();
+            }
+        });
+
+        // Expose global API
+        window.applications = applications;
+        window.switchView = switchView;
+        window.setPlatformFilter = setPlatformFilter;
+        window.handleSearch = handleSearch;
+        window.clearSearch = clearSearch;
+        window.openAppModal = openAppModal;
+        window.closeAppModal = closeAppModal;
+        window.saveAppModalChanges = saveAppModalChanges;
+        window.deleteCurrentApp = deleteCurrentApp;
+        window.openNewAppModal = openNewAppModal;
+        window.closeNewAppModal = closeNewAppModal;
+        window.addNewApplication = addNewApplication;
+        window.exportDataJSON = exportDataJSON;
+        window.exportDataCSV = exportDataCSV;
+        window.resetToDefaults = resetToDefaults;
+
+        // Initialize on load
+        initData();
+        render();
+
+        window.addEventListener('load', () => {
+            if (window.lucide && typeof lucide.createIcons === 'function') {
+                try {
+                    lucide.createIcons();
+                } catch (e) {}
+            }
+        });
     </script>
 </body>
 </html>
