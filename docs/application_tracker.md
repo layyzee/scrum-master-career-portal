@@ -12,13 +12,13 @@
 
 | Platform | Confirmed Applied / Interest Shared | In Progress / Pending Direct ATS | Direct Outreach | Total Actioned |
 |---|---|---|---|---|
-| **LinkedIn** | 24 | 5 | 0 | 29 |
+| **LinkedIn** | 26 | 5 | 0 | 31 |
 | **Naukri** | 19 | 2 | 0 | 21 |
-| **Hirist** | 6 | 0 | 0 | 6 |
+| **Hirist** | 8 | 0 | 0 | 8 |
 | **Indeed** | 2 | 3 | 0 | 5 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **52** | **10** | **1** | **63** |
+| **Total** | **56** | **10** | **1** | **67** |
 
 ---
 
@@ -80,6 +80,10 @@
 | 52 | Nov 7, 2026 | **UST** | Senior Scrum Master | On-site | Bengaluru | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 0-Day Notice) |
 | 53 | Nov 7, 2026 | **ANSR** | Scrum Lead, IT [T500-30214] | On-site | Hyderabad | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply) |
 | 54 | Nov 7, 2026 | **ANSR** | Scrum Lead, IT [T500-30295] | On-site | Hyderabad | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply) |
+| 55 | Nov 9, 2026 | **DigiHelic** | Agile Scrum Master - ServiceNow | Hybrid | Multiple Locations | Hirist | ✅ Submitted & Confirmed Applied (1-Click) |
+| 56 | Nov 9, 2026 | **Scaling Theory Technologies** | Agile Delivery & Release Manager | On-site | Bangalore | Hirist | ✅ Submitted & Confirmed Applied (Screening: 0-Day Notice) |
+| 57 | Nov 9, 2026 | **Papigen** | Project Manager / Scrum Master – SAFe Agile (Finance Technology) | Hybrid | Chennai | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - SAFe 6.0 / FinTech) |
+| 58 | Nov 9, 2026 | **Papigen** | Scrum Master / Project Manager | Hybrid | Chennai | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 4y SM / CSM / SAFe) |
 
 ---
 

@@ -445,7 +445,11 @@
             { id: "app-35", company: "Exalto Consulting", role: "Scrum Master (LIMS/ELN)", location: "Remote • India / Global", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. 100% remote 12-month contract." },
             { id: "app-36", company: "UST", role: "Senior Scrum Master", location: "On-site • Bengaluru", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. Confirmed 0-day immediate joiner requirement and 5-day onsite availability." },
             { id: "app-37", company: "ANSR", role: "Scrum Lead, IT [T500-30214]", location: "On-site • Hyderabad", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. Verified job posting." },
-            { id: "app-38", company: "ANSR", role: "Scrum Lead, IT [T500-30295]", location: "On-site • Hyderabad", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. Global technology team delivery." }
+            { id: "app-38", company: "ANSR", role: "Scrum Lead, IT [T500-30295]", location: "On-site • Hyderabad", platform: "LinkedIn", stage: "applied", date: "2026-11-07", contact: "", notes: "Submitted via LinkedIn Easy Apply. Global technology team delivery." },
+            { id: "app-39", company: "DigiHelic", role: "Agile Scrum Master - ServiceNow", location: "Hybrid • Multiple Locations", platform: "Hirist", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via Hirist 1-click apply. ServiceNow ITOM/ITSM & Agile delivery frameworks." },
+            { id: "app-40", company: "Scaling Theory Technologies", role: "Agile Delivery & Release Manager", location: "On-site • Bangalore", platform: "Hirist", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via Hirist. Completed screening: 0 Days notice period (Immediate Joiner)." },
+            { id: "app-41", company: "Papigen", role: "Project Manager / Scrum Master – SAFe Agile (Finance Technology)", location: "Hybrid • Chennai", platform: "LinkedIn", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed 7-page screening (0 days notice, 20L CCTC / 25L ECTC, SAFe 6.0 SSM, Azure DevOps 4y)." },
+            { id: "app-42", company: "Papigen", role: "Scrum Master / Project Manager", location: "Hybrid • Chennai", platform: "LinkedIn", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed 7-page screening (0 days notice, 20L/25L, 4y SM exp, CSM & SAFe SSM certified)." }
         ];
 
         // 6 Pipeline Stages
@@ -467,7 +471,7 @@
         // Initialize Data
         function initData() {
             try {
-                const stored = localStorage.getItem('apptracker_data_v3');
+                const stored = localStorage.getItem('apptracker_data_v4');
                 if (stored) {
                     applications = JSON.parse(stored);
                 } else {
@@ -483,7 +487,7 @@
 
         function saveData() {
             try {
-                localStorage.setItem('apptracker_data_v3', JSON.stringify(applications));
+                localStorage.setItem('apptracker_data_v4', JSON.stringify(applications));
             } catch (e) {
                 console.error("Save error:", e);
             }
@@ -953,7 +957,7 @@
         }
 
         function resetToDefaults() {
-            if (confirm("Reset tracker to the verified 38 applications? Any custom edits will be restored to default.")) {
+            if (confirm("Reset tracker to the verified 42 applications? Any custom edits will be restored to default.")) {
                 applications = [...defaultApplications];
                 saveData();
                 render();
