@@ -449,7 +449,8 @@
             { id: "app-39", company: "DigiHelic", role: "Agile Scrum Master - ServiceNow", location: "Hybrid • Multiple Locations", platform: "Hirist", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via Hirist 1-click apply. ServiceNow ITOM/ITSM & Agile delivery frameworks." },
             { id: "app-40", company: "Scaling Theory Technologies", role: "Agile Delivery & Release Manager", location: "On-site • Bangalore", platform: "Hirist", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via Hirist. Completed screening: 0 Days notice period (Immediate Joiner)." },
             { id: "app-41", company: "Papigen", role: "Project Manager / Scrum Master – SAFe Agile (Finance Technology)", location: "Hybrid • Chennai", platform: "LinkedIn", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed 7-page screening (0 days notice, 20L CCTC / 25L ECTC, SAFe 6.0 SSM, Azure DevOps 4y)." },
-            { id: "app-42", company: "Papigen", role: "Scrum Master / Project Manager", location: "Hybrid • Chennai", platform: "LinkedIn", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed 7-page screening (0 days notice, 20L/25L, 4y SM exp, CSM & SAFe SSM certified)." }
+            { id: "app-42", company: "Papigen", role: "Scrum Master / Project Manager", location: "Hybrid • Chennai", platform: "LinkedIn", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed 7-page screening (0 days notice, 20L/25L, 4y SM exp, CSM & SAFe SSM certified)." },
+            { id: "app-43", company: "Canviza Services Private Limited", role: "Scrum Master", location: "On-site • Greater Kolkata Area", platform: "LinkedIn", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed screening: Bachelor's Degree confirmed, 0-Day Notice (Immediate Joiner)." }
         ];
 
         // 6 Pipeline Stages
@@ -471,7 +472,7 @@
         // Initialize Data
         function initData() {
             try {
-                const stored = localStorage.getItem('apptracker_data_v4');
+                const stored = localStorage.getItem('apptracker_data_v5');
                 if (stored) {
                     applications = JSON.parse(stored);
                 } else {
@@ -487,7 +488,7 @@
 
         function saveData() {
             try {
-                localStorage.setItem('apptracker_data_v4', JSON.stringify(applications));
+                localStorage.setItem('apptracker_data_v5', JSON.stringify(applications));
             } catch (e) {
                 console.error("Save error:", e);
             }

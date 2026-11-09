@@ -12,13 +12,13 @@
 
 | Platform | Confirmed Applied / Interest Shared | In Progress / Pending Direct ATS | Direct Outreach | Total Actioned |
 |---|---|---|---|---|
-| **LinkedIn** | 26 | 5 | 0 | 31 |
+| **LinkedIn** | 27 | 5 | 0 | 32 |
 | **Naukri** | 19 | 2 | 0 | 21 |
 | **Hirist** | 8 | 0 | 0 | 8 |
 | **Indeed** | 2 | 3 | 0 | 5 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **56** | **10** | **1** | **67** |
+| **Total** | **57** | **10** | **1** | **68** |
 
 ---
 
@@ -84,6 +84,7 @@
 | 56 | Nov 9, 2026 | **Scaling Theory Technologies** | Agile Delivery & Release Manager | On-site | Bangalore | Hirist | ✅ Submitted & Confirmed Applied (Screening: 0-Day Notice) |
 | 57 | Nov 9, 2026 | **Papigen** | Project Manager / Scrum Master – SAFe Agile (Finance Technology) | Hybrid | Chennai | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - SAFe 6.0 / FinTech) |
 | 58 | Nov 9, 2026 | **Papigen** | Scrum Master / Project Manager | Hybrid | Chennai | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 4y SM / CSM / SAFe) |
+| 59 | Nov 9, 2026 | **Canviza Services Private Limited** | Scrum Master | On-site | Greater Kolkata Area | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Bachelor's Degree / Immediate Joiner) |
 
 ---
 
