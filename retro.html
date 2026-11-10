@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +12,8 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#07090E',
-                        canvas: '#04060A',
-                        card: '#0B0F17',
+                        canvas: '#F8FAFC',
+                        surface: '#FFFFFF',
                         amber: {
                             400: '#fbbf24',
                             500: '#f59e0b',
@@ -40,19 +39,19 @@
         }
 
         .board-bg {
-            background-color: #07090E;
-            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+            background-color: #F1F5F9;
+            background-image: radial-gradient(rgba(100, 116, 139, 0.22) 1.5px, transparent 1.5px);
             background-size: 28px 28px;
         }
 
-        /* Stageshow: modern tactile sticky notes with soft elevation */
+        /* Apple Studio Light Sticky Notes */
         .sticky-note {
-            box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.4), 0 2px 6px -2px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
             transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .sticky-note:hover {
             transform: translateY(-3px) scale(1.015);
-            box-shadow: 0 16px 28px -6px rgba(0, 0, 0, 0.5), 0 6px 12px -3px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 24px -4px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
         }
 
         .sticky-yellow { background-color: #fef9c3; color: #713f12; border-top: 6px solid #eab308; }
@@ -62,46 +61,55 @@
         .sticky-purple { background-color: #f3e8ff; color: #581c87; border-top: 6px solid #a855f7; }
         .sticky-orange { background-color: #ffedd5; color: #7c2d12; border-top: 6px solid #f97316; }
 
+        .apple-pill {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #07090E;
+            background: #F1F5F9;
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
+            background: #CBD5E1;
             border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
         }
     </style>
 </head>
-<body class="bg-[#07090E] text-slate-100 min-h-screen flex flex-col overflow-hidden">
+<body class="bg-[#F8FAFC] text-slate-900 min-h-screen flex flex-col overflow-hidden">
 
-    <!-- Top Toolbar (Spacious 80px Bar with 44px Touch Targets) -->
-    <header class="h-20 bg-[#07090E]/95 backdrop-blur-xl border-b border-white/[0.08] px-4 sm:px-6 flex items-center justify-between z-30 transition-all">
+    <!-- Top Toolbar (Apple Daylight Bar) -->
+    <header class="h-20 bg-white/95 backdrop-blur-xl border-b border-slate-200 px-4 sm:px-6 flex items-center justify-between z-30 transition-all shadow-sm">
         <div class="flex items-center space-x-3 sm:space-x-4">
-            <a href="index.html" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition min-h-[44px] min-w-[44px] flex items-center justify-center shadow-sm" title="Back to Command Hub">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <a href="index.html" class="p-2.5 rounded-xl apple-pill hover:bg-slate-50 text-slate-700 hover:text-slate-900 transition min-h-[44px] min-w-[44px] flex items-center justify-center shadow-sm" title="Back to Command Hub">
+                <i data-lucide="arrow-left" class="w-4 h-4 text-indigo-600"></i>
             </a>
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-400 to-rose-500 flex items-center justify-center text-white shadow-md shadow-amber-500/20">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-rose-500 flex items-center justify-center text-white shadow-md shadow-amber-500/20">
                     <i data-lucide="layout" class="w-5 h-5 text-black"></i>
                 </div>
                 <div>
-                    <h1 class="font-extrabold text-base sm:text-lg text-white flex items-center gap-2">
+                    <h1 class="font-extrabold text-base sm:text-lg text-slate-900 flex items-center gap-2">
                         AgileBoard
-                        <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 font-mono">Retro Studio</span>
+                        <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 font-mono">Retro Studio</span>
                     </h1>
-                    <p class="text-xs text-slate-400 hidden sm:block">Facilitation Sandbox • Designed by Balaji Palani</p>
+                    <p class="text-xs text-slate-500 hidden sm:block">Facilitation Sandbox • Designed by Balaji Palani</p>
                 </div>
             </div>
         </div>
 
         <!-- Template Selector -->
-        <div class="hidden md:flex items-center space-x-2 bg-white/[0.03] p-1.5 rounded-xl border border-white/10 min-h-[44px]">
-            <span class="text-xs text-slate-400 px-2 font-medium">Framework:</span>
-            <select id="templateSelector" onchange="loadTemplate(this.value)" class="bg-black/60 text-xs font-semibold text-white px-3.5 py-1.5 rounded-lg border border-white/10 focus:outline-none focus:border-amber-400 cursor-pointer min-h-[36px]">
+        <div class="hidden md:flex items-center space-x-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200 min-h-[44px]">
+            <span class="text-xs text-slate-600 px-2 font-medium">Framework:</span>
+            <select id="templateSelector" onchange="loadTemplate(this.value)" class="bg-white text-xs font-semibold text-slate-800 px-3.5 py-1.5 rounded-lg border border-slate-200 focus:outline-none focus:border-amber-500 cursor-pointer min-h-[36px] shadow-sm">
                 <option value="wentWell">Went Well / Didn't / Actions</option>
                 <option value="madSadGlad">Mad / Sad / Glad</option>
                 <option value="startStopContinue">Start / Stop / Continue</option>
@@ -114,50 +122,50 @@
         <!-- Actions & Retro Timer -->
         <div class="flex items-center space-x-2 sm:space-x-3">
             <!-- Timer Widget -->
-            <div class="flex items-center bg-white/5 rounded-xl px-3.5 py-2 border border-white/10 text-xs space-x-2.5 min-h-[44px]">
-                <i data-lucide="timer" class="w-4 h-4 text-amber-400"></i>
-                <span id="timerDisplay" class="font-mono font-bold text-white text-sm">05:00</span>
-                <button onclick="toggleTimer()" id="timerToggleBtn" class="p-1 hover:text-amber-400 transition" title="Start/Pause">
+            <div class="flex items-center bg-slate-100 rounded-xl px-3.5 py-2 border border-slate-200 text-xs space-x-2.5 min-h-[44px]">
+                <i data-lucide="timer" class="w-4 h-4 text-amber-600"></i>
+                <span id="timerDisplay" class="font-mono font-bold text-slate-900 text-sm">05:00</span>
+                <button onclick="toggleTimer()" id="timerToggleBtn" class="p-1 hover:text-amber-600 transition" title="Start/Pause">
                     <i data-lucide="play" class="w-4 h-4" id="timerIcon"></i>
                 </button>
-                <button onclick="resetTimer()" class="p-1 hover:text-slate-300 transition" title="Reset">
+                <button onclick="resetTimer()" class="p-1 hover:text-slate-600 transition" title="Reset">
                     <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
                 </button>
             </div>
 
             <!-- Add Note Button (44px touch target) -->
-            <button onclick="addStickyNotePrompt()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-black font-extrabold text-xs shadow-md shadow-amber-500/20 transition active:scale-95 min-h-[44px]">
+            <button onclick="addStickyNotePrompt()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-extrabold text-xs shadow-md shadow-amber-500/20 transition active:scale-95 min-h-[44px]">
                 <i data-lucide="plus-circle" class="w-4 h-4"></i>
                 <span class="hidden sm:inline">Add Sticky Note</span>
             </button>
 
             <!-- Export Board -->
-            <button onclick="exportBoardSummary()" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 transition min-h-[44px] min-w-[44px] flex items-center justify-center shadow-sm" title="Export Retro Summary">
+            <button onclick="exportBoardSummary()" class="p-2.5 rounded-xl apple-pill hover:bg-slate-50 text-slate-700 transition min-h-[44px] min-w-[44px] flex items-center justify-center shadow-sm" title="Export Retro Summary">
                 <i data-lucide="download" class="w-4 h-4"></i>
             </button>
         </div>
     </header>
 
     <!-- Sub-header Toolbar (Palette & Filters) -->
-    <div class="bg-black/40 border-b border-white/[0.08] px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs text-slate-400 z-20">
+    <div class="bg-white border-b border-slate-200 px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs text-slate-600 z-20 shadow-sm">
         <div class="flex items-center space-x-3">
-            <span class="font-medium text-slate-300">Sticky Note Color:</span>
+            <span class="font-medium text-slate-700">Sticky Note Color:</span>
             <div class="flex items-center space-x-2">
-                <button onclick="setCurrentColor('yellow')" class="w-6 h-6 rounded-full bg-yellow-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Yellow"></button>
-                <button onclick="setCurrentColor('green')" class="w-6 h-6 rounded-full bg-emerald-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Green"></button>
-                <button onclick="setCurrentColor('pink')" class="w-6 h-6 rounded-full bg-pink-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Pink"></button>
-                <button onclick="setCurrentColor('blue')" class="w-6 h-6 rounded-full bg-sky-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Blue"></button>
-                <button onclick="setCurrentColor('purple')" class="w-6 h-6 rounded-full bg-purple-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Purple"></button>
-                <button onclick="setCurrentColor('orange')" class="w-6 h-6 rounded-full bg-orange-300 border-2 border-slate-700 focus:ring-2 focus:ring-white transition" title="Orange"></button>
+                <button onclick="setCurrentColor('yellow')" class="w-6 h-6 rounded-full bg-yellow-300 border-2 border-slate-300 focus:ring-2 focus:ring-slate-400 transition" title="Yellow"></button>
+                <button onclick="setCurrentColor('green')" class="w-6 h-6 rounded-full bg-emerald-300 border-2 border-slate-300 focus:ring-2 focus:ring-slate-400 transition" title="Green"></button>
+                <button onclick="setCurrentColor('pink')" class="w-6 h-6 rounded-full bg-pink-300 border-2 border-slate-300 focus:ring-2 focus:ring-slate-400 transition" title="Pink"></button>
+                <button onclick="setCurrentColor('blue')" class="w-6 h-6 rounded-full bg-sky-300 border-2 border-slate-300 focus:ring-2 focus:ring-slate-400 transition" title="Blue"></button>
+                <button onclick="setCurrentColor('purple')" class="w-6 h-6 rounded-full bg-purple-300 border-2 border-slate-300 focus:ring-2 focus:ring-slate-400 transition" title="Purple"></button>
+                <button onclick="setCurrentColor('orange')" class="w-6 h-6 rounded-full bg-orange-300 border-2 border-slate-300 focus:ring-2 focus:ring-slate-400 transition" title="Orange"></button>
             </div>
         </div>
         <div class="flex items-center space-x-4">
             <span class="hidden sm:inline text-slate-500">💡 Drag notes across columns or double-click to edit text</span>
-            <button onclick="clearAllNotes()" class="text-rose-400 hover:text-rose-300 transition font-semibold">Clear Board</button>
+            <button onclick="clearAllNotes()" class="text-rose-600 hover:text-rose-700 transition font-semibold">Clear Board</button>
         </div>
     </div>
 
-    <!-- Main Infinite Whiteboard Area (Spacious Columns & Ample Margins) -->
+    <!-- Main Infinite Whiteboard Area -->
     <main class="flex-grow board-bg p-6 sm:p-8 overflow-x-auto overflow-y-auto custom-scrollbar">
         <div id="columnsContainer" class="flex items-start space-x-8 min-w-max pb-20">
             <!-- Dynamic columns loaded via JS -->
@@ -165,61 +173,61 @@
     </main>
 
     <!-- New Note Modal -->
-    <div id="noteModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-[#0B0F17] border border-white/15 rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl">
-            <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                <h3 class="font-extrabold text-white text-lg tracking-tight">New Sticky Note</h3>
-                <button onclick="closeNoteModal()" class="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-white/10 transition min-h-[44px] min-w-[44px] flex items-center justify-center">
+    <div id="noteModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border border-slate-200 rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                <h3 class="font-extrabold text-slate-900 text-lg tracking-tight">New Sticky Note</h3>
+                <button onclick="closeNoteModal()" class="text-slate-400 hover:text-slate-700 p-2 rounded-xl hover:bg-slate-100 transition min-h-[44px] min-w-[44px] flex items-center justify-center">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
             
             <div class="space-y-4 text-xs">
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1.5">Target Column</label>
-                    <select id="modalColumnSelect" class="w-full bg-black/60 text-slate-200 text-xs px-3.5 py-2.5 rounded-xl border border-white/10 focus:outline-none focus:border-amber-400 min-h-[44px]"></select>
+                    <label class="block font-semibold text-slate-700 mb-1.5">Target Column</label>
+                    <select id="modalColumnSelect" class="w-full bg-slate-50 text-slate-900 text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:bg-white focus:border-amber-500 min-h-[44px]"></select>
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1.5">Note Color</label>
+                    <label class="block font-semibold text-slate-700 mb-1.5">Note Color</label>
                     <div class="flex items-center space-x-3 pt-1">
-                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="yellow" checked class="hidden peer"><span class="w-7 h-7 rounded-full bg-yellow-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
-                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="green" class="hidden peer"><span class="w-7 h-7 rounded-full bg-emerald-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
-                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="pink" class="hidden peer"><span class="w-7 h-7 rounded-full bg-pink-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
-                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="blue" class="hidden peer"><span class="w-7 h-7 rounded-full bg-sky-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
-                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="purple" class="hidden peer"><span class="w-7 h-7 rounded-full bg-purple-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
-                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="orange" class="hidden peer"><span class="w-7 h-7 rounded-full bg-orange-300 block peer-checked:ring-2 peer-checked:ring-white"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="yellow" checked class="hidden peer"><span class="w-7 h-7 rounded-full bg-yellow-300 block peer-checked:ring-2 peer-checked:ring-slate-700"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="green" class="hidden peer"><span class="w-7 h-7 rounded-full bg-emerald-300 block peer-checked:ring-2 peer-checked:ring-slate-700"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="pink" class="hidden peer"><span class="w-7 h-7 rounded-full bg-pink-300 block peer-checked:ring-2 peer-checked:ring-slate-700"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="blue" class="hidden peer"><span class="w-7 h-7 rounded-full bg-sky-300 block peer-checked:ring-2 peer-checked:ring-slate-700"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="purple" class="hidden peer"><span class="w-7 h-7 rounded-full bg-purple-300 block peer-checked:ring-2 peer-checked:ring-slate-700"></span></label>
+                        <label class="cursor-pointer"><input type="radio" name="modalColor" value="orange" class="hidden peer"><span class="w-7 h-7 rounded-full bg-orange-300 block peer-checked:ring-2 peer-checked:ring-slate-700"></span></label>
                     </div>
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1.5">Content</label>
-                    <textarea id="modalNoteText" rows="4" placeholder="Write retro feedback, win, blocker, or action item..." class="w-full bg-black/60 text-slate-200 text-sm p-3.5 rounded-xl border border-white/10 focus:outline-none focus:border-amber-400"></textarea>
+                    <label class="block font-semibold text-slate-700 mb-1.5">Content</label>
+                    <textarea id="modalNoteText" rows="4" placeholder="Write retro feedback, win, blocker, or action item..." class="w-full bg-slate-50 text-slate-900 text-sm p-3.5 rounded-xl border border-slate-200 focus:outline-none focus:bg-white focus:border-amber-500"></textarea>
                 </div>
                 <div>
-                    <label class="block font-semibold text-slate-300 mb-1.5">Author / Squad Member</label>
-                    <input type="text" id="modalNoteAuthor" placeholder="e.g. Balaji, Dev Lead, QA" value="Balaji" class="w-full bg-black/60 text-slate-200 text-xs px-3.5 py-2.5 rounded-xl border border-white/10 focus:outline-none focus:border-amber-400 min-h-[44px]">
+                    <label class="block font-semibold text-slate-700 mb-1.5">Author / Squad Member</label>
+                    <input type="text" id="modalNoteAuthor" placeholder="e.g. Balaji, Dev Lead, QA" value="Balaji" class="w-full bg-slate-50 text-slate-900 text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 focus:outline-none focus:bg-white focus:border-amber-500 min-h-[44px]">
                 </div>
             </div>
 
-            <div class="flex items-center justify-end space-x-3 pt-3 border-t border-white/10">
-                <button onclick="closeNoteModal()" class="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition min-h-[44px]">Cancel</button>
-                <button onclick="submitNewNote()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-amber-400 hover:bg-amber-300 text-black shadow-md shadow-amber-500/20 transition min-h-[44px]">Create Note</button>
+            <div class="flex items-center justify-end space-x-3 pt-3 border-t border-slate-200">
+                <button onclick="closeNoteModal()" class="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 transition min-h-[44px]">Cancel</button>
+                <button onclick="submitNewNote()" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-600 text-white shadow-md shadow-amber-500/20 transition min-h-[44px]">Create Note</button>
             </div>
         </div>
     </div>
 
     <!-- Export Summary Modal -->
-    <div id="exportModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-[#0B0F17] border border-white/15 rounded-2xl max-w-xl w-full p-6 sm:p-8 space-y-5 shadow-2xl">
-            <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                <h3 class="font-extrabold text-white text-lg tracking-tight">Sprint Retrospective Markdown Summary</h3>
-                <button onclick="closeExportModal()" class="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-white/10 transition min-h-[44px] min-w-[44px] flex items-center justify-center">
+    <div id="exportModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border border-slate-200 rounded-2xl max-w-xl w-full p-6 sm:p-8 space-y-5 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                <h3 class="font-extrabold text-slate-900 text-lg tracking-tight">Sprint Retrospective Markdown Summary</h3>
+                <button onclick="closeExportModal()" class="text-slate-400 hover:text-slate-700 p-2 rounded-xl hover:bg-slate-100 transition min-h-[44px] min-w-[44px] flex items-center justify-center">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
-            <textarea id="exportText" rows="12" readonly class="w-full bg-black/70 text-slate-300 font-mono text-xs p-4 rounded-xl border border-white/10 custom-scrollbar"></textarea>
+            <textarea id="exportText" rows="12" readonly class="w-full bg-slate-50 text-slate-800 font-mono text-xs p-4 rounded-xl border border-slate-200 custom-scrollbar"></textarea>
             <div class="flex justify-end space-x-3 pt-2">
-                <button onclick="copyExportText()" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-cyan-400 hover:bg-cyan-300 text-black transition min-h-[44px]">Copy Summary</button>
-                <button onclick="closeExportModal()" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 text-slate-300 hover:text-white transition min-h-[44px]">Close</button>
+                <button onclick="copyExportText()" class="px-4 py-2.5 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-700 text-white transition min-h-[44px]">Copy Summary</button>
+                <button onclick="closeExportModal()" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:text-slate-900 transition min-h-[44px]">Close</button>
             </div>
         </div>
     </div>
@@ -331,18 +339,18 @@
                 modalSelect.innerHTML += `<option value="${col.id}">${col.title}</option>`;
 
                 const colEl = document.createElement('div');
-                colEl.className = 'w-88 sm:w-[380px] flex-shrink-0 flex flex-col bg-[#0B0F17]/90 rounded-2xl border border-white/10 p-5 min-h-[72vh] shadow-xl backdrop-blur-md transition-all';
+                colEl.className = 'w-88 sm:w-[380px] flex-shrink-0 flex flex-col bg-white border border-slate-200/90 rounded-2xl p-5 min-h-[72vh] shadow-sm transition-all';
                 colEl.dataset.colId = col.id;
                 colEl.ondragover = handleDragOver;
                 colEl.ondrop = handleDrop;
 
                 colEl.innerHTML = `
-                    <div class="flex items-center justify-between pb-3.5 border-b border-white/10 mb-4 px-1">
+                    <div class="flex items-center justify-between pb-3.5 border-b border-slate-100 mb-4 px-1">
                         <div class="flex items-center space-x-2.5">
-                            <span class="font-extrabold text-sm text-white">${col.title}</span>
-                            <span id="count-${col.id}" class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-white/5 text-slate-300 border border-white/10 font-mono">0</span>
+                            <span class="font-extrabold text-sm text-slate-800">${col.title}</span>
+                            <span id="count-${col.id}" class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-mono">0</span>
                         </div>
-                        <button onclick="openNoteModalForCol('${col.id}')" class="p-2 rounded-xl hover:bg-white/10 text-slate-400 hover:text-white transition min-h-[36px] min-w-[36px] flex items-center justify-center" title="Add note here">
+                        <button onclick="openNoteModalForCol('${col.id}')" class="p-2 rounded-xl hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition min-h-[36px] min-w-[36px] flex items-center justify-center" title="Add note here">
                             <i data-lucide="plus" class="w-4 h-4"></i>
                         </button>
                     </div>
