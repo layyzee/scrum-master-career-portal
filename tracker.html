@@ -466,7 +466,10 @@
             { id: "app-41", company: "Papigen", role: "Project Manager / Scrum Master – SAFe Agile (Finance Technology)", location: "Hybrid • Chennai", platform: "LinkedIn", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed 7-page screening (0 days notice, 20L CCTC / 25L ECTC, SAFe 6.0 SSM, Azure DevOps 4y)." },
             { id: "app-42", company: "Papigen", role: "Scrum Master / Project Manager", location: "Hybrid • Chennai", platform: "LinkedIn", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed 7-page screening (0 days notice, 20L/25L, 4y SM exp, CSM & SAFe SSM certified)." },
             { id: "app-43", company: "Canviza Services Private Limited", role: "Scrum Master", location: "On-site • Greater Kolkata Area", platform: "LinkedIn", stage: "applied", date: "2026-11-09", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed screening: Bachelor's Degree confirmed, 0-Day Notice (Immediate Joiner)." },
-            { id: "app-44", company: "RED Global", role: "DADAI Portfolio Scrum Master/220", location: "Remote • India / Global", platform: "LinkedIn", stage: "applied", date: "2026-11-10", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed 5-part screening: Jira 5y, SM/Coach 4y, Scrum 4y, Kanban 4y, SAFe 4y, 0-Day Notice." }
+            { id: "app-44", company: "RED Global", role: "DADAI Portfolio Scrum Master/220", location: "Remote • India / Global", platform: "LinkedIn", stage: "applied", date: "2026-11-10", contact: "", notes: "Submitted via LinkedIn Easy Apply. Completed 5-part screening: Jira 5y, SM/Coach 4y, Scrum 4y, Kanban 4y, SAFe 4y, 0-Day Notice." },
+            { id: "app-45", company: "BE Consultancy Group", role: "Senior Business Analyst / Agile Lead – Digital Marketplaces & AI (USD Contractor)", location: "Remote • India / Europe (USD)", platform: "LinkedIn", stage: "applied", date: "2026-11-10", contact: "", notes: "Submitted via LinkedIn Easy Apply. 100% Remote USD contractor agreement. Completed 12-question screening: 7y IT, 4y BA, 4y AppDev, 3y AI/ML features, 3y Data/Lifecycle, CSM & SAFe certified." },
+            { id: "app-46", company: "Netscribes", role: "Technical Project Manager", location: "Hybrid • Mumbai Metropolitan Region", platform: "LinkedIn", stage: "applied", date: "2026-11-10", contact: "", notes: "Submitted via LinkedIn Easy Apply. Mumbai engineering pod delivery leadership. Completed screening: 5y PM, 7y SDLC & Agile, 0 Days notice (Immediate Joiner), Mumbai confirmed." },
+            { id: "app-47", company: "Jobgether", role: "Product Owner (SAFe Enterprise)", location: "Remote • India", platform: "LinkedIn", stage: "applied", date: "2026-11-10", contact: "", notes: "Submitted via LinkedIn Easy Apply. Mature agile enterprise delivery in SAFe environment. Completed screening: Location confirmed Mumbai, India." }
         ];
 
         // 6 Pipeline Stages
@@ -490,7 +493,18 @@
             try {
                 const stored = localStorage.getItem('apptracker_data_v6');
                 if (stored) {
-                    applications = JSON.parse(stored);
+                    const parsed = JSON.parse(stored);
+                    // Seamlessly merge any newly logged default applications by id
+                    const existingIds = new Set(parsed.map(a => a.id));
+                    let updated = false;
+                    defaultApplications.forEach(defApp => {
+                        if (!existingIds.has(defApp.id)) {
+                            parsed.push(defApp);
+                            updated = true;
+                        }
+                    });
+                    applications = parsed;
+                    if (updated) saveData();
                 } else {
                     applications = [...defaultApplications];
                     saveData();
