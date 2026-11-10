@@ -12,13 +12,13 @@
 
 | Platform | Confirmed Applied / Interest Shared | In Progress / Pending Direct ATS | Direct Outreach | Total Actioned |
 |---|---|---|---|---|
-| **LinkedIn** | 27 | 5 | 0 | 32 |
+| **LinkedIn** | 28 | 5 | 0 | 33 |
 | **Naukri** | 19 | 2 | 0 | 21 |
 | **Hirist** | 8 | 0 | 0 | 8 |
 | **Indeed** | 2 | 3 | 0 | 5 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **57** | **10** | **1** | **68** |
+| **Total** | **58** | **10** | **1** | **69** |
 
 ---
 
@@ -85,18 +85,65 @@
 | 57 | Nov 9, 2026 | **Papigen** | Project Manager / Scrum Master – SAFe Agile (Finance Technology) | Hybrid | Chennai | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - SAFe 6.0 / FinTech) |
 | 58 | Nov 9, 2026 | **Papigen** | Scrum Master / Project Manager | Hybrid | Chennai | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 4y SM / CSM / SAFe) |
 | 59 | Nov 9, 2026 | **Canviza Services Private Limited** | Scrum Master | On-site | Greater Kolkata Area | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Bachelor's Degree / Immediate Joiner) |
+| 60 | Nov 10, 2026 | **RED Global** | DADAI Portfolio Scrum Master/220 | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Jira 5y, SM/Coach 4y, Scrum 4y, Kanban 4y, SAFe 4y, 0-Day Notice) |
 
 ---
 
-## 3. Discovered Postings Requiring External ATS Direct Submission / Manual Verification
+## 3. External Company Portals (Account Setup Required — Apply Manually)
 
-| # | Company | Exact Role Title | Platform | Direct Job URL | Action Required |
-|---|---|---|---|---|---|
-| 1 | **NOV Inc.** | Scrum Master | LinkedIn & Indeed | [Oracle Cloud ATS](https://egay.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/job/45366/) \| [Indeed Link](https://in.indeed.com/viewjob?jk=abb4315eeb8e3196) | Submit via Oracle Cloud ATS (Kochi Hybrid, Posted 4h ago) |
-| 2 | **Brillio** | Scrum Master (Req R01573514) | LinkedIn | [LinkedIn View](https://www.linkedin.com/jobs/view/4486606083/) | Apply via Brillio Workday (Bengaluru, Posted 16h ago) |
-| 3 | **Brillio** | Scrum Master (Req R01573447) | LinkedIn | [LinkedIn View](https://www.linkedin.com/jobs/view/4486606083/) | Apply via Brillio Workday (Hyderabad, Posted 16h ago) |
-| 4 | **Avaya** | Scrum Master | LinkedIn & Indeed | [Indeed Link](https://in.indeed.com/viewjob?jk=d50c4ebbd2015a9b) | Submit via Avaya Careers (Pune Division, Posted 15h ago) |
-| 5 | **HCLTech** | Project Lead - Scrum Master | Indeed | [Indeed Link](https://in.indeed.com/viewjob?jk=837c7061ec1c30a1) | Submit via HCLTech Portal (Pune, Posted 1d ago) |
-| 6 | **YASH Technologies**| Project Lead - Scrum Master | LinkedIn | [LinkedIn Search](https://www.linkedin.com/jobs/search-results/?keywords=%22Scrum+Master%22&f_TPR=r86400) | Submit via YASH Careers (Bengaluru, Posted 23h ago) |
-| 7 | **Harman International** | Software Engineer - Scrum Master | Naukri | [Naukri Link](https://www.naukri.com/job-listings-software-engineer-scrum-master-harman-india-bengaluru-3-to-6-years-051126501979) | Submit via Harman Workday (Bengaluru, 3-6 Yrs) |
-| 8 | **Capgemini** | Technical Manager - Scrum Master (PEGA) | Naukri | [Naukri Link](https://www.naukri.com/job-listings-openings-for-technical-manager-scrum-master-with-pega-background-cg-capgemini-hyderabad-10-to-15-years-051126026606) | Submit via Capgemini Portal (Hyderabad, 10-15 Yrs) |
+> **Instructions for Balaji:** These high-value enterprise postings require creating an account or logging in to their internal Applicant Tracking System (Workday, SuccessFactors, Oracle Cloud). Use `balajinia@gmail.com` / `staxsondeckk@gmail.com` and standard credentials to complete the final submission.
+
+| # | Company | Exact Role Title | Location | ATS Platform | Direct Job URL | Status / Notes |
+|---|---|---|---|---|---|---|
+| 1 | **Avaya** | Scrum Master (Req 37801) | Pune (Hybrid) | SAP SuccessFactors | [Avaya Careers](https://careers.avaya.com/job/Pune-Scrum-Master/1455074233/) | Profile created & resume parsed. Log in and submit. |
+| 2 | **Atlas Copco Group** | Scrum Master (Req 176793) | Pune (Hybrid) | SAP Gigya / SuccessFactors | [Atlas Copco Careers](https://www.jobs.atlascopcogroup.com/job/Pune,-Maharashtra-Scrum-Master-Othe/176793-en_US/) | Google account authorized (`balajinia@gmail.com`). |
+| 3 | **Barclays** | Scrum Master - AVP (Req JR-0000132885) | Bengaluru | Workday ATS | [Barclays Workday](https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays/job/Bengaluru-Maruthi-Onyx---TESCO-TSA/Scrum-Master---AVP_JR-0000132885/apply) | Workday account login required. |
+| 4 | **Deloitte US-India** | Scrum Master - GenAI/Cloud (4-9 Yrs) | Hyderabad / Pune / BLR | Deloitte Portal | [Deloitte USI Careers](https://usijobs.deloitte.com/) | Hybrid Cloud/GenAI Agile delivery. |
+| 5 | **CGI** | Scrum Master (8-13 Yrs) | Bengaluru (Hybrid) | CGI Portal | [CGI Careers](https://www.cgi.com/en/careers) | Enterprise delivery. |
+| 6 | **Airbus** | Project Leader / Scrum Master | Bengaluru | Workday ATS | [Airbus Workday](https://airbus.wd3.myworkdayjobs.com/Airbus_Careers) | Aerospace DMU Services delivery. |
+| 7 | **Concentrix** | Scrum Master | Bengaluru | Workday ATS | [Concentrix Workday](https://concentrix.wd1.myworkdayjobs.com/Concentrix_Careers) | Application delivery. |
+| 8 | **NOV Inc.** | Scrum Master | Kochi (Hybrid) | Oracle Cloud ATS | [Oracle Cloud ATS](https://egay.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/job/45366/) | Oracle Cloud candidate login. |
+| 9 | **Harman International** | Software Engineer - Scrum Master | Bengaluru | Harman Workday | [Harman Careers](https://jobs.harman.com/) | Automotive / Connected tech. |
+| 10 | **Birlasoft Limited** | Scrum Master - Agile Delivery & VSM | Bengaluru | Birlasoft Portal / Shine | [Birlasoft Careers](https://www.birlasoft.com/careers) | Value stream management. |
+
+---
+
+## 4. Google Jobs Scrum Master Radar (India Location-Wise & Remote Worldwide)
+
+### A. India Location-Wise Hubs
+- **Bengaluru:**
+  - *Airbus* — Project Leader / Scrum Master (Workday)
+  - *Concentrix* — Scrum Master (Workday)
+  - *ACI Group* — Scrum Master (SmartRecruiters)
+  - *Bosch Global Software Technologies* — Scrum Lead (Electronic City)
+  - *Birlasoft Limited* — Scrum Master - Agile Delivery & VSM (Shine / Birlasoft)
+- **Pune:**
+  - *NTT DATA Services* — Scrum Master (NTT DATA Careers)
+  - *DXC Luxoft* — Technical Program Manager - Technical Scrum Master (Luxoft)
+  - *Global Payments Inc.* — Scrum Master (FinTech payments delivery)
+  - *Avaya* — Scrum Master (Avaya Careers)
+  - *Atlas Copco Group* — Scrum Master (Atlas Copco Careers)
+- **Hyderabad:**
+  - *Amgen* — Scrum Master (Amgen Workday)
+  - *GCC India / LPL Financial* — Sr. Professional, Scrum Master I (WealthTech)
+  - *Deloitte USI* — Scrum Master - GenAI/Cloud
+- **Remote / Pan-India:**
+  - *RED Global* — DADAI Portfolio Scrum Master/220 (✅ Applied)
+  - *Miratech* — Scrum Master (Global Remote, ₹12L–₹22L)
+  - *ZNP Consulting* — Specialist Scrum Master (Pan-India Remote, ₹13L–₹27L)
+
+### B. Worldwide Remote & International Contracts (USD / EUR / GBP / AED)
+- **US & Canada Contracts (USD):**
+  - *Naukri Mitra Global* — Remote Scrum Master ($120,688/year, Worldwide Remote)
+  - *Insurity* — Scrum Master (Remote US & Canada, Greenhouse)
+  - *VantageScore* — Agile Scrum Master / Project Manager ($165,000–$190,000/yr, Greenhouse)
+  - *Wellfound Startups (Amaya Cloud)* — Fractional Scrum Master (USD contract, Worldwide)
+- **Europe & EMEA Remote (EUR / GBP):**
+  - *CAI Global Delivery* — Scrum Master (Jobgether Worldwide Remote)
+  - *M3C Recrutement Inc.* — Mandat - Scrum Master - AI Factory (DailyRemote Global)
+  - *Amgen Technology Pvt Ltd* — Scrum Master - Global Tech Pods (Workday Remote)
+  - *Capgemini Global* — FBS Scrum Master I & II (Workable Jobs)
+- **Middle East (Dubai / UAE & Saudi Arabia - Tax-Free AED/SAR):**
+  - *Dicetek LLC* — Scrum Master - Banking & Wealth Tech (Dubai & Abu Dhabi, AED 15,000–22,000/mo)
+  - *Al Futtaim Digital* — Agile Delivery Manager / Scrum Lead (Dubai)
+  - *Bayt & Naukrigulf Portals* — Regional Digital Transformation Hubs (Riyadh & Dubai)
