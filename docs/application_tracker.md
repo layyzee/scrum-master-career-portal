@@ -15,10 +15,10 @@
 | **LinkedIn** | 29 | 5 | 0 | 34 |
 | **Naukri** | 19 | 2 | 0 | 21 |
 | **Hirist** | 8 | 0 | 0 | 8 |
-| **Indeed** | 2 | 3 | 0 | 5 |
+| **Indeed** | 3 | 3 | 0 | 6 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **59** | **10** | **1** | **70** |
+| **Total** | **60** | **10** | **1** | **71** |
 
 ---
 
@@ -87,6 +87,7 @@
 | 59 | Nov 9, 2026 | **Canviza Services Private Limited** | Scrum Master | On-site | Greater Kolkata Area | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Bachelor's Degree / Immediate Joiner) |
 | 60 | Nov 10, 2026 | **RED Global** | DADAI Portfolio Scrum Master/220 | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Jira 5y, SM/Coach 4y, Scrum 4y, Kanban 4y, SAFe 4y, 0-Day Notice) |
 | 61 | Nov 11, 2026 | **ERP Logic Israel, SAP Partner** | Scrum Master | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Degree: Yes, Notice: 0 Days, SM Exp: 5y, CSM/SAFe: Yes, Data/BI: Yes) |
+| 62 | Nov 11, 2026 | **robusta** | Scrum Master - Remote - 3 Months - Octopus by RTG | Remote | India (Remote) | Indeed | ✅ Submitted & Confirmed Applied (Indeed SmartApply - Notice: 0 Days, CCTC 20L / ECTC 25L, SM 5y, 3 Squads / 7-9 team size, Scrum/Kanban/SAFe 6.0, 3m contract: True) |
 
 ---
 
