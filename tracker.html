@@ -95,6 +95,54 @@
 </head>
 <body class="h-full font-sans antialiased text-slate-800 bg-[#f8faff] flex flex-col min-h-screen overflow-hidden">
 
+  <!-- SECURITY PIN GATE OVERLAY -->
+  <div id="pin-lock-overlay" class="fixed inset-0 z-[9999] bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl border border-slate-200 max-w-sm w-full p-6 text-center">
+      <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4 text-xl shadow-inner">
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <h3 class="text-base font-bold text-slate-900 mb-1">Private Candidate Pipeline</h3>
+      <p class="text-xs text-slate-500 mb-5">This dashboard is strictly for internal candidate tracking. Enter your PIN to view applications.</p>
+      
+      <form onsubmit="handlePinSubmit(event)" class="space-y-3">
+        <input type="password" id="pin-input" autofocus maxlength="8" placeholder="Enter PIN" class="w-full text-center text-lg tracking-widest font-mono py-2.5 px-4 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" />
+        <p id="pin-error" class="text-xs text-red-600 hidden font-medium">Incorrect PIN. Redirecting...</p>
+        <button type="submit" class="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs rounded-xl shadow-md shadow-blue-500/20 transition">
+          Unlock Pipeline
+        </button>
+      </form>
+      <div class="mt-4 pt-4 border-t border-slate-100">
+        <a href="https://layyzee.github.io/" class="text-xs text-slate-400 hover:text-slate-600 transition">← Exit to Public Portfolio</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function checkPin() {
+      if (sessionStorage.getItem('apptracker_auth_pin') === 'authorized') {
+        var el = document.getElementById('pin-lock-overlay');
+        if (el) el.style.display = 'none';
+      }
+    })();
+
+    function handlePinSubmit(e) {
+      e.preventDefault();
+      var input = document.getElementById('pin-input').value.trim();
+      var errorEl = document.getElementById('pin-error');
+      // Accepted master PINs: 7540 or 1234
+      if (input === '7540' || input === '1234') {
+        sessionStorage.setItem('apptracker_auth_pin', 'authorized');
+        document.getElementById('pin-lock-overlay').style.display = 'none';
+      } else {
+        errorEl.classList.remove('hidden');
+        document.getElementById('pin-input').value = '';
+        setTimeout(function() {
+          window.location.href = 'https://layyzee.github.io/';
+        }, 1200);
+      }
+    }
+  </script>
+
   <!-- BEGIN: Executive Header -->
   <header class="bg-white border-b border-slate-200/90 shadow-sm z-30 shrink-0 select-none">
     <div class="px-4 lg:px-6 py-2.5 flex items-center justify-between gap-4">
