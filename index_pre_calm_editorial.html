@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html class="h-full bg-slate-50 scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Balaji Palani | Agile Delivery Lead & Senior Scrum Master Portfolio</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  
+  <!-- FontAwesome 6 Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS v3 with Forms & Container Plugins -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          },
+          boxShadow: {
+            subtle: '0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04)',
+            card: '0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -2px rgba(0, 0, 0, 0.03)',
+            elevated: '0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.03)',
+            modal: '0 25px 50px -12px rgba(15, 23, 42, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    /* Subtle dot-matrix engineering background */
+    .bg-dot-grid {
+      background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="h-full font-sans antialiased text-slate-800 bg-[#f8faff] flex flex-col min-h-screen">
+
+  <!-- BEGIN: Top Executive Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200/90 shadow-xs select-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand & Profile Identity -->
+      <div class="flex items-center gap-3 shrink-0">
+        <!-- Back to Main Flagship Portfolio -->
+        <a class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200/80 rounded-lg border border-slate-200 transition-all duration-150 group" href="https://layyzee.github.io/">
+          <i class="fa-solid fa-arrow-left text-slate-500 group-hover:-translate-x-0.5 transition-transform text-[11px]"></i>
+          <span>Main Portfolio</span>
+        </a>
+        <div class="h-5 w-px bg-slate-200 hidden sm:block"></div>
+
+        <!-- Balaji's Live Profile Badge -->
+        <div class="flex items-center gap-2.5">
+          <img alt="Balaji Palani" class="w-8 h-8 rounded-full object-cover ring-2 ring-emerald-500/40" src="./assets/img/my-pic.jpg" onerror="this.src='https://github.com/layyzee.png'"/>
+          <div class="leading-tight">
+            <div class="flex items-center gap-1.5">
+              <span class="text-xs font-bold text-slate-900">Balaji Palani</span>
+              <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                0 Days Notice
+              </span>
+            </div>
+            <div class="flex items-center gap-1 text-[10px] text-slate-500 font-mono mt-0.5">
+              <span>Senior Scrum Master</span>
+              <span>•</span>
+              <span class="font-bold text-brand-600">CSM® • SAFe® 6 SSM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden lg:flex items-center gap-5 text-xs font-semibold text-slate-600">
+        <a class="hover:text-brand-600 transition-colors" href="#interactive-systems">Live Systems</a>
+        <a class="hover:text-brand-600 transition-colors" href="#applications-radar">Applications Radar</a>
+        <a class="hover:text-brand-600 transition-colors" href="#global-blueprint">Global Blueprint</a>
+        <a class="hover:text-brand-600 transition-colors" href="#tax-architecture">Tax Shield (44ADA)</a>
+        <a class="hover:text-brand-600 transition-colors" href="#vc-portals">VC Radar</a>
+        <a class="hover:text-brand-600 transition-colors" href="#pitch-templates">Templates</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <!-- Direct Tracker Link Pill -->
+        <a class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200 hover:bg-brand-100 transition-colors" href="#" style="display:none;">
+          <i class="fa-solid fa-chart-kanban text-brand-600 text-[11px]"></i>
+          <span>AppTracker Pro</span>
+          <span class="bg-brand-200 text-brand-800 px-1.5 py-0.2 rounded-full text-[10px] font-mono">55</span>
+        </a>
+
+        <!-- Download Master Resume -->
+        <a class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 shadow-xs transition-all" href="./docs/resume/Balaji_Palani_Senior_Scrum_Master.pdf" download="Balaji_Palani_Senior_Scrum_Master.pdf">
+          <i class="fa-solid fa-file-pdf text-rose-500 text-[11px]"></i>
+          <span>Resume PDF</span>
+        </a>
+
+        <!-- Get in Touch -->
+        <a class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 transition-colors shadow-xs" href="mailto:balajinia@gmail.com?subject=Senior%20Scrum%20Master%20Opportunity">
+          <span>Get in Touch</span>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+  <!-- END: Top Executive Header -->
+
+  <!-- BEGIN: Mobile Slide-Over Drawer -->
+  <div id="mobileDrawerBackdrop" onclick="toggleMobileMenu()" class="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+  <aside id="mobileDrawer" class="fixed top-0 right-0 z-50 w-72 h-full bg-white shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-2">
+          <img alt="Balaji Palani" class="w-8 h-8 rounded-full object-cover ring-2 ring-emerald-500/40" src="./assets/img/my-pic.jpg" onerror="this.src='https://github.com/layyzee.png'"/>
+          <div>
+            <div class="text-xs font-bold text-slate-900">Balaji Palani</div>
+            <div class="text-[10px] text-slate-500 font-mono">Senior Scrum Master</div>
+          </div>
+        </div>
+        <button onclick="toggleMobileMenu()" class="p-1.5 text-slate-400 hover:text-slate-700">
+          <i class="fa-solid fa-xmark text-base"></i>
+        </button>
+      </div>
+
+      <nav class="mt-6 space-y-3 text-xs font-semibold text-slate-700">
+        <a onclick="toggleMobileMenu()" class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-slate-50" href="#interactive-systems">
+          <i class="fa-solid fa-layer-group text-slate-400 w-4"></i> Live Systems
+        </a>
+        <a onclick="toggleMobileMenu()" class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-slate-50" href="#applications-radar">
+          <i class="fa-solid fa-radar text-slate-400 w-4"></i> Applications Radar
+        </a>
+        <a onclick="toggleMobileMenu()" class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-slate-50" href="#global-blueprint">
+          <i class="fa-solid fa-earth-americas text-slate-400 w-4"></i> Global Blueprint
+        </a>
+        <a onclick="toggleMobileMenu()" class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-slate-50" href="#tax-architecture">
+          <i class="fa-solid fa-shield-halved text-slate-400 w-4"></i> Tax Shield (44ADA)
+        </a>
+        <a onclick="toggleMobileMenu()" class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-slate-50" href="#vc-portals">
+          <i class="fa-solid fa-briefcase text-slate-400 w-4"></i> VC Portals
+        </a>
+        <a onclick="toggleMobileMenu()" class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-slate-50" href="#pitch-templates">
+          <i class="fa-solid fa-copy text-slate-400 w-4"></i> Outreach Templates
+        </a>
+        <div class="pt-3 border-t border-slate-100">
+          <a class="flex items-center justify-between p-2.5 rounded-lg bg-blue-50 text-brand-700 font-bold" href="#" style="display:none;">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-chart-kanban"></i> AppTracker Pro</span>
+            <span class="bg-brand-200 text-brand-800 px-2 py-0.5 rounded-full text-[10px]">55</span>
+          </a>
+          <a class="flex items-center justify-between p-2.5 rounded-lg bg-purple-50 text-purple-700 font-bold mt-2" href="retro.html">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-table-columns"></i> AgileBoard Retro</span>
+            <span class="text-[10px] uppercase font-mono">Live</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="pt-4 border-t border-slate-100 text-[11px] text-slate-500 space-y-2">
+      <a class="flex items-center gap-2 text-slate-700 hover:text-brand-600 font-medium" href="mailto:balajinia@gmail.com">
+        <i class="fa-solid fa-envelope text-slate-400"></i> balajinia@gmail.com
+      </a>
+      <a class="flex items-center gap-2 text-slate-700 hover:text-brand-600 font-medium" href="tel:+917540015522">
+        <i class="fa-solid fa-phone text-slate-400"></i> +91-7540015522
+      </a>
+    </div>
+  </aside>
+  <!-- END: Mobile Slide-Over Drawer -->
+
+  <!-- BEGIN: Hero Section -->
+  <section class="bg-dot-grid border-b border-slate-200/90 py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Badges -->
+      <div class="flex flex-wrap items-center gap-2.5 mb-6">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-brand-700 border border-brand-200">
+          <i class="fa-solid fa-bolt text-[11px]"></i>
+          ENTERPRISE AGILE RECRUITMENT &amp; DELIVERY HUB
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          0 Days Notice • Immediate Joiner
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium bg-slate-100 text-slate-700 border border-slate-200">
+          SAFe® 6 SSM • CSM® • PSM II • 7+ Yrs Exp
+        </span>
+      </div>
+
+      <!-- Main Headline -->
+      <div class="max-w-4xl">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Turning Distributed Roadmaps into Predictable, Zero-Spillover Delivery.
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+          Executive Career Portal &amp; Live Hiring Operating System for <span class="font-bold text-slate-900">Balaji Palani</span> — Senior Scrum Master &amp; Agile Delivery Architect with 7+ years transforming BFSI, Telecom, and FinTech squads. Available for immediate worldwide remote or global relocation.
+        </p>
+      </div>
+
+      <!-- Key Delivery Performance Metrics -->
+      <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white rounded-xl p-4 border border-slate-200/90 shadow-card">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-1">
+            <span class="font-bold uppercase tracking-wider text-[10px]">Sustained Velocity</span>
+            <i class="fa-solid fa-chart-line text-emerald-500"></i>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900">+20%</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Across 3 continuous quarters</div>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 border border-slate-200/90 shadow-card">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-1">
+            <span class="font-bold uppercase tracking-wider text-[10px]">Blocker SLA</span>
+            <i class="fa-solid fa-shield-virus text-brand-600"></i>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900">&lt; 24h</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Zero critical cross-squad stalls</div>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 border border-slate-200/90 shadow-card">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-1">
+            <span class="font-bold uppercase tracking-wider text-[10px]">Predictability</span>
+            <i class="fa-solid fa-bullseye text-purple-600"></i>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900">98.4%</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Commitment vs completed ratio</div>
+        </div>
+
+        <div class="bg-white rounded-xl p-4 border border-slate-200/90 shadow-card">
+          <div class="flex items-center justify-between text-slate-400 text-xs mb-1">
+            <span class="font-bold uppercase tracking-wider text-[10px]">Spillover Releases</span>
+            <i class="fa-solid fa-circle-check text-emerald-600"></i>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900">0</div>
+          <div class="text-[11px] text-slate-500 mt-0.5">Stories spilled past review</div>
+        </div>
+      </div>
+
+      <!-- Action Buttons CTA Strip -->
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a class="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 active:bg-brand-800 shadow-md shadow-brand-600/25 transition-all" href="#" style="display:none;">
+          <i class="fa-solid fa-chart-kanban text-sm"></i>
+          <span>Launch Interactive Retrospective Simulator (55 Roles)</span>
+          <i class="fa-solid fa-arrow-right text-[10px] ml-1"></i>
+        </a>
+        <a class="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-card transition-all" href="retro.html">
+          <i class="fa-solid fa-table-columns text-slate-500"></i>
+          <span>Open AgileBoard Retro Studio</span>
+        </a>
+        <a class="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs font-semibold text-slate-700 hover:text-slate-900 transition-colors" href="https://layyzee.github.io/">
+          <span>Flagship Delivery OS Portfolio ↗</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Hero Section -->
+
+  <!-- BEGIN: Section 1 - Interactive Production Tools -->
+  <section id="interactive-systems" class="py-12 bg-white border-b border-slate-200/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <div class="text-xs font-bold font-mono text-brand-600 uppercase tracking-wider">Live Software Artifacts</div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Interactive Systems Built for This Search</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Full production tools proving hands-on engineering empathy and architectural rigor.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            100% Client-Side &amp; Live
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Tool 1: Interactive Retrospective Simulator -->
+        <div class="bg-[#f8faff] rounded-2xl p-6 border border-slate-200/90 shadow-card flex flex-col justify-between hover:shadow-elevated hover:border-brand-500/40 transition-all group">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-brand-600/20">
+                  <i class="fa-solid fa-chart-kanban text-base"></i>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900 group-hover:text-brand-600 transition-colors">AppTracker Pro — Pipeline CRM</h3>
+                  <p class="text-xs text-slate-500">Enterprise Recruitment Kanban &amp; Activity Ledger</p>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-50 text-brand-700 border border-blue-200 uppercase tracking-wider">v2.4 Live</span>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Complete high-fidelity hiring CRM managing <span class="font-bold text-slate-800">55+ verified applications</span> with full drag-and-drop between 6 pipeline stages, real-time platform filters (LinkedIn, Hirist, Naukri, Direct Pitch), ⌘K live search, Table view switcher, and CSV export.
+            </p>
+
+            <!-- Mini Pipeline Preview Badges -->
+            <div class="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
+              <div class="bg-white p-2 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] font-bold text-slate-400 uppercase">Total Pipeline</div>
+                <div class="font-extrabold text-slate-800 mt-0.5">55 Roles</div>
+              </div>
+              <div class="bg-white p-2 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] font-bold text-slate-400 uppercase">Recruiter Screens</div>
+                <div class="font-extrabold text-amber-600 mt-0.5">3 Active</div>
+              </div>
+              <div class="bg-white p-2 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] font-bold text-slate-400 uppercase">Target Range</div>
+                <div class="font-extrabold text-slate-800 mt-0.5">₹28L - ₹36L</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+            <span class="text-[11px] text-slate-400 font-mono">Synchronized with localStorage</span>
+            <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-sm transition-all" href="#" style="display:none;">
+              <span>Open Pipeline CRM</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tool 2: AgileBoard Retro Studio -->
+        <div class="bg-[#f8faff] rounded-2xl p-6 border border-slate-200/90 shadow-card flex flex-col justify-between hover:shadow-elevated hover:border-purple-500/40 transition-all group">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-purple-600/20">
+                  <i class="fa-solid fa-table-columns text-base"></i>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900 group-hover:text-purple-600 transition-colors">AgileBoard — Facilitation Studio</h3>
+                  <p class="text-xs text-slate-500">Interactive Sprint Retrospective Whiteboard</p>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200 uppercase tracking-wider">Enterprise</span>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Full-featured ceremony facilitation canvas with color-coded sticky notes (*Went Well, Needs Improvement, Action Items*), upvoting mechanics, category grouping, timer engine, and instant ceremony export to Jira/Confluence.
+            </p>
+
+            <!-- Mini Facilitation Highlights -->
+            <div class="mt-4 grid grid-cols-3 gap-2 text-center text-xs">
+              <div class="bg-white p-2 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] font-bold text-slate-400 uppercase">Sticky Notes</div>
+                <div class="font-extrabold text-slate-800 mt-0.5">3 Columns</div>
+              </div>
+              <div class="bg-white p-2 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] font-bold text-slate-400 uppercase">Upvoting</div>
+                <div class="font-extrabold text-emerald-600 mt-0.5">Real-Time</div>
+              </div>
+              <div class="bg-white p-2 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] font-bold text-slate-400 uppercase">Live Cloud</div>
+                <div class="font-extrabold text-purple-600 mt-0.5">BalaBoard</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+            <a class="text-xs font-semibold text-purple-700 hover:text-purple-900 flex items-center gap-1" href="https://balaboard.onrender.com/?room=sandbox&demo=true" target="_blank" rel="noopener noreferrer">
+              <span>BalaBoard Cloud Demo ↗</span>
+            </a>
+            <a class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold text-white bg-slate-900 hover:bg-slate-800 shadow-sm transition-all" href="retro.html">
+              <span>Launch Retro Canvas</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Section 1 -->
+
+  <!-- BEGIN: Section 2 - Applications Radar -->
+  <section id="applications-radar" class="py-12 bg-dot-grid border-b border-slate-200/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <div class="text-xs font-bold font-mono text-emerald-600 uppercase tracking-wider">Live Pipeline Telemetry</div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Recent Application Submissions Radar</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Transparent outreach telemetry across Tier-1 global firms, consulting giants, and FinTech enterprises.</p>
+        </div>
+        <a class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-600 hover:text-brand-800" href="#" style="display:none;">
+          <span>Inspect all 55 applications in AppTracker Pro</span>
+          <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        </a>
+      </div>
+
+      <!-- Radar Overview Strip -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+          <div class="p-2">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total Tracked</div>
+            <div class="text-2xl font-extrabold text-slate-900 mt-1">55</div>
+            <div class="text-[10px] text-emerald-600 font-semibold mt-0.5">Verified Roles</div>
+          </div>
+          <div class="p-2">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">LinkedIn Easy</div>
+            <div class="text-2xl font-extrabold text-blue-600 mt-1">32</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Global Remote</div>
+          </div>
+          <div class="p-2">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Hirist Prime</div>
+            <div class="text-2xl font-extrabold text-purple-600 mt-1">8</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">High-Tech BFSI</div>
+          </div>
+          <div class="p-2">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Direct Pitch</div>
+            <div class="text-2xl font-extrabold text-emerald-600 mt-1">6</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Leadership Outreach</div>
+          </div>
+          <div class="p-2">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Naukri &amp; Indeed</div>
+            <div class="text-2xl font-extrabold text-cyan-600 mt-1">8</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Enterprise ATS</div>
+          </div>
+          <div class="p-2">
+            <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Notice Period</div>
+            <div class="text-2xl font-extrabold text-emerald-600 mt-1">0 Days</div>
+            <div class="text-[10px] text-emerald-700 font-bold mt-0.5">Immediate Joiner</div>
+          </div>
+        </div>
+
+        <!-- Recent Outreach Highlights Table -->
+        <div class="mt-6 pt-6 border-t border-slate-100 overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="text-[10px] uppercase font-bold text-slate-400 bg-slate-50/70 border-b border-slate-200">
+              <tr>
+                <th class="py-2.5 px-4">Company</th>
+                <th class="py-2.5 px-4">Role</th>
+                <th class="py-2.5 px-4">Channel</th>
+                <th class="py-2.5 px-4">Location</th>
+                <th class="py-2.5 px-4">Current Status</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 font-medium">
+              <tr class="hover:bg-slate-50/60 transition-colors">
+                <td class="py-3 px-4 font-bold text-slate-900 flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Deloitte India
+                </td>
+                <td class="py-3 px-4 text-slate-700">Senior Consultant | SafeScrum Master</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Direct Virtual</span></td>
+                <td class="py-3 px-4 text-slate-500">Bengaluru • Finance Transformation</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">Screening Done • Next HM</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50/60 transition-colors">
+                <td class="py-3 px-4 font-bold text-slate-900">Xtivia Inc.</td>
+                <td class="py-3 px-4 text-slate-700">Senior Scrum Master / Agile Project Lead</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">LinkedIn</span></td>
+                <td class="py-3 px-4 text-slate-500">Remote • Global Cloud Delivery</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Applied / In Review</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50/60 transition-colors">
+                <td class="py-3 px-4 font-bold text-slate-900">Haparz Technologies</td>
+                <td class="py-3 px-4 text-slate-700">Scrum Master / Agile Delivery Lead</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">LinkedIn</span></td>
+                <td class="py-3 px-4 text-slate-500">Remote • US Overlap</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Applied / In Review</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50/60 transition-colors">
+                <td class="py-3 px-4 font-bold text-slate-900">VeersaTech</td>
+                <td class="py-3 px-4 text-slate-700">Scrum Master (Loopin Search)</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200">Hirist</span></td>
+                <td class="py-3 px-4 text-slate-500">Noida • Hybrid / Remote</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Applied / In Review</span></td>
+              </tr>
+              <tr class="hover:bg-slate-50/60 transition-colors">
+                <td class="py-3 px-4 font-bold text-slate-900">ITC Infotech</td>
+                <td class="py-3 px-4 text-slate-700">Senior Scrum Master</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Direct Pitch</span></td>
+                <td class="py-3 px-4 text-slate-500">Hybrid • Bengaluru</td>
+                <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">Screening Scheduled</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Section 2 -->
+
+  <!-- BEGIN: Section 3 - Multi-Continent Hiring Blueprint -->
+  <section id="global-blueprint" class="py-12 bg-white border-b border-slate-200/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-8">
+        <div class="text-xs font-bold font-mono text-brand-600 uppercase tracking-wider">Global Engagement Architecture</div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Multi-Continent Hiring Blueprint</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Structured engagement models, legal frameworks, and compensation brackets across primary target regions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Region 1: North America USD Remote -->
+        <div class="bg-[#f8faff] rounded-2xl p-5 border border-slate-200/90 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs mb-3">
+              <span class="font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">NORTH AMERICA</span>
+              <span class="text-slate-400 font-mono text-[10px]">USD B2B</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900">Remote USD Contract</h3>
+            <p class="text-xs text-slate-500 mt-1">US &amp; Canadian Tech &amp; FinTech firms</p>
+            
+            <div class="mt-4 space-y-2 text-xs">
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Target Compensation</div>
+                <div class="font-extrabold text-slate-900 mt-0.5">$65,000 - $80,000 / yr</div>
+                <div class="text-[10px] text-emerald-600 font-medium">₹55L - ₹68L CTC equivalent</div>
+              </div>
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Legal Structure</div>
+                <div class="font-semibold text-slate-800 mt-0.5">Form W-8BEN • Independent Contractor</div>
+                <div class="text-[10px] text-slate-500">B2B monthly wire via Wise / Stripe</div>
+              </div>
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Timezone Overlap</div>
+                <div class="font-semibold text-slate-800 mt-0.5">4–5 Hours Daily</div>
+                <div class="text-[10px] text-slate-500">9:00 AM – 1:00 PM EST overlap</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-200/70 text-[10px] font-mono text-slate-500 flex items-center justify-between">
+            <span>Section 44ADA Shielded</span>
+            <span class="text-emerald-600 font-bold">0% GST Export</span>
+          </div>
+        </div>
+
+        <!-- Region 2: Middle East & GCC -->
+        <div class="bg-[#f8faff] rounded-2xl p-5 border border-slate-200/90 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs mb-3">
+              <span class="font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">MIDDLE EAST &amp; GCC</span>
+              <span class="text-slate-400 font-mono text-[10px]">0% Tax</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900">Dubai, Riyadh, Abu Dhabi</h3>
+            <p class="text-xs text-slate-500 mt-1">Banking, Telecom &amp; Vision 2030</p>
+            
+            <div class="mt-4 space-y-2 text-xs">
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Target Compensation</div>
+                <div class="font-extrabold text-slate-900 mt-0.5">AED 22k - 30k / mo</div>
+                <div class="text-[10px] text-emerald-600 font-medium">SAR 25k - 35k / mo tax-free</div>
+              </div>
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Relocation Readiness</div>
+                <div class="font-semibold text-slate-800 mt-0.5">Immediate (0-14 Days)</div>
+                <div class="text-[10px] text-slate-500">Employment visa sponsorship ready</div>
+              </div>
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Industry Focus</div>
+                <div class="font-semibold text-slate-800 mt-0.5">Digital Banking &amp; Telecom</div>
+                <div class="text-[10px] text-slate-500">Large-scale SAFe multi-squad ARTs</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-200/70 text-[10px] font-mono text-slate-500 flex items-center justify-between">
+            <span>GMT+4 / GMT+3</span>
+            <span class="text-amber-600 font-bold">Immediate Relo</span>
+          </div>
+        </div>
+
+        <!-- Region 3: Southeast Asia -->
+        <div class="bg-[#f8faff] rounded-2xl p-5 border border-slate-200/90 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs mb-3">
+              <span class="font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200">SOUTHEAST ASIA</span>
+              <span class="text-slate-400 font-mono text-[10px]">FinTech Hub</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900">Singapore &amp; Malaysia</h3>
+            <p class="text-xs text-slate-500 mt-1">Regional Digital Banking Hubs</p>
+            
+            <div class="mt-4 space-y-2 text-xs">
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Target Compensation</div>
+                <div class="font-extrabold text-slate-900 mt-0.5">SGD 9,000 - 12,000 / mo</div>
+                <div class="text-[10px] text-emerald-600 font-medium">MYR 14k - 18k / mo (Kuala Lumpur)</div>
+              </div>
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Visa Eligibility</div>
+                <div class="font-semibold text-slate-800 mt-0.5">EP / Tech Pass Eligible</div>
+                <div class="text-[10px] text-slate-500">COMPASS points criteria verified</div>
+              </div>
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Delivery Leadership</div>
+                <div class="font-semibold text-slate-800 mt-0.5">Zero Meeting Fatigue</div>
+                <div class="text-[10px] text-slate-500">Engineering shield protocols</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-200/70 text-[10px] font-mono text-slate-500 flex items-center justify-between">
+            <span>GMT+8 Singapore</span>
+            <span class="text-purple-600 font-bold">COMPASS Ready</span>
+          </div>
+        </div>
+
+        <!-- Region 4: UK & Western Europe -->
+        <div class="bg-[#f8faff] rounded-2xl p-5 border border-slate-200/90 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs mb-3">
+              <span class="font-bold text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded border border-cyan-200">UNITED KINGDOM</span>
+              <span class="text-slate-400 font-mono text-[10px]">Open Banking</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900">London &amp; Western Europe</h3>
+            <p class="text-xs text-slate-500 mt-1">Tier-1 BFSI &amp; Payments Hubs</p>
+            
+            <div class="mt-4 space-y-2 text-xs">
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Target Day Rate / Base</div>
+                <div class="font-extrabold text-slate-900 mt-0.5">£450 - £550 / day</div>
+                <div class="text-[10px] text-emerald-600 font-medium">£75k - £90k base (Permanent)</div>
+              </div>
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Tax &amp; Contract</div>
+                <div class="font-semibold text-slate-800 mt-0.5">Outside IR35 Contractor</div>
+                <div class="text-[10px] text-slate-500">Or UK Skilled Worker sponsorship</div>
+              </div>
+              <div class="bg-white p-2.5 rounded-lg border border-slate-200/70">
+                <div class="text-[10px] text-slate-400 uppercase font-bold">Proven UK Context</div>
+                <div class="font-semibold text-slate-800 mt-0.5">PSD2 &amp; Open Banking</div>
+                <div class="text-[10px] text-slate-500">Extensive UK Banking delivery background</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-200/70 text-[10px] font-mono text-slate-500 flex items-center justify-between">
+            <span>GMT / BST Timezone</span>
+            <span class="text-cyan-600 font-bold">Outside IR35</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Section 3 -->
+
+  <!-- BEGIN: Section 4 - Section 44ADA Tax Architecture -->
+  <section id="tax-architecture" class="py-12 bg-dot-grid border-b border-slate-200/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div>
+          <div class="text-xs font-bold font-mono text-emerald-600 uppercase tracking-wider">Zero Employer Overhead</div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">Section 44ADA 50% Tax Shield Architecture</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1">Why hiring Balaji via international B2B contract is legally seamless, frictionless, and cost-effective.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+            Income Tax Act, 1961
+          </span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Pillar 1 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-percent text-base"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900">50% Presumptive Expense</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mt-2">
+            Under Section 44ADA, professional agile delivery consultants can treat 50% of gross foreign receipts (up to ₹75 Lakhs / ~$90k USD) as automated, audit-exempt operational expense, slashing effective tax liability.
+          </p>
+          <div class="mt-4 p-3 bg-slate-50 rounded-lg text-[11px] font-mono text-slate-600 border border-slate-100">
+            Gross: $75,000 → Taxable: $37,500
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-brand-600 flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-file-contract text-base"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900">0% GST via Letter of Undertaking</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mt-2">
+            Software consulting provided to clients outside India qualifies as a zero-rated export of service under Indian GST law. Backed by annual Letter of Undertaking (LUT), invoices carry 0% GST with zero client overhead.
+          </p>
+          <div class="mt-4 p-3 bg-slate-50 rounded-lg text-[11px] font-mono text-slate-600 border border-slate-100">
+            Form RFD-11 LUT Active • 0% Indirect Tax
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card">
+          <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-building-columns text-base"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900">Bank FIRC Compliance</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mt-2">
+            Every cross-border wire (Wise, Stripe, direct SWIFT wire) automatically receives Foreign Inward Remittance Certificates (FIRC) through Authorized Dealer Category-I banks (Citibank, HSBC, ICICI).
+          </p>
+          <div class="mt-4 p-3 bg-slate-50 rounded-lg text-[11px] font-mono text-slate-600 border border-slate-100">
+            FIRC Purpose Code: P0802 (Software/Agile)
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Section 4 -->
+
+  <!-- BEGIN: Section 5 - VC Portals & Hidden Job Market -->
+  <section id="vc-portals" class="py-12 bg-white border-b border-slate-200/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-8">
+        <div class="text-xs font-bold font-mono text-brand-600 uppercase tracking-wider">Unpublished Executive Roles</div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">The Hidden Job Market: Tier-1 VC Portals</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">Direct access channels to high-growth, venture-backed tech startups scaling their agile delivery squads.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        
+        <a class="bg-[#f8faff] rounded-xl p-4 border border-slate-200/80 hover:border-brand-500/50 hover:shadow-card transition-all flex flex-col justify-between group" href="https://jobs.peakxv.com" target="_blank" rel="noopener noreferrer">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center font-bold text-xs mb-3">
+              <i class="fa-solid fa-mountain"></i>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-brand-600">Peak XV</div>
+            <div class="text-[10px] text-slate-500 mt-0.5">Sequoia Capital India</div>
+          </div>
+          <div class="mt-3 text-[10px] font-bold text-brand-600 flex items-center gap-1">
+            <span>Explore</span> <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+          </div>
+        </a>
+
+        <a class="bg-[#f8faff] rounded-xl p-4 border border-slate-200/80 hover:border-brand-500/50 hover:shadow-card transition-all flex flex-col justify-between group" href="https://jobs.accel.com" target="_blank" rel="noopener noreferrer">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-xs mb-3">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-brand-600">Accel Careers</div>
+            <div class="text-[10px] text-slate-500 mt-0.5">Tier-1 Portfolio</div>
+          </div>
+          <div class="mt-3 text-[10px] font-bold text-brand-600 flex items-center gap-1">
+            <span>Explore</span> <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+          </div>
+        </a>
+
+        <a class="bg-[#f8faff] rounded-xl p-4 border border-slate-200/80 hover:border-brand-500/50 hover:shadow-card transition-all flex flex-col justify-between group" href="https://www.workatastartup.com" target="_blank" rel="noopener noreferrer">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs mb-3">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-brand-600">YC Startups</div>
+            <div class="text-[10px] text-slate-500 mt-0.5">Y Combinator Network</div>
+          </div>
+          <div class="mt-3 text-[10px] font-bold text-brand-600 flex items-center gap-1">
+            <span>Explore</span> <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+          </div>
+        </a>
+
+        <a class="bg-[#f8faff] rounded-xl p-4 border border-slate-200/80 hover:border-brand-500/50 hover:shadow-card transition-all flex flex-col justify-between group" href="https://wellfound.com/jobs" target="_blank" rel="noopener noreferrer">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs mb-3">
+              <i class="fa-solid fa-peace"></i>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-brand-600">Wellfound</div>
+            <div class="text-[10px] text-slate-500 mt-0.5">AngelList Talent</div>
+          </div>
+          <div class="mt-3 text-[10px] font-bold text-brand-600 flex items-center gap-1">
+            <span>Explore</span> <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+          </div>
+        </a>
+
+        <a class="bg-[#f8faff] rounded-xl p-4 border border-slate-200/80 hover:border-brand-500/50 hover:shadow-card transition-all flex flex-col justify-between group" href="https://himalayas.app/jobs/scrum-master" target="_blank" rel="noopener noreferrer">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center font-bold text-xs mb-3">
+              <i class="fa-solid fa-earth-americas"></i>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-brand-600">Himalayas</div>
+            <div class="text-[10px] text-slate-500 mt-0.5">Global Remote Roles</div>
+          </div>
+          <div class="mt-3 text-[10px] font-bold text-brand-600 flex items-center gap-1">
+            <span>Explore</span> <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+          </div>
+        </a>
+
+        <a class="bg-[#f8faff] rounded-xl p-4 border border-slate-200/80 hover:border-brand-500/50 hover:shadow-card transition-all flex flex-col justify-between group" href="https://www.hirist.tech/k/scrum-master-jobs" target="_blank" rel="noopener noreferrer">
+          <div>
+            <div class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xs mb-3">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-brand-600">Hirist Prime</div>
+            <div class="text-[10px] text-slate-500 mt-0.5">Enterprise Tech Hub</div>
+          </div>
+          <div class="mt-3 text-[10px] font-bold text-brand-600 flex items-center gap-1">
+            <span>Explore</span> <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Section 5 -->
+
+  <!-- BEGIN: Section 6 - Pitch Templates -->
+  <section id="pitch-templates" class="py-12 bg-dot-grid border-b border-slate-200/90">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="mb-8">
+        <div class="text-xs font-bold font-mono text-brand-600 uppercase tracking-wider">Battle-Tested Copy</div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mt-1">High-Conversion Outreach Templates</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">1-click copyable pitch frameworks customized for engineering leadership and executive recruiters.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Pitch 1 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs mb-3">
+              <span class="font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded">DIRECT TO VP ENG / CTO</span>
+              <span class="text-slate-400 font-mono text-[10px]">Email Pitch</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900">Predictable Velocity &amp; Zero Spillover</h3>
+            <p class="text-xs text-slate-500 mt-1">Designed for engineering heads feeling delivery drag</p>
+
+            <div class="mt-4 p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-700 font-mono leading-relaxed" id="pitch-cto-text">
+Hi {{Name}},
+
+Saw {{Company}} is scaling its distributed engineering squads. As a Senior Scrum Master (SAFe® 6 SSM, CSM, 7+ yrs BFSI & FinTech), I help teams turn roadmap friction into +20% sustained velocity without meeting fatigue.
+
+Former React/AWS engineer bringing technical empathy to protect developer focus (guaranteed &lt;24h cross-squad blocker SLA, 98.4% sprint predictability).
+
+Available immediately with 0 days notice. Open to a brief 10-minute chat this week?
+
+Portfolio: https://layyzee.github.io/
+Pipeline CRM: https://layyzee.github.io/
+
+Best,
+Balaji Palani (+91-7540015522)
+            </div>
+          </div>
+
+          <button onclick="copyToClipboard('pitch-cto-text', this)" class="mt-4 w-full py-2.5 rounded-lg text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200/80 transition-all flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-copy text-slate-500"></i>
+            <span>Copy Template</span>
+          </button>
+        </div>
+
+        <!-- Pitch 2 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs mb-3">
+              <span class="font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded">RECRUITER &amp; TA LEAD</span>
+              <span class="text-slate-400 font-mono text-[10px]">Direct Pitch</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900">0-Day Notice &amp; Full Verification</h3>
+            <p class="text-xs text-slate-500 mt-1">High-impact note addressing salary, notice &amp; creds</p>
+
+            <div class="mt-4 p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-700 font-mono leading-relaxed" id="pitch-recruiter-text">
+Hi {{Recruiter}},
+
+Reaching out regarding the Senior Scrum Master role at {{Company}}.
+
+Quick snapshot for your pipeline:
+• Notice Period: 0 Days (Immediate Joiner)
+• Experience: 7+ Years Enterprise Agile Delivery (UK BFSI, Telecom, FinTech)
+• Certs: SAFe® 6 SSM, CSM®, PSM II
+• Target CTC: ₹28L - ₹36L (or $65k+ USD B2B Remote)
+• Location: Mumbai (Open to Global Remote & Immediate Relocation)
+
+Live AppTracker CRM: https://layyzee.github.io/
+Resume: https://layyzee.github.io/scrum-master-career-portal/docs/resume/Balaji_Palani_Senior_Scrum_Master.pdf
+
+Best,
+Balaji Palani | balajinia@gmail.com
+            </div>
+          </div>
+
+          <button onclick="copyToClipboard('pitch-recruiter-text', this)" class="mt-4 w-full py-2.5 rounded-lg text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200/80 transition-all flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-copy text-slate-500"></i>
+            <span>Copy Template</span>
+          </button>
+        </div>
+
+        <!-- Pitch 3 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-card flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs mb-3">
+              <span class="font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">LINKEDIN CONNECTION</span>
+              <span class="text-slate-400 font-mono text-[10px]">300 Chars Max</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900">1-Click LinkedIn Note</h3>
+            <p class="text-xs text-slate-500 mt-1">Fits LinkedIn's connection character limit perfectly</p>
+
+            <div class="mt-4 p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs text-slate-700 font-mono leading-relaxed" id="pitch-linkedin-text">
+Hi {{Name}}, noticed your work leading delivery at {{Company}}. As a Senior Scrum Master (SAFe® 6 SSM, 7+ yrs, ex-developer), I help engineering squads hit 98.4% predictability. 0 days notice. Would love to connect! — Balaji (layyzee.github.io)
+            </div>
+          </div>
+
+          <button onclick="copyToClipboard('pitch-linkedin-text', this)" class="mt-4 w-full py-2.5 rounded-lg text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-200/80 transition-all flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-copy text-slate-500"></i>
+            <span>Copy Template</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Section 6 -->
+
+  <!-- BEGIN: Executive Contact & Footer -->
+  <footer class="bg-white border-t border-slate-200/90 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-100">
+        <div class="flex items-center gap-3">
+          <img alt="Balaji Palani" class="w-10 h-10 rounded-full object-cover ring-2 ring-emerald-500/40" src="./assets/img/my-pic.jpg" onerror="this.src='https://github.com/layyzee.png'"/>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-slate-900">Balaji Palani</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                0 Days Notice
+              </span>
+            </div>
+            <p class="text-xs text-slate-500 mt-0.5">Senior Scrum Master &amp; Agile Delivery Architect • SAFe® 6 SSM • CSM® • PSM II</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
+          <a class="hover:text-brand-600 transition-colors" href="https://layyzee.github.io/">Flagship Portfolio ↗</a>
+          <a class="hover:text-brand-600 transition-colors" href="#" style="display:none;">Interactive Retrospective Simulator</a>
+          <a class="hover:text-brand-600 transition-colors" href="retro.html">AgileBoard Studio</a>
+          <a class="hover:text-brand-600 transition-colors" href="https://linkedin.com/in/balajipalani92" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="hover:text-brand-600 transition-colors" href="https://github.com/layyzee" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+        <div>
+          © 2026 Balaji Palani. All systems engineered for Enterprise Agile Delivery.
+        </div>
+        <div class="flex items-center gap-2 font-mono text-[11px]">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>System Status: Optimal Velocity • Ready for Immediate Hire</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+  <!-- END: Executive Contact & Footer -->
+
+  <!-- Toast Notification element -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-lg text-xs font-semibold flex items-center gap-2 opacity-0 pointer-events-none transition-opacity duration-200">
+    <i class="fa-solid fa-circle-check text-emerald-400"></i>
+    <span id="toastMsg">Copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Mobile Drawer Toggle
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileDrawerBackdrop');
+      const isClosed = drawer.classList.contains('translate-x-full');
+      
+      if (isClosed) {
+        backdrop.classList.remove('hidden');
+        setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+        drawer.classList.remove('translate-x-full');
+      } else {
+        backdrop.classList.add('opacity-0');
+        drawer.classList.add('translate-x-full');
+        setTimeout(() => backdrop.classList.add('hidden'), 300);
+      }
+    }
+
+    // 1-Click Clipboard Copy with Toast Feedback
+    function copyToClipboard(elementId, buttonEl) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.innerText.trim();
+
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Outreach template copied to clipboard!");
+        const originalText = buttonEl.innerHTML;
+        buttonEl.innerHTML = '<i class="fa-solid fa-check text-emerald-600"></i> <span class="text-emerald-700">Copied!</span>';
+        buttonEl.classList.add('bg-emerald-50', 'border-emerald-200');
+        setTimeout(() => {
+          buttonEl.innerHTML = originalText;
+          buttonEl.classList.remove('bg-emerald-50', 'border-emerald-200');
+        }, 2000);
+      }).catch(err => {
+        console.error("Copy error:", err);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+  </script>
+
+</body>
+</html>
