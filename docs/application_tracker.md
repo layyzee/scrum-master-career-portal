@@ -12,13 +12,13 @@
 
 | Platform | Confirmed Applied / Interest Shared | In Progress / Pending Direct ATS | Direct Outreach | Total Actioned |
 |---|---|---|---|---|
-| **LinkedIn** | 32 | 5 | 0 | 37 |
+| **LinkedIn** | 33 | 5 | 0 | 38 |
 | **Naukri** | 29 | 2 | 0 | 31 |
 | **Hirist** | 8 | 0 | 0 | 8 |
 | **Indeed** | 3 | 3 | 0 | 6 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 3 (ITC Infotech, Apidel, I-Giants) | 3 |
-| **Total** | **73** | **10** | **3** | **86** |
+| **Total** | **74** | **10** | **3** | **87** |
 
 ---
 
@@ -93,6 +93,7 @@
 | 65 | Nov 13, 2026 | **Jobgether** | Scrum Master, Platform Delivery | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Location: Mumbai, Maharashtra, India, Balaji_Palani_Scrum_Master_Resume.pdf) |
 | 66 | Nov 13, 2026 | **Apidel Technologies** | Scrum Master (Data, Analytics & Enterprise Platforms) | Remote | India (Remote) | Direct Email / LinkedIn | 📧 Direct Recruiter Pitch Drafted (`rishabh.y@apideltech.com` - 5+ Yrs SM Exp, CSM® & SAFe® SSM, 0-Day Notice) |
 | 67 | Nov 13, 2026 | **I-Giants** | SAP Project Manager / Scrum Master | Remote | India (Remote) | Direct Email / LinkedIn | 📧 Direct Recruiter Pitch Drafted (`thokalas@i-giants.com` - Enterprise Agile Delivery, CSM/SAFe, Immediate Joiner) |
+| 68 | Nov 13, 2026 | **Robusta Studio** | Scrum Master - Remote - 3 Months - Octopus by RTG | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Salary ₹20L/₹22L net, 5y SM, 3 squads / 7-9 team size, Scrum/Kanban/SAFe, 3m contract: Yes, Immediate Joiner) |
 
 ---
 
