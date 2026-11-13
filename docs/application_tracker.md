@@ -12,13 +12,13 @@
 
 | Platform | Confirmed Applied / Interest Shared | In Progress / Pending Direct ATS | Direct Outreach | Total Actioned |
 |---|---|---|---|---|
-| **LinkedIn** | 29 | 5 | 0 | 34 |
-| **Naukri** | 19 | 2 | 0 | 21 |
+| **LinkedIn** | 32 | 5 | 0 | 37 |
+| **Naukri** | 29 | 2 | 0 | 31 |
 | **Hirist** | 8 | 0 | 0 | 8 |
 | **Indeed** | 3 | 3 | 0 | 6 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
 | **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **60** | **10** | **1** | **71** |
+| **Total** | **73** | **10** | **1** | **84** |
 
 ---
 
@@ -88,6 +88,9 @@
 | 60 | Nov 10, 2026 | **RED Global** | DADAI Portfolio Scrum Master/220 | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Jira 5y, SM/Coach 4y, Scrum 4y, Kanban 4y, SAFe 4y, 0-Day Notice) |
 | 61 | Nov 11, 2026 | **ERP Logic Israel, SAP Partner** | Scrum Master | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Degree: Yes, Notice: 0 Days, SM Exp: 5y, CSM/SAFe: Yes, Data/BI: Yes) |
 | 62 | Nov 11, 2026 | **robusta** | Scrum Master - Remote - 3 Months - Octopus by RTG | Remote | India (Remote) | Indeed | ✅ Submitted & Confirmed Applied (Indeed SmartApply - Notice: 0 Days, CCTC 20L / ECTC 25L, SM 5y, 3 Squads / 7-9 team size, Scrum/Kanban/SAFe 6.0, 3m contract: True) |
+| 63 | Nov 11, 2026 | **Beyond Border Consultants** | Client Delivery and Account Manager (Agile/Scrum) | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 0 Days Notice, CCTC 20L / ECTC 25L, 7.8y IT, 5y dedicated SM, LinkedIn Profile submitted) |
+| 64 | Nov 13, 2026 | **Golden Opportunities** | Business Analyst cum Scrum Master - GO/JC/4918/2026 | On-site / Hybrid | Pune Division / PAN India | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 7+ Yrs Exp / 5+ Yrs SM, Balaji_Palani_Scrum_Master_Resume.pdf) |
+| 65 | Nov 13, 2026 | **Jobgether** | Scrum Master, Platform Delivery | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Location: Mumbai, Maharashtra, India, Balaji_Palani_Scrum_Master_Resume.pdf) |
 
 ---
 
