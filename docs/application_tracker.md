@@ -17,8 +17,8 @@
 | **Hirist** | 8 | 0 | 0 | 8 |
 | **Indeed** | 3 | 3 | 0 | 6 |
 | **Cutshort** | 1 | 0 | 0 | 1 |
-| **Direct Email** | 0 | 0 | 1 (ITC Infotech Recruiter) | 1 |
-| **Total** | **73** | **10** | **1** | **84** |
+| **Direct Email** | 0 | 0 | 3 (ITC Infotech, Apidel, I-Giants) | 3 |
+| **Total** | **73** | **10** | **3** | **86** |
 
 ---
 
@@ -91,6 +91,8 @@
 | 63 | Nov 11, 2026 | **Beyond Border Consultants** | Client Delivery and Account Manager (Agile/Scrum) | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 0 Days Notice, CCTC 20L / ECTC 25L, 7.8y IT, 5y dedicated SM, LinkedIn Profile submitted) |
 | 64 | Nov 13, 2026 | **Golden Opportunities** | Business Analyst cum Scrum Master - GO/JC/4918/2026 | On-site / Hybrid | Pune Division / PAN India | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - 7+ Yrs Exp / 5+ Yrs SM, Balaji_Palani_Scrum_Master_Resume.pdf) |
 | 65 | Nov 13, 2026 | **Jobgether** | Scrum Master, Platform Delivery | Remote | India (Remote) | LinkedIn | ✅ Submitted & Confirmed Applied (Easy Apply - Location: Mumbai, Maharashtra, India, Balaji_Palani_Scrum_Master_Resume.pdf) |
+| 66 | Nov 13, 2026 | **Apidel Technologies** | Scrum Master (Data, Analytics & Enterprise Platforms) | Remote | India (Remote) | Direct Email / LinkedIn | 📧 Direct Recruiter Pitch Drafted (`rishabh.y@apideltech.com` - 5+ Yrs SM Exp, CSM® & SAFe® SSM, 0-Day Notice) |
+| 67 | Nov 13, 2026 | **I-Giants** | SAP Project Manager / Scrum Master | Remote | India (Remote) | Direct Email / LinkedIn | 📧 Direct Recruiter Pitch Drafted (`thokalas@i-giants.com` - Enterprise Agile Delivery, CSM/SAFe, Immediate Joiner) |
 
 ---
 
