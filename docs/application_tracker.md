@@ -112,6 +112,9 @@
 | 8 | **NOV Inc.** | Scrum Master | Kochi (Hybrid) | Oracle Cloud ATS | [Oracle Cloud ATS](https://egay.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/en/job/45366/) | Oracle Cloud candidate login. |
 | 9 | **Harman International** | Software Engineer - Scrum Master | Bengaluru | Harman Workday | [Harman Careers](https://jobs.harman.com/) | Automotive / Connected tech. |
 | 10 | **Birlasoft Limited** | Scrum Master - Agile Delivery & VSM | Bengaluru | Birlasoft Portal / Shine | [Birlasoft Careers](https://www.birlasoft.com/careers) | Value stream management. |
+| 11 | **Forge (Emerald X)** | Senior Project Manager, Scrum Master | US / Remote | Rippling ATS | [Emerald Careers](https://ats.rippling.com/emeraldx/jobs/b5097673-aceb-4685-b5bd-16fa44356a23) | Pre-filled in Chrome Tab 5. Ready for 1-click submit. |
+| 12 | **Consumer Direct Care Network** | Scrum Master ($71k–$88k USD) | US / Remote | Avature ATS | [CDCN Careers](https://cdcn.avature.net/careers/ApplicationMethods?jobId=9893) | Sourced via Remote Rocketship. Direct ATS application. |
+| 13 | **DecisionPoint Corp** | Agile Delivery Lead – Scrum Master (AI Development) | US / Remote | iCIMS ATS | [DecisionPoint Careers](https://careers-decisionpointcorp.icims.com/jobs/4329/agile-delivery-lead---scrum-master-%e2%80%93-team-4-%e2%80%93-ai-development/job) | Sourced via Remote Rocketship. Direct iCIMS submission. |
 
 ---
 
