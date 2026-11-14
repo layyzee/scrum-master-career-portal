@@ -2,11 +2,97 @@
 
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Balaji Palani • AppTracker Pro Enterprise CRM</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }
-.kanban-card { cursor: grab; transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease; }
+.kanban-card { cursor: grab; position: relative;  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease; }
 .kanban-card:active { cursor: grabbing; }
 .kanban-card.is-dragging { opacity: 0.45; transform: scale(0.98); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
 .kanban-column.drag-over { background-color: #e2f4ea !important; outline: 2px dashed #3b6750; outline-offset: -2px; }
 .kanban-column.drag-over .card-drop-zone { background-color: rgba(59, 103, 80, 0.05); }
+
+/* ========================================================
+   DESIGN SYSTEM ENGINE: IMPECCABLE vs. AMICRO
+   ======================================================== */
+
+.interactive-card {
+  position: relative;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mode-impeccable .interactive-card:hover {
+  border-color: #3b6750;
+  background-color: #FFFFFF;
+}
+.mode-impeccable .amicro-tilt {
+  transform: none !important;
+  box-shadow: 0 1px 2px rgba(23, 28, 35, 0.05) !important;
+}
+.mode-impeccable .amicro-spotlight::before {
+  display: none !important;
+}
+
+.mode-amicro {
+  --amicro-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mode-amicro .amicro-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.mode-amicro .amicro-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(350px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(59, 103, 80, 0.09), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 2;
+}
+.mode-amicro .amicro-spotlight:hover::before {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mode-amicro .amicro-tilt {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.16s ease-out, box-shadow 0.22s ease;
+  }
+  .mode-amicro .amicro-tilt:hover {
+    box-shadow: 0 16px 36px -12px rgba(23, 28, 35, 0.1), 0 4px 14px -4px rgba(59, 103, 80, 0.08);
+  }
+}
+
+.mode-amicro .amicro-magnetic {
+  will-change: transform;
+  transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.amicro-ripple-host {
+  position: relative;
+  overflow: hidden;
+}
+.amicro-ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(0);
+  animation: amicroRippleTracker 0.55s ease-out forwards;
+  pointer-events: none;
+  z-index: 5;
+}
+@keyframes amicroRippleTracker {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.mode-amicro button:active,
+.mode-amicro .interactive-card:active {
+  transform: scale(0.985);
+}
+
 </style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#b35c41", "on-primary-container": "#fffbff", "tertiary-fixed": "#ffdbd1", "tertiary": "#96432a", "on-error": "#ffffff", "primary-fixed": "#ffdbd0", "on-surface-variant": "#55433e", "surface-tint": "#97472e", "tertiary-container": "#b55b40", "surface-variant": "#dee2ec", "tertiary-fixed-dim": "#ffb59f", "primary": "#94452c", "outline": "#88726c", "on-surface": "#171c23", "on-secondary-fixed-variant": "#234f3a", "inverse-primary": "#ffb59f", "secondary-container": "#bdeed0", "secondary-fixed": "#bdeed0", "on-primary-fixed-variant": "#793019", "inverse-on-surface": "#edf1fb", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#a2d1b5", "on-tertiary-container": "#fffbff", "on-tertiary-fixed-variant": "#7a2f17", "on-secondary-fixed": "#002113", "on-background": "#171c23", "on-primary": "#ffffff", "surface-container-highest": "#dee2ec", "outline-variant": "#dbc1ba", "surface-dim": "#d6dae4", "on-error-container": "#93000a", "surface-container-high": "#e4e8f2", "on-secondary": "#ffffff", "background": "#f8f9ff", "on-primary-fixed": "#3a0a00", "primary-fixed-dim": "#ffb59f", "surface-container-low": "#f0f4fd", "inverse-surface": "#2c3138", "surface": "#f8f9ff", "on-tertiary": "#ffffff", "error": "#ba1a1a", "secondary": "#3b6750", "surface-container": "#eaeef8", "error-container": "#ffdad6", "on-secondary-container": "#416d56", "on-tertiary-fixed": "#3b0a00", "surface-bright": "#f8f9ff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "margin-mobile": "1.25rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-md": "1rem", "gutter-mobile": "1rem", "margin": "3rem", "space-xl": "2.5rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-xl": [ "Newsreader" ], "display-lg-mobile": [ "Newsreader" ], "label-sm": [ "JetBrains Mono" ], "display-lg": [ "Newsreader" ], "headline-md": [ "Newsreader" ], "label-md": [ "JetBrains Mono" ], "headline-sm": [ "Hanken Grotesk" ], "body-lg": [ "Hanken Grotesk" ], "body-sm": [ "Hanken Grotesk" ], "body-xl": [ "Newsreader" ], "body-md": [ "Hanken Grotesk" ], "label-lg": [ "Hanken Grotesk" ], "headline-lg": [ "Newsreader" ], "headline-xl-mobile": [ "Newsreader" ] }, "fontSize": { "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "display-lg-mobile": [ "38px", { "lineHeight": "46px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "label-sm": [ "10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "500" } ], "display-lg": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.025em", "fontWeight": "400" } ], "headline-md": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "headline-sm": [ "19px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" } ], "body-sm": [ "12px", { "lineHeight": "18px", "letterSpacing": "0.005em", "fontWeight": "400" } ], "body-xl": [ "20px", { "lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "400" } ], "headline-xl-mobile": [ "30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "400" } ] } } } };</script></head>
 <!-- Cryptographic SHA-256 Security Gate Overlay -->
 <div id="pin-lock-overlay" class="fixed inset-0 z-[9999] bg-background/95 backdrop-blur-md flex items-center justify-center p-4 transition-all duration-300">
@@ -47,7 +133,15 @@
   </div>
 </div>
 
-<body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0 flex-shrink-0"><a class="flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md whitespace-nowrap" href="https://layyzee.github.io/"><span class="material-symbols-outlined text-[16px]">arrow_back</span><span>Main Portfolio</span></a><a class="flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md whitespace-nowrap" href="index.html"><span class="material-symbols-outlined text-[16px]">hub</span><span>Career Hub</span></a><a class="flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md whitespace-nowrap" href="https://layyzee.github.io/balaji-agile-playbook/" target="_blank"><span class="material-symbols-outlined text-[16px]">menu_book</span><span>Agile Playbook</span></a><div class="flex items-center gap-space-sm"><div class="flex items-center justify-center w-8 h-8 rounded bg-primary text-on-primary font-headline-sm text-headline-sm flex-shrink-0">A</div><div class="flex flex-col whitespace-nowrap"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface font-semibold">AppTracker Pro</span><span class="px-space-xs py-0.5 rounded bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm uppercase font-semibold whitespace-nowrap">ENTERPRISE CRM V2.4</span></div><span class="font-label-sm text-label-sm text-on-surface-variant">Balaji Palani • Senior Scrum Master &amp; Agile Delivery Pipeline</span></div></div><nav class="hidden xl:flex items-center gap-space-xs ml-space-sm" data-active-classes="bg-surface-container text-on-surface font-semibold"><button aria-current="page" class="px-space-md py-space-xs rounded transition-colors bg-surface-container text-on-surface font-semibold whitespace-nowrap" id="nav-kanban-btn" onclick="switchView('kanban')" type="button">Kanban Board</button><button class="px-space-md py-space-xs rounded text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md whitespace-nowrap" id="nav-table-btn" onclick="switchView('table')" type="button">Table Directory</button><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md whitespace-nowrap" data-path="sprint-metrics" href="#">Velocity &amp; Telemetry</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md whitespace-nowrap" data-path="interviews-calendar" href="#">Cadence Schedule</a></nav></div><div class="flex items-center gap-space-sm flex-shrink-0"><button class="hidden md:flex items-center gap-space-sm px-space-md py-space-xs rounded bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors font-label-sm text-label-sm whitespace-nowrap" type="button"><span class="material-symbols-outlined text-[14px]">search</span><span>Search Pipeline</span><kbd class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-label-sm text-label-sm">⌘K</kbd></button><div class="flex items-center p-0.5 rounded bg-surface-container-low"><button aria-label="Kanban View" class="p-space-xs rounded bg-surface-container-lowest text-on-surface shadow-[0_1px_4px_rgba(0,0,0,0.04)]" id="header-kanban-btn" onclick="switchView('kanban')" type="button"><span class="material-symbols-outlined text-[18px]">view_kanban</span></button><button aria-label="Table View" class="p-space-xs rounded text-on-surface-variant hover:text-on-surface transition-colors" id="header-table-btn" onclick="switchView('table')" type="button"><span class="material-symbols-outlined text-[18px]">table_chart</span></button></div><button class="flex items-center gap-1.5 px-space-md py-space-xs rounded bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-md text-label-md whitespace-nowrap flex-shrink-0" onclick="document.getElementById('logModal').classList.remove('hidden')" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>+ Log Application</span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-surface-container"><div class="flex flex-col items-end whitespace-nowrap"><div class="flex items-center gap-space-xs"><span class="font-label-md text-label-md text-on-surface font-semibold">Balaji Palani</span><span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>0 Days Notice (Immediate)</span></div><span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase whitespace-nowrap">SAFE 6.0 | PSM II | PMP</span></div><img alt="Balaji Palani" class="w-9 h-9 rounded-full object-cover ring-1 ring-surface-container-highest flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCimJJKvSA57oHovpxiV1148BkY6-cHzlN-tESPeH0d9FzFc2nj9t7k9xx3BIEiSh57P_O5x4UEAp5I4BiszCm0jxnsCN0mO9X8idIzfvK1ETbESdYWzR0eVSVgK7shUaWHN4DEoTKQYleuPJiU_K58m_tOPigkAn1ry5OuzdX0_bwiUD7nxex8N2KHdXurSBwE_Dazs-xTg7izf8-CzA7LWNo4PIZbPzUN0ignAoXMStbKeP4RwqDq"/></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-0 flex-shrink-0"><a class="flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md whitespace-nowrap" href="https://layyzee.github.io/"><span class="material-symbols-outlined text-[16px]">arrow_back</span><span>Main Portfolio</span></a><a class="flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md whitespace-nowrap" href="index.html"><span class="material-symbols-outlined text-[16px]">hub</span><span>Career Hub</span></a><a class="flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container-low text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-label-md text-label-md whitespace-nowrap" href="https://layyzee.github.io/balaji-agile-playbook/" target="_blank"><span class="material-symbols-outlined text-[16px]">menu_book</span><span>Agile Playbook</span></a><div class="flex items-center gap-space-sm"><div class="flex items-center justify-center w-8 h-8 rounded bg-primary text-on-primary font-headline-sm text-headline-sm flex-shrink-0">A</div><div class="flex flex-col whitespace-nowrap"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface font-semibold">AppTracker Pro</span><span class="px-space-xs py-0.5 rounded bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm uppercase font-semibold whitespace-nowrap">ENTERPRISE CRM V2.4</span></div><span class="font-label-sm text-label-sm text-on-surface-variant">Balaji Palani • Senior Scrum Master &amp; Agile Delivery Pipeline</span></div></div><nav class="hidden xl:flex items-center gap-space-xs ml-space-sm" data-active-classes="bg-surface-container text-on-surface font-semibold"><button aria-current="page" class="px-space-md py-space-xs rounded transition-colors bg-surface-container text-on-surface font-semibold whitespace-nowrap" id="nav-kanban-btn" onclick="switchView('kanban')" type="button">Kanban Board</button><button class="px-space-md py-space-xs rounded text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md whitespace-nowrap" id="nav-table-btn" onclick="switchView('table')" type="button">Table Directory</button><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md whitespace-nowrap" data-path="sprint-metrics" href="#">Velocity &amp; Telemetry</a><a class="px-space-md py-space-xs rounded text-on-surface-variant hover:text-on-surface transition-colors font-body-md text-body-md whitespace-nowrap" data-path="interviews-calendar" href="#">Cadence Schedule</a></nav></div><div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+        <!-- Quick Mode Toggle -->
+        <button id="btn-mode-quick-toggle" onclick="toggleDesignMode()" class="h-8 px-2 sm:px-2.5 rounded-md bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-variant shadow-xs flex items-center gap-1 font-mono text-xs transition-colors shrink-0" title="Toggle Design Mode">
+          <span id="quick-toggle-icon" class="material-symbols-outlined text-[15px] text-secondary">menu_book</span>
+          <span id="quick-toggle-label" class="text-[10px] font-semibold hidden sm:inline">Calm</span>
+        </button>
+        <button onclick="openDesignCompareModal()" class="hidden sm:flex h-8 w-8 rounded-md bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-secondary border border-surface-variant shadow-xs items-center justify-center transition-colors shrink-0" title="Compare Design Philosophies">
+          <span class="material-symbols-outlined text-[15px]">compare_arrows</span>
+        </button><button class="hidden md:flex items-center gap-space-sm px-space-md py-space-xs rounded bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-colors font-label-sm text-label-sm whitespace-nowrap" type="button"><span class="material-symbols-outlined text-[14px]">search</span><span>Search Pipeline</span><kbd class="px-space-xs py-0.5 rounded bg-surface-container-highest text-on-surface font-label-sm text-label-sm">⌘K</kbd></button><div class="flex items-center p-0.5 rounded bg-surface-container-low"><button aria-label="Kanban View" class="p-space-xs rounded bg-surface-container-lowest text-on-surface shadow-[0_1px_4px_rgba(0,0,0,0.04)]" id="header-kanban-btn" onclick="switchView('kanban')" type="button"><span class="material-symbols-outlined text-[18px]">view_kanban</span></button><button aria-label="Table View" class="p-space-xs rounded text-on-surface-variant hover:text-on-surface transition-colors" id="header-table-btn" onclick="switchView('table')" type="button"><span class="material-symbols-outlined text-[18px]">table_chart</span></button></div><button class="flex items-center gap-1.5 px-space-md py-space-xs rounded bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-md text-label-md whitespace-nowrap flex-shrink-0" onclick="document.getElementById('logModal').classList.remove('hidden')" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>+ Log Application</span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-surface-container"><div class="flex flex-col items-end whitespace-nowrap"><div class="flex items-center gap-space-xs"><span class="font-label-md text-label-md text-on-surface font-semibold">Balaji Palani</span><span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-fixed-variant font-label-sm text-label-sm whitespace-nowrap"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>0 Days Notice (Immediate)</span></div><span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase whitespace-nowrap">SAFE 6.0 | PSM II | PMP</span></div><img alt="Balaji Palani" class="w-9 h-9 rounded-full object-cover ring-1 ring-surface-container-highest flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCimJJKvSA57oHovpxiV1148BkY6-cHzlN-tESPeH0d9FzFc2nj9t7k9xx3BIEiSh57P_O5x4UEAp5I4BiszCm0jxnsCN0mO9X8idIzfvK1ETbESdYWzR0eVSVgK7shUaWHN4DEoTKQYleuPJiU_K58m_tOPigkAn1ry5OuzdX0_bwiUD7nxex8N2KHdXurSBwE_Dazs-xTg7izf8-CzA7LWNo4PIZbPzUN0ignAoXMStbKeP4RwqDq"/></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
 <!-- Calm Ambient Header Glow (contained) -->
 <div class="relative w-full overflow-hidden">
 <div class="absolute -top-32 left-1/4 w-96 h-96 rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
@@ -1675,5 +1769,253 @@
     });
   });
 
+
+// ==========================================
+// DESIGN SYSTEM ENGINE (IMPECCABLE vs. AMICRO)
+// ==========================================
+let currentDesignMode = localStorage.getItem('agile_design_mode') || 'impeccable';
+
+function toggleDesignMode() {
+  const nextMode = currentDesignMode === 'impeccable' ? 'amicro' : 'impeccable';
+  setDesignMode(nextMode);
+}
+
+function setDesignMode(mode, showNotification = true) {
+  currentDesignMode = mode;
+  localStorage.setItem('agile_design_mode', mode);
+
+  const body = document.body;
+  const quickIcon = document.getElementById('quick-toggle-icon');
+  const quickLabel = document.getElementById('quick-toggle-label');
+  const quickBtn = document.getElementById('btn-mode-quick-toggle');
+
+  if (mode === 'amicro') {
+    body.classList.remove('mode-impeccable');
+    body.classList.add('mode-amicro');
+
+    if (quickIcon) quickIcon.textContent = 'auto_awesome';
+    if (quickLabel) quickLabel.textContent = 'Motion';
+    if (quickBtn) quickBtn.className = 'h-8 px-2 sm:px-2.5 rounded-md bg-secondary text-on-secondary border border-secondary shadow-xs flex items-center gap-1 font-mono text-xs transition-colors shrink-0';
+
+    initAmicroListeners();
+  } else {
+    body.classList.remove('mode-amicro');
+    body.classList.add('mode-impeccable');
+
+    if (quickIcon) quickIcon.textContent = 'menu_book';
+    if (quickLabel) quickLabel.textContent = 'Calm';
+    if (quickBtn) quickBtn.className = 'h-8 px-2 sm:px-2.5 rounded-md bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-variant shadow-xs flex items-center gap-1 font-mono text-xs transition-colors shrink-0';
+
+    resetAmicroTransforms();
+  }
+}
+
+function openDesignCompareModal() {
+  const modal = document.getElementById('design-compare-modal');
+  if (modal) modal.classList.remove('hidden');
+}
+
+function closeDesignCompareModal() {
+  const modal = document.getElementById('design-compare-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeDesignCompareModal();
+  }
+});
+
+let amicroInitialized = false;
+function initAmicroListeners() {
+  if (amicroInitialized) return;
+  amicroInitialized = true;
+
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+  document.addEventListener('mousemove', (e) => {
+    if (currentDesignMode !== 'amicro' || isTouch) return;
+
+    const cards = document.querySelectorAll('.mode-amicro .kanban-card');
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+      ) {
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -4.5;
+        const rotateY = ((x - centerX) / centerX) * 4.5;
+        card.style.transform = `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`;
+      } else if (card.style.transform && card.style.transform !== 'none') {
+        card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      }
+    });
+  });
+
+  document.querySelectorAll('.kanban-card').forEach(card => {
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    });
+  });
+}
+
+function resetAmicroTransforms() {
+  document.querySelectorAll('.kanban-card').forEach(card => {
+    card.style.transform = 'none';
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  setDesignMode(currentDesignMode, false);
+});
+
 </script>
+
+  <!-- ==========================================
+       DESIGN PHILOSOPHY COMPARISON MODAL
+       ========================================== -->
+  <div id="design-compare-modal" class="fixed inset-0 z-[10000] bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-surface border border-surface-variant rounded-2xl max-w-4xl w-full p-5 sm:p-8 shadow-2xl relative my-auto max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-surface-variant">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold uppercase text-secondary tracking-wider mb-1">
+            <span class="material-symbols-outlined text-[16px]">compare</span>
+            Design Philosophy Benchmark
+          </div>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-on-surface">Impeccable vs. Amicro in Practice</h2>
+          <p class="text-xs sm:text-sm text-on-surface-variant mt-1">
+            Comparing Paul Bakaus’s <strong>Calm Editorial</strong> architecture against Syed Subhan’s <strong>Tactile Micro-Interactions</strong> on AppTracker Pro CRM.
+          </p>
+        </div>
+        <button onclick="closeDesignCompareModal()" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low border border-surface-variant/60 transition-colors">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6">
+        
+        <div class="rounded-xl border-2 border-surface-variant p-5 bg-surface-container-lowest flex flex-col justify-between relative">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 rounded-md bg-surface border border-surface-variant text-xs font-mono font-bold text-on-surface flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px] text-secondary">menu_book</span>
+                Impeccable Style
+              </span>
+              <span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider">Paul Bakaus (Calm)</span>
+            </div>
+            
+            <h3 class="font-serif text-lg font-bold text-on-surface">The Dignity of Stillness</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-1">
+              Zero decorative motion. High signal-to-noise ratio. Newsreader serif headlines, precise 1px hairline rules, and generous white space inspired by classic British & Swiss editorial broadsheets.
+            </p>
+
+            <div class="mt-4 p-4 rounded-lg bg-surface border border-surface-variant">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs font-mono text-secondary font-semibold">Active Opportunities Radar</span>
+                <span class="text-[10px] font-mono text-on-surface-variant">Static Metric</span>
+              </div>
+              <div class="font-serif text-2xl font-bold text-on-surface">58 Tracked Roles</div>
+              <p class="text-[11px] font-mono text-on-surface-variant mt-1">Zero jitter • Instant comprehension • Print-grade typography</p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-surface-variant flex items-center justify-between">
+            <span class="text-xs font-mono text-on-surface-variant">Active everywhere</span>
+            <button onclick="setDesignMode('impeccable'); closeDesignCompareModal();" class="px-3 py-1.5 rounded-md bg-surface hover:bg-surface-container-low border border-surface-variant text-xs font-mono font-semibold text-on-surface transition-colors">
+              Activate Calm
+            </button>
+          </div>
+        </div>
+
+        <div class="rounded-xl border-2 border-secondary/60 p-5 bg-surface flex flex-col justify-between relative shadow-md interactive-card amicro-spotlight amicro-tilt">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 rounded-md bg-secondary text-on-secondary text-xs font-mono font-bold flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px]">auto_awesome</span>
+                Amicro Style
+              </span>
+              <span class="text-[10px] font-mono text-secondary uppercase tracking-wider font-semibold">Syed Subhan (Motion)</span>
+            </div>
+            
+            <h3 class="font-serif text-lg font-bold text-on-surface">Sensory Tactile Feedback</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-1">
+              Delightful micro-animations that cure robotic UI. Soft cursor radial spotlights, 3D perspective tilt on hover, magnetic buttons, and liquid wave ripples on click.
+            </p>
+
+            <div class="mt-4 p-4 rounded-lg bg-surface-container-low border border-secondary/30 relative overflow-hidden interactive-card amicro-spotlight amicro-tilt">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs font-mono text-secondary font-bold">Active Opportunities Radar</span>
+                <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-secondary-fixed text-secondary font-bold animate-pulse">Live Tilt</span>
+              </div>
+              <div class="font-serif text-2xl font-bold text-secondary">58 Tracked Roles</div>
+              <p class="text-[11px] font-mono text-secondary font-medium mt-1">Hover with mouse to see cursor spotlight & 3D tilt</p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-surface-variant flex items-center justify-between">
+            <span class="text-xs font-mono text-secondary font-semibold">Tactile Delight</span>
+            <button onclick="setDesignMode('amicro'); closeDesignCompareModal();" class="px-3.5 py-1.5 rounded-md bg-secondary hover:bg-secondary/90 text-xs font-mono font-bold text-on-secondary transition-colors shadow-xs amicro-magnetic amicro-ripple-host">
+              Activate Amicro
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border border-surface-variant rounded-xl overflow-hidden mb-5">
+        <div class="bg-surface-container-low px-4 py-2.5 border-b border-surface-variant text-xs font-mono font-bold text-on-surface uppercase tracking-wider">
+          Architecture & Trade-off Matrix
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs font-mono text-left">
+            <thead class="bg-surface text-on-surface-variant border-b border-surface-variant">
+              <tr>
+                <th class="py-2.5 px-4">Evaluation Dimension</th>
+                <th class="py-2.5 px-4 text-secondary font-bold">Impeccable (Calm Editorial)</th>
+                <th class="py-2.5 px-4 text-primary font-bold">Amicro (Micro-Interactions)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-surface-variant/60">
+              <tr class="hover:bg-surface-container-low/50">
+                <td class="py-2.5 px-4 font-bold text-on-surface">Core Goal</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">Executive clarity, tranquil reading, zero distraction</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">Modern product delight, tactile engagement, playful feedback</td>
+              </tr>
+              <tr class="hover:bg-surface-container-low/50">
+                <td class="py-2.5 px-4 font-bold text-on-surface">Motion Budget</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">0ms (100% still, instant state transitions)</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">150ms - 400ms spring physics & continuous mouse tracking</td>
+              </tr>
+              <tr class="hover:bg-surface-container-low/50">
+                <td class="py-2.5 px-4 font-bold text-on-surface">Mobile Behavior</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">High contrast, clean typography, fast native scrolling</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">Touch ripples, tap haptic squash, scroll-triggered count-ups</td>
+              </tr>
+              <tr class="hover:bg-surface-container-low/50">
+                <td class="py-2.5 px-4 font-bold text-on-surface">Ideal For</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">Executive Cockpits, Playbooks, Portfolio Hubs, Board briefs</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">SaaS Dashboards, AI Product Landing Pages, Interactive Tools</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-surface-variant text-xs font-mono text-on-surface-variant">
+        <div>💡 You can switch modes anytime using the header toggle.</div>
+        <button onclick="closeDesignCompareModal()" class="px-4 py-2 bg-surface-container-low hover:bg-surface-container border border-surface-variant rounded-lg text-on-surface font-medium transition-colors">
+          Dismiss & Explore
+        </button>
+      </div>
+
+    </div>
+  </div>
+
 </body></html>

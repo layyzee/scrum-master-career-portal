@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgileBoard • Interactive Scrum Retro Whiteboard</title>
+    <title>BalaBoard • Interactive Scrum Retro Whiteboard Studio | Balaji Palani</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -89,9 +89,14 @@
     <!-- Top Toolbar (Apple Daylight Bar) -->
     <header class="h-20 bg-white/95 backdrop-blur-xl border-b border-slate-200 px-4 sm:px-6 flex items-center justify-between z-30 transition-all shadow-sm">
         <div class="flex items-center space-x-3 sm:space-x-4">
-            <a href="index.html" class="p-2.5 rounded-xl apple-pill hover:bg-slate-50 text-slate-700 hover:text-slate-900 transition min-h-[44px] min-w-[44px] flex items-center justify-center shadow-sm" title="Back to Command Hub">
-                <i data-lucide="arrow-left" class="w-4 h-4 text-indigo-600"></i>
+            <a href="index.html" class="p-2.5 rounded-xl apple-pill hover:bg-slate-50 text-slate-700 hover:text-slate-900 transition min-h-[44px] min-w-[44px] flex items-center justify-center shadow-sm" title="Back to Career Hub">
+                <i data-lucide="arrow-left" class="w-4 h-4 text-slate-700"></i>
             </a>
+            <div class="hidden xl:flex items-center space-x-1.5">
+                <a href="https://layyzee.github.io/" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-mono text-slate-700 transition" title="Return to Main Portfolio">Portfolio</a>
+                <a href="tracker.html" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-mono text-slate-700 transition" title="Go to AppTracker CRM">Tracker CRM</a>
+                <a href="https://layyzee.github.io/balaji-agile-playbook/" target="_blank" class="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-mono text-emerald-800 transition" title="Open Agile Playbook">Playbook ↗</a>
+            </div>
             <div class="flex items-center space-x-3">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-rose-500 flex items-center justify-center text-white shadow-md shadow-amber-500/20">
                     <i data-lucide="layout" class="w-5 h-5 text-black"></i>
@@ -109,11 +114,13 @@
         <!-- Template Selector -->
         <div class="hidden md:flex items-center space-x-2 bg-slate-100 p-1.5 rounded-xl border border-slate-200 min-h-[44px]">
             <span class="text-xs text-slate-600 px-2 font-medium">Framework:</span>
-            <select id="templateSelector" onchange="loadTemplate(this.value)" class="bg-white text-xs font-semibold text-slate-800 px-3.5 py-1.5 rounded-lg border border-slate-200 focus:outline-none focus:border-amber-500 cursor-pointer min-h-[36px] shadow-sm">
+            <select id="templateSelector" onchange="loadTemplate(this.value)" class="bg-white text-xs font-semibold text-slate-800 px-3 py-1.5 rounded-lg border border-slate-200 focus:outline-none focus:border-amber-500 cursor-pointer min-h-[36px] shadow-sm">
                 <option value="wentWell">Went Well / Didn't / Actions</option>
                 <option value="madSadGlad">Mad / Sad / Glad</option>
                 <option value="startStopContinue">Start / Stop / Continue</option>
                 <option value="sailboat">Sailboat Retro (Wind & Anchors)</option>
+                <option value="tryOut">Try Out / Experiments (Test & Pivot)</option>
+                <option value="daki">DAKI (Drop, Add, Keep, Improve)</option>
                 <option value="fourLs">The 4 Ls (Liked, Learned, Lacked, Longed)</option>
                 <option value="leanCoffee">Lean Coffee / Kanban</option>
             </select>
@@ -145,6 +152,22 @@
             </button>
         </div>
     </header>
+
+    <!-- Mobile Template Quick-Bar (< md) -->
+    <div class="md:hidden bg-white border-b border-slate-200 px-4 py-2 flex items-center justify-between text-xs shadow-xs z-20">
+        <span class="font-mono text-slate-500 font-semibold text-[11px]">Framework:</span>
+        <select onchange="loadTemplate(this.value); document.getElementById('templateSelector').value = this.value;" class="bg-slate-50 font-semibold text-slate-800 px-2.5 py-1 rounded-md border border-slate-200 text-xs">
+            <option value="wentWell">Went Well / Didn't / Actions</option>
+            <option value="madSadGlad">Mad / Sad / Glad</option>
+            <option value="startStopContinue">Start / Stop / Continue</option>
+            <option value="sailboat">Sailboat Retro (Wind & Anchors)</option>
+            <option value="tryOut">Try Out / Experiments</option>
+            <option value="daki">DAKI (Drop, Add, Keep, Improve)</option>
+            <option value="fourLs">The 4 Ls</option>
+            <option value="leanCoffee">Lean Coffee / Kanban</option>
+        </select>
+    </div>
+
 
     <!-- Sub-header Toolbar (Palette & Filters) -->
     <div class="bg-white border-b border-slate-200 px-4 sm:px-6 py-2.5 flex items-center justify-between text-xs text-slate-600 z-20 shadow-sm">
@@ -303,6 +326,36 @@
                     { colId: "col2", text: "Learned how to tune Postgres database indexes for high concurrency.", color: "blue", votes: 4, author: "DBA" },
                     { colId: "col3", text: "Lacked clarity on payment gateway error codes.", color: "yellow", votes: 2, author: "Frontend" },
                     { colId: "col4", text: "Longed for earlier UX wireframes before sprint kickoff.", color: "purple", votes: 5, author: "Team" }
+                ]
+            },
+            tryOut: {
+                title: "Try Out / Experiment & Pivot Retrospective",
+                columns: [
+                    { id: "col1", title: "💡 Ideas to Try (Hypotheses)", color: "sky", icon: "lightbulb" },
+                    { id: "col2", title: "🧪 Currently In Trial", color: "amber", icon: "flask-conical" },
+                    { id: "col3", title: "🏆 Keep & Scale (Validated Wins)", color: "emerald", icon: "check-circle" },
+                    { id: "col4", title: "🛑 Drop & Pivot (Learnings)", color: "rose", icon: "x-circle" }
+                ],
+                sampleNotes: [
+                    { colId: "col1", text: "Try: 15-minute pairing slots on complex PR reviews to speed merge times.", color: "yellow", votes: 4, author: "Dev Squad" },
+                    { colId: "col2", text: "Testing: Async standups on Wednesdays to maximize developer focus blocks.", color: "blue", votes: 5, author: "Balaji" },
+                    { colId: "col3", text: "Win: INVEST user story checklist cut sprint churn by 35%!", color: "green", votes: 6, author: "PO" },
+                    { colId: "col4", text: "Pivot: Static story points estimation took 2 hours; switching to T-shirt sizes.", color: "pink", votes: 3, author: "Team" }
+                ]
+            },
+            daki: {
+                title: "DAKI Framework (Drop, Add, Keep, Improve)",
+                columns: [
+                    { id: "col1", title: "🗑️ Drop (Stop Doing)", color: "rose", icon: "trash-2" },
+                    { id: "col2", title: "➕ Add (New Practices)", color: "emerald", icon: "plus-circle" },
+                    { id: "col3", title: "🔒 Keep (Current Strengths)", color: "sky", icon: "shield-check" },
+                    { id: "col4", title: "📈 Improve (Optimize Further)", color: "amber", icon: "trending-up" }
+                ],
+                sampleNotes: [
+                    { colId: "col1", text: "Drop: Multitasking across 3 epics simultaneously (Little's Law violation).", color: "pink", votes: 7, author: "Tech Lead" },
+                    { colId: "col2", text: "Add: Weekly 30-min backlog refinement with QA lead present.", color: "green", votes: 4, author: "QA Lead" },
+                    { colId: "col3", text: "Keep: 10-day sprint cadence with fixed zero-spillover demos.", color: "blue", votes: 5, author: "Balaji" },
+                    { colId: "col4", text: "Improve: Pre-merge CI test suite execution time (currently 18 mins).", color: "orange", votes: 3, author: "DevOps" }
                 ]
             },
             leanCoffee: {

@@ -1,5 +1,124 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>Balaji Palani — Scrum Master &amp; Engineering Delivery Operating System</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* ========================================================
+   DESIGN SYSTEM ENGINE: IMPECCABLE vs. AMICRO
+   ======================================================== */
+
+.interactive-card {
+  position: relative;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mode-impeccable .interactive-card:hover {
+  border-color: #3b6750;
+  background-color: #FFFFFF;
+}
+.mode-impeccable .amicro-tilt {
+  transform: none !important;
+  box-shadow: 0 1px 2px rgba(23, 28, 35, 0.05) !important;
+}
+.mode-impeccable .amicro-spotlight::before {
+  display: none !important;
+}
+.mode-impeccable .amicro-border-beam::after {
+  display: none !important;
+}
+
+.mode-amicro {
+  --amicro-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mode-amicro .amicro-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+.mode-amicro .amicro-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(350px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(59, 103, 80, 0.09), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: 2;
+}
+.mode-amicro .amicro-spotlight:hover::before {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .mode-amicro .amicro-tilt {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.16s ease-out, box-shadow 0.22s ease;
+  }
+  .mode-amicro .amicro-tilt:hover {
+    box-shadow: 0 16px 36px -12px rgba(23, 28, 35, 0.1), 0 4px 14px -4px rgba(59, 103, 80, 0.08);
+  }
+}
+
+.mode-amicro .amicro-magnetic {
+  will-change: transform;
+  transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.amicro-ripple-host {
+  position: relative;
+  overflow: hidden;
+}
+.amicro-ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(0);
+  animation: amicroRipplePortal 0.55s ease-out forwards;
+  pointer-events: none;
+  z-index: 5;
+}
+@keyframes amicroRipplePortal {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.mode-amicro button:active,
+.mode-amicro .interactive-card:active {
+  transform: scale(0.985);
+}
+
+.mode-amicro .amicro-border-beam {
+  position: relative;
+}
+.mode-amicro .amicro-border-beam::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, #3b6750 35%, #94452c 65%, transparent 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: amicroBeamSpinPortal 4.5s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+@keyframes amicroBeamSpinPortal {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(45deg); }
+  100% { filter: hue-rotate(0deg); }
+}
+
+.switcher-btn-active {
+  background-color: #3b6750 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 3px rgba(59, 103, 80, 0.3) !important;
+}
+
+</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
     darkMode: "class",
     theme: {
       extend: {
@@ -230,7 +349,35 @@
       },
     },
   };</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="inline-flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant hover:text-secondary py-space-xs px-space-sm rounded-lg bg-surface-container-low hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors" href="https://layyzee.github.io/"><span class="material-symbols-outlined text-base">arrow_back</span><span class="hidden sm:inline">Main Portfolio</span></a><div class="h-6 w-px bg-surface-variant hidden sm:block"></div><div class="flex items-center gap-space-sm"><div class="relative"><img alt="Profile" class="w-9 h-9 rounded-full object-cover ring-1 ring-surface-variant" src="assets/img/my-pic.jpg"></div><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface leading-none">Balaji Palani</span><span class="hidden xl:inline-block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant px-space-xs py-0.5 rounded bg-surface-container">CSM® • SAFe® 6 SSM</span></div><div class="flex items-center gap-1.5 mt-0.5"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span><span class="hidden sm:inline font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">0 Days Notice • Immediate</span></div></div></div></div><nav class="hidden 2xl:flex items-center gap-space-xs bg-surface-container-low px-space-xs py-1 rounded-xl" data-active-classes="bg-secondary text-on-secondary rounded-lg font-semibold shadow-sm"><a aria-current="page" class="px-space-sm py-1.5 transition-colors bg-secondary text-on-secondary rounded-lg font-semibold shadow-sm" data-path="live-systems" href="#interactive-systems">Live Systems</a><a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center gap-1" href="https://layyzee.github.io/balaji-agile-playbook/" target="_blank"><span class="material-symbols-outlined text-[15px] text-secondary">casino</span><span>Agile Playbook</span></a>
-<a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="applications-radar" href="#pipeline-radar">Applications Radar (55+)</a><a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="global-blueprint" href="#global-blueprint">Global Blueprint</a><a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="tax-shield" href="#tax-architecture">Tax Shield (44ADA)</a><a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="vc-radar" href="#vc-portals">VC Radar</a><a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="pitch-templates" href="#pitch-templates">Pitch Templates</a></nav><div class="flex items-center gap-space-xs shrink-0"><a class="hidden lg:inline-flex items-center gap-1.5 font-label-md text-label-md px-space-sm py-2 rounded-lg text-secondary bg-secondary-fixed hover:bg-secondary hover:text-on-secondary transition-colors" data-path="applications-radar" href="tracker.html"><span class="material-symbols-outlined text-base">dataset</span><span class="font-semibold">AppTracker Pro</span><span class="font-label-sm text-label-sm opacity-80">(55 Roles)</span></a>
+<a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="applications-radar" href="#pipeline-radar">Applications Radar (55+)</a><a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="global-blueprint" href="#global-blueprint">Global Blueprint</a><a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="tax-shield" href="#tax-architecture">Tax Shield (44ADA)</a><a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="vc-radar" href="#vc-portals">VC Radar</a><a class="font-label-md text-label-md px-space-sm py-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="pitch-templates" href="#pitch-templates">Pitch Templates</a></nav><div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      
+      <!-- Desktop Design Switcher (Visible on xl+) -->
+      <div class="hidden xl:flex items-center p-0.5 rounded-lg bg-surface-container-low border border-surface-variant shadow-xs text-xs font-mono">
+        <button id="btn-mode-impeccable" onclick="setDesignMode('impeccable')" class="switcher-btn-active px-2 py-1 rounded-md transition-all flex items-center gap-1 font-medium" title="Impeccable Style: Calm Editorial">
+          <span class="material-symbols-outlined text-[14px]">menu_book</span>
+          <span class="text-[11px]">Calm</span>
+        </button>
+        <button id="btn-mode-amicro" onclick="setDesignMode('amicro')" class="text-on-surface-variant hover:text-on-surface px-2 py-1 rounded-md transition-all flex items-center gap-1 font-medium" title="Amicro Style: Micro-Interactions">
+          <span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+          <span class="text-[11px]">Motion</span>
+        </button>
+        <button onclick="openDesignCompareModal()" class="px-1.5 py-1 rounded-md text-on-surface-variant hover:text-secondary transition-all flex items-center" title="Compare Design Philosophies">
+          <span class="material-symbols-outlined text-[14px]">compare_arrows</span>
+        </button>
+      </div>
+
+      <!-- Quick Toggle for Laptops & Mobile (< xl) -->
+      <button id="btn-mode-quick-toggle" onclick="toggleDesignMode()" class="xl:hidden h-8 px-2 sm:px-2.5 rounded-md bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-variant shadow-xs flex items-center gap-1 font-mono text-xs transition-colors shrink-0" title="Toggle Design Mode">
+        <span id="quick-toggle-icon" class="material-symbols-outlined text-[15px] text-secondary">menu_book</span>
+        <span id="quick-toggle-label" class="text-[10px] font-semibold hidden sm:inline">Calm</span>
+      </button>
+
+      <!-- Retro Studio Direct Launch -->
+      <a href="retro.html" class="hidden sm:inline-flex items-center gap-1.5 h-8 px-2.5 rounded-md bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-variant font-label-md text-xs font-medium transition-colors shadow-xs shrink-0" title="Open AgileBoard Retro Studio">
+        <span class="material-symbols-outlined text-[14px] text-secondary">draw</span>
+        <span class="hidden md:inline">Retro Studio</span>
+        <span class="md:hidden">Retro</span>
+      </a><a class="hidden lg:inline-flex items-center gap-1.5 font-label-md text-label-md px-space-sm py-2 rounded-lg text-secondary bg-secondary-fixed hover:bg-secondary hover:text-on-secondary transition-colors" data-path="applications-radar" href="tracker.html"><span class="material-symbols-outlined text-base">dataset</span><span class="font-semibold">AppTracker Pro</span><span class="font-label-sm text-label-sm opacity-80">(55 Roles)</span></a>
 <a class="hidden xl:inline-flex items-center gap-1.5 font-label-md text-label-md px-space-sm py-2 rounded-lg text-primary bg-primary-fixed hover:bg-primary hover:text-on-primary transition-colors" href="https://layyzee.github.io/balaji-agile-playbook/" target="_blank"><span class="material-symbols-outlined text-base">menu_book</span><span class="font-semibold">Agile Playbook</span></a><a class="hidden sm:inline-flex items-center gap-1.5 font-label-md text-label-md px-space-sm py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="resume" href="./docs/resume/Balaji_Palani_Senior_Scrum_Master.pdf" download="Balaji_Palani_Senior_Scrum_Master.pdf"><span class="material-symbols-outlined text-base">download</span><span>Resume PDF</span></a><a class="inline-flex items-center gap-1.5 font-label-md text-label-md px-space-md py-2 rounded-lg bg-secondary text-on-secondary hover:bg-primary transition-colors shadow-sm" data-path="contact" href="#contact"><span class="material-symbols-outlined text-base">mail</span><span class="hidden sm:inline">Get in Touch</span><span class="sm:hidden">Contact</span></a>
 <button onclick="toggleMobileDrawer()" class="2xl:hidden p-2 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center" aria-label="Toggle Navigation">
   <span class="material-symbols-outlined text-[22px]">menu</span>
@@ -1133,6 +1280,169 @@
     }
   });
 
+
+// ==========================================
+// DESIGN SYSTEM ENGINE (IMPECCABLE vs. AMICRO)
+// ==========================================
+let currentDesignMode = localStorage.getItem('agile_design_mode') || 'impeccable';
+
+function toggleDesignMode() {
+  const nextMode = currentDesignMode === 'impeccable' ? 'amicro' : 'impeccable';
+  setDesignMode(nextMode);
+}
+
+function setDesignMode(mode, showNotification = true) {
+  currentDesignMode = mode;
+  localStorage.setItem('agile_design_mode', mode);
+
+  const body = document.body;
+  const btnImpeccable = document.getElementById('btn-mode-impeccable');
+  const btnAmicro = document.getElementById('btn-mode-amicro');
+  const quickIcon = document.getElementById('quick-toggle-icon');
+  const quickLabel = document.getElementById('quick-toggle-label');
+  const quickBtn = document.getElementById('btn-mode-quick-toggle');
+  const drawerImp = document.getElementById('drawer-btn-impeccable');
+  const drawerAmi = document.getElementById('drawer-btn-amicro');
+
+  if (mode === 'amicro') {
+    body.classList.remove('mode-impeccable');
+    body.classList.add('mode-amicro');
+
+    if (btnAmicro) {
+      btnAmicro.className = 'switcher-btn-active px-2 py-1 rounded-md transition-all flex items-center gap-1 font-medium';
+    }
+    if (btnImpeccable) {
+      btnImpeccable.className = 'text-on-surface-variant hover:text-on-surface px-2 py-1 rounded-md transition-all flex items-center gap-1 font-medium';
+    }
+    if (quickIcon) quickIcon.textContent = 'auto_awesome';
+    if (quickLabel) quickLabel.textContent = 'Motion';
+    if (quickBtn) quickBtn.className = 'xl:hidden h-8 px-2 sm:px-2.5 rounded-md bg-secondary text-on-secondary border border-secondary shadow-xs flex items-center gap-1 font-mono text-xs transition-colors shrink-0';
+    if (drawerAmi) drawerAmi.className = 'py-2 px-2.5 rounded-lg bg-secondary text-on-secondary font-bold flex items-center justify-center gap-1.5 transition-all shadow-xs';
+    if (drawerImp) drawerImp.className = 'py-2 px-2.5 rounded-lg bg-surface-container-low border border-surface-variant text-on-surface-variant flex items-center justify-center gap-1.5 transition-all';
+
+    initAmicroListeners();
+  } else {
+    body.classList.remove('mode-amicro');
+    body.classList.add('mode-impeccable');
+
+    if (btnImpeccable) {
+      btnImpeccable.className = 'switcher-btn-active px-2 py-1 rounded-md transition-all flex items-center gap-1 font-medium';
+    }
+    if (btnAmicro) {
+      btnAmicro.className = 'text-on-surface-variant hover:text-on-surface px-2 py-1 rounded-md transition-all flex items-center gap-1 font-medium';
+    }
+    if (quickIcon) quickIcon.textContent = 'menu_book';
+    if (quickLabel) quickLabel.textContent = 'Calm';
+    if (quickBtn) quickBtn.className = 'xl:hidden h-8 px-2 sm:px-2.5 rounded-md bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-variant shadow-xs flex items-center gap-1 font-mono text-xs transition-colors shrink-0';
+    if (drawerImp) drawerImp.className = 'py-2 px-2.5 rounded-lg bg-secondary text-on-secondary font-bold flex items-center justify-center gap-1.5 transition-all shadow-xs';
+    if (drawerAmi) drawerAmi.className = 'py-2 px-2.5 rounded-lg bg-surface-container-low border border-surface-variant text-on-surface-variant flex items-center justify-center gap-1.5 transition-all';
+
+    resetAmicroTransforms();
+  }
+}
+
+function openDesignCompareModal() {
+  const modal = document.getElementById('design-compare-modal');
+  if (modal) modal.classList.remove('hidden');
+}
+
+function closeDesignCompareModal() {
+  const modal = document.getElementById('design-compare-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeDesignCompareModal();
+  }
+});
+
+let amicroInitialized = false;
+function initAmicroListeners() {
+  if (amicroInitialized) return;
+  amicroInitialized = true;
+
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+  document.addEventListener('mousemove', (e) => {
+    if (currentDesignMode !== 'amicro' || isTouch) return;
+
+    const spotlights = document.querySelectorAll('.mode-amicro .amicro-spotlight');
+    spotlights.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (
+        e.clientX >= rect.left - 50 &&
+        e.clientX <= rect.right + 50 &&
+        e.clientY >= rect.top - 50 &&
+        e.clientY <= rect.bottom + 50
+      ) {
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        el.style.setProperty('--mouse-x', `${x}px`);
+        el.style.setProperty('--mouse-y', `${y}px`);
+      }
+    });
+
+    const tilts = document.querySelectorAll('.mode-amicro .amicro-tilt');
+    tilts.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+      ) {
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+        card.style.transform = `perspective(900px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`;
+      } else if (card.style.transform && card.style.transform !== 'none') {
+        card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      }
+    });
+  });
+
+  document.querySelectorAll('.amicro-tilt').forEach(card => {
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (currentDesignMode !== 'amicro') return;
+    const host = e.target.closest('.amicro-ripple-host');
+    if (!host) return;
+
+    const rect = host.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    const size = Math.max(rect.width, rect.height) * 1.5;
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+
+    ripple.className = 'amicro-ripple-wave';
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    host.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+}
+
+function resetAmicroTransforms() {
+  document.querySelectorAll('.amicro-tilt').forEach(card => {
+    card.style.transform = 'none';
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  setDesignMode(currentDesignMode, false);
+});
+
 </script></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_6px_rgba(0,0,0,0.02)] mt-margin"><div class="w-full px-margin-mobile lg:px-margin py-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter"><div class="lg:col-span-4 flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-10 h-10 rounded-full object-cover ring-1 ring-surface-variant" src="assets/img/my-pic.jpg"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface">Balaji Palani</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Scrum Master &amp; Technical Delivery Lead</span></div></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm mt-space-xs">Calm execution architecture, lean continuous delivery, and transparent agile engineering management for global scale-ups and enterprises.</p><div class="flex items-center gap-2 mt-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">System Status: Optimal Velocity • Ready for Immediate Hire</span></div></div><div class="lg:col-span-3 flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-semibold">Credentials &amp; Pedigree</span><ul class="mt-space-xs space-y-1 font-body-sm text-body-sm text-on-surface-variant"><li>Certified ScrumMaster (CSM®) — Scrum Alliance</li><li>SAFe® 6 Practice Consultant / SSM — Scaled Agile</li><li>Professional Scrum Master II (PSM II)</li><li>B.E. Computer Science &amp; Engineering</li><li>Agile Metrics &amp; Telemetry Specialization</li></ul></div><div class="lg:col-span-2 flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-semibold">Ecosystem Portals</span><nav class="mt-space-xs flex flex-col space-y-1.5"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors" href="https://layyzee.github.io/">Flagship Portfolio</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors" data-path="balaboard" href="#">BalaBoard Retro Studio</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors" data-path="applications-radar" href="#pipeline-radar">AppTracker Pro CRM</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors" data-path="tax-shield" href="#tax-architecture">Section 44ADA Calculator</a></nav></div><div class="lg:col-span-3 flex flex-col gap-space-xs"><span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface font-semibold">Direct Channels</span><div class="mt-space-xs flex flex-col space-y-2"><a class="inline-flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="mailto:balajinia@gmail.com"><span class="material-symbols-outlined text-base text-secondary">alternate_email</span><span>balajinia@gmail.com</span></a><a class="inline-flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface" href="tel:+917540015522"><span class="material-symbols-outlined text-base text-secondary">call</span><span>+91-7540015522 • Direct Availability Line</span></a><div class="flex items-center gap-space-sm pt-space-xs"><a class="inline-flex items-center gap-1 font-label-sm text-label-sm px-space-sm py-1 rounded bg-surface hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" href="https://linkedin.com/in/balajipalani92" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-sm">open_in_new</span>LinkedIn</a><a class="inline-flex items-center gap-1 font-label-sm text-label-sm px-space-sm py-1 rounded bg-surface hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" href="https://github.com/layyzee" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-sm">code</span>GitHub</a></div></div></div></div><div class="mt-space-xl pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-label-sm text-label-sm"><p>© 2025 Balaji Palani. All architectural frameworks and hiring telemetry reserved.</p><p class="font-label-sm text-label-sm tracking-wide">Constructed in Porcelain &amp; Pine • High-Velocity Engineering</p></div></div></footer>
 
 
@@ -1152,6 +1462,33 @@
         <span class="material-symbols-outlined text-[20px]">close</span>
       </button>
     </div>
+    <!-- Mobile Drawer Design Philosophy Card -->
+    <div class="p-3 rounded-xl bg-surface-container-low border border-surface-variant flex flex-col gap-2 shadow-xs">
+      <div class="flex items-center justify-between">
+        <span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider font-semibold">Design Philosophy</span>
+        <span class="text-[10px] font-mono text-secondary font-medium">Live Switcher</span>
+      </div>
+      <div class="grid grid-cols-2 gap-1.5 font-mono text-xs">
+        <button id="drawer-btn-impeccable" onclick="setDesignMode('impeccable')" class="py-2 px-2.5 rounded-lg border border-surface-variant flex items-center justify-center gap-1.5 transition-all text-on-surface">
+          <span class="material-symbols-outlined text-[15px]">menu_book</span>
+          <span>Calm</span>
+        </button>
+        <button id="drawer-btn-amicro" onclick="setDesignMode('amicro')" class="py-2 px-2.5 rounded-lg border border-surface-variant flex items-center justify-center gap-1.5 transition-all text-on-surface">
+          <span class="material-symbols-outlined text-[15px]">auto_awesome</span>
+          <span>Motion</span>
+        </button>
+      </div>
+      <button onclick="openDesignCompareModal(); closeMobileDrawer();" class="text-[11px] font-mono text-secondary hover:underline flex items-center justify-center gap-1 pt-1 border-t border-surface-variant/50">
+        <span class="material-symbols-outlined text-[13px]">compare_arrows</span>
+        <span>Compare Impeccable vs Amicro ↗</span>
+      </button>
+    </div>
+
+    <a href="retro.html" class="px-3 py-2 rounded-lg bg-surface-container-low text-secondary font-semibold flex items-center justify-between">
+      <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">draw</span><span>BalaBoard Retro Studio</span></span>
+      <span class="material-symbols-outlined text-sm">open_in_new</span>
+    </a>
+    
     <nav class="flex flex-col gap-1.5 font-label-md text-xs">
       <a href="https://layyzee.github.io/" class="px-3 py-2 rounded-lg bg-surface-container-low text-secondary font-semibold flex items-center gap-2">
         <span class="material-symbols-outlined text-[16px]">arrow_back</span>
@@ -1179,5 +1516,147 @@
     </a>
   </div>
 </div>
+
+
+  <!-- ==========================================
+       DESIGN PHILOSOPHY COMPARISON MODAL
+       ========================================== -->
+  <div id="design-compare-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-surface border border-surface-variant rounded-2xl max-w-4xl w-full p-5 sm:p-8 shadow-2xl relative my-auto max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-surface-variant">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold uppercase text-secondary tracking-wider mb-1">
+            <span class="material-symbols-outlined text-[16px]">compare</span>
+            Design Philosophy Benchmark
+          </div>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-on-surface">Impeccable vs. Amicro in Practice</h2>
+          <p class="text-xs sm:text-sm text-on-surface-variant mt-1">
+            Comparing Paul Bakaus’s <strong>Calm Editorial</strong> architecture against Syed Subhan’s <strong>Tactile Micro-Interactions</strong> on Balaji's Career Portal CRM.
+          </p>
+        </div>
+        <button onclick="closeDesignCompareModal()" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low border border-surface-variant/60 transition-colors">
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-6">
+        
+        <div class="rounded-xl border-2 border-surface-variant p-5 bg-surface-container-lowest flex flex-col justify-between relative">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 rounded-md bg-surface border border-surface-variant text-xs font-mono font-bold text-on-surface flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px] text-secondary">menu_book</span>
+                Impeccable Style
+              </span>
+              <span class="text-[10px] font-mono text-on-surface-variant uppercase tracking-wider">Paul Bakaus (Calm)</span>
+            </div>
+            
+            <h3 class="font-serif text-lg font-bold text-on-surface">The Dignity of Stillness</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-1">
+              Zero decorative motion. High signal-to-noise ratio. Newsreader serif headlines, precise 1px hairline rules, and generous white space inspired by classic British & Swiss editorial broadsheets.
+            </p>
+
+            <div class="mt-4 p-4 rounded-lg bg-surface border border-surface-variant">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs font-mono text-secondary font-semibold">Active Opportunities Radar</span>
+                <span class="text-[10px] font-mono text-on-surface-variant">Static Metric</span>
+              </div>
+              <div class="font-serif text-2xl font-bold text-on-surface">58 High-Assurance Roles</div>
+              <p class="text-[11px] font-mono text-on-surface-variant mt-1">Zero jitter • Instant comprehension • Print-grade typography</p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-surface-variant flex items-center justify-between">
+            <span class="text-xs font-mono text-on-surface-variant">Active everywhere</span>
+            <button onclick="setDesignMode('impeccable'); closeDesignCompareModal();" class="px-3 py-1.5 rounded-md bg-surface hover:bg-surface-container-low border border-surface-variant text-xs font-mono font-semibold text-on-surface transition-colors">
+              Activate Calm
+            </button>
+          </div>
+        </div>
+
+        <div class="rounded-xl border-2 border-secondary/60 p-5 bg-surface flex flex-col justify-between relative shadow-md interactive-card amicro-spotlight amicro-tilt amicro-border-beam">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2.5 py-1 rounded-md bg-secondary text-on-secondary text-xs font-mono font-bold flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px]">auto_awesome</span>
+                Amicro Style
+              </span>
+              <span class="text-[10px] font-mono text-secondary uppercase tracking-wider font-semibold">Syed Subhan (Motion)</span>
+            </div>
+            
+            <h3 class="font-serif text-lg font-bold text-on-surface">Sensory Tactile Feedback</h3>
+            <p class="text-xs text-on-surface-variant leading-relaxed mt-1">
+              Delightful micro-animations that cure robotic UI. Soft cursor radial spotlights, 3D perspective tilt on hover, magnetic buttons, and liquid wave ripples on click.
+            </p>
+
+            <div class="mt-4 p-4 rounded-lg bg-surface-container-low border border-secondary/30 relative overflow-hidden interactive-card amicro-spotlight amicro-tilt">
+              <div class="flex items-center justify-between mb-1">
+                <span class="text-xs font-mono text-secondary font-bold">Active Opportunities Radar</span>
+                <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-secondary-fixed text-secondary font-bold animate-pulse">Live Tilt</span>
+              </div>
+              <div class="font-serif text-2xl font-bold text-secondary">58 High-Assurance Roles</div>
+              <p class="text-[11px] font-mono text-secondary font-medium mt-1">Hover with mouse to see cursor spotlight & 3D tilt</p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-surface-variant flex items-center justify-between">
+            <span class="text-xs font-mono text-secondary font-semibold">Tactile Delight</span>
+            <button onclick="setDesignMode('amicro'); closeDesignCompareModal();" class="px-3.5 py-1.5 rounded-md bg-secondary hover:bg-secondary/90 text-xs font-mono font-bold text-on-secondary transition-colors shadow-xs amicro-magnetic amicro-ripple-host">
+              Activate Amicro
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border border-surface-variant rounded-xl overflow-hidden mb-5">
+        <div class="bg-surface-container-low px-4 py-2.5 border-b border-surface-variant text-xs font-mono font-bold text-on-surface uppercase tracking-wider">
+          Architecture & Trade-off Matrix
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs font-mono text-left">
+            <thead class="bg-surface text-on-surface-variant border-b border-surface-variant">
+              <tr>
+                <th class="py-2.5 px-4">Evaluation Dimension</th>
+                <th class="py-2.5 px-4 text-secondary font-bold">Impeccable (Calm Editorial)</th>
+                <th class="py-2.5 px-4 text-primary font-bold">Amicro (Micro-Interactions)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-surface-variant/60">
+              <tr class="hover:bg-surface-container-low/50">
+                <td class="py-2.5 px-4 font-bold text-on-surface">Core Goal</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">Executive clarity, tranquil reading, zero distraction</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">Modern product delight, tactile engagement, playful feedback</td>
+              </tr>
+              <tr class="hover:bg-surface-container-low/50">
+                <td class="py-2.5 px-4 font-bold text-on-surface">Motion Budget</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">0ms (100% still, instant state transitions)</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">150ms - 400ms spring physics & continuous mouse tracking</td>
+              </tr>
+              <tr class="hover:bg-surface-container-low/50">
+                <td class="py-2.5 px-4 font-bold text-on-surface">Mobile Behavior</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">High contrast, clean typography, fast native scrolling</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">Touch ripples, tap haptic squash, scroll-triggered count-ups</td>
+              </tr>
+              <tr class="hover:bg-surface-container-low/50">
+                <td class="py-2.5 px-4 font-bold text-on-surface">Ideal For</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">Executive Cockpits, Playbooks, Portfolio Hubs, Board briefs</td>
+                <td class="py-2.5 px-4 font-sans text-on-surface-variant">SaaS Dashboards, AI Product Landing Pages, Interactive Tools</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-surface-variant text-xs font-mono text-on-surface-variant">
+        <div>💡 You can switch modes anytime using the header toggle.</div>
+        <button onclick="closeDesignCompareModal()" class="px-4 py-2 bg-surface-container-low hover:bg-surface-container border border-surface-variant rounded-lg text-on-surface font-medium transition-colors">
+          Dismiss & Explore
+        </button>
+      </div>
+
+    </div>
+  </div>
 
 </body></html>
