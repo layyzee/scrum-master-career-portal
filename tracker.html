@@ -1384,7 +1384,12 @@
             { id: "app-69", company: "Marlabs", role: "Technical Scrum Master – Azure Platform & AI", location: "Bengaluru / Karnataka • Hybrid", platform: "Indeed SmartApply", stage: "applied", date: "2026-11-14", contact: "Marlabs Talent Acquisition Team", notes: "Submitted via Indeed SmartApply with Balaji_Palani_Scrum_Master_Resume.pdf attached. Pre-filled location (Mumbai, India), notice period (0 Days / Immediate Joiner), and reCAPTCHA verified." },
             { id: "app-70", company: "Anaplan", role: "Scrum Master II (Enterprise Scenario Planning & AI)", location: "Gurugram • Hybrid", platform: "Indeed SmartApply", stage: "applied", date: "2026-11-14", contact: "Anaplan Talent Acquisition Team", notes: "Submitted via Indeed SmartApply with Balaji_Palani_Scrum_Master_Resume.pdf attached. Pre-filled LinkedIn profile, work authorization (Indian Citizen, No visa required), address (Mumbai, Maharashtra), and matched mid-level Scrum Master II profile." },
             { id: "app-71", company: "Blueray Automation Pvt Ltd", role: "Scrum Master / Project Manager (6-7y Total / 2-3y SM)", location: "Mumbai, Maharashtra • On-site/Hybrid", platform: "Indeed SmartApply", stage: "applied", date: "2026-11-14", contact: "Blueray Automation Talent Acquisition", notes: "Submitted via Indeed SmartApply with Balaji_Palani_Scrum_Master_Resume.pdf. Exact match for junior-to-mid SM requirement: 6-7 years total IT, 2-3 years dedicated Scrum Master experience in Mumbai." },
-            { id: "app-72", company: "Info Origin Inc.", role: "Project Manager Scrum Master", location: "Noida / Pune • Hybrid", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-14", contact: "Info Origin Inc. Talent Acquisition", notes: "Submitted via LinkedIn Easy Apply with Balaji_Palani_Scrum_Master_Resume.pdf. Confirmed 7 years total IT experience, CSM® certified, Jira/Monday.com expertise, cross-functional delivery leadership, and US/UK stakeholder overlap." }
+            { id: "app-72", company: "Info Origin Inc.", role: "Project Manager Scrum Master", location: "Noida / Pune • Hybrid", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-14", contact: "Info Origin Inc. Talent Acquisition", notes: "Submitted via LinkedIn Easy Apply with Balaji_Palani_Scrum_Master_Resume.pdf. Confirmed 7 years total IT experience, CSM® certified, Jira/Monday.com expertise, cross-functional delivery leadership, and US/UK stakeholder overlap." },
+            { id: "app-73", company: "Capgemini", role: "FBS Scrum Master II (Financial Services & Scaled Agile)", location: "Mumbai / Pune • Hybrid", platform: "Workable / Direct", stage: "applied", date: "2026-11-14", contact: "Capgemini Financial Services Talent Acquisition", notes: "Targeted opening for Financial Services business unit. Matched 4+ years pure Scrum Master experience, SAFe® 6 SSM scaled framework certification, Jira sprint metrics tracking, and 0-Day Notice immediate availability." },
+            { id: "app-74", company: "Human Made", role: "Agile Delivery Lead / Scrum Master (Enterprise Cloud Pods)", location: "Remote • India / APAC", platform: "Workable ATS", stage: "applied", date: "2026-11-14", contact: "Human Made People Operations", notes: "Submitted for APAC/India remote Agile Delivery Lead opening. Highlighted AWS enterprise delivery track record, cross-functional engineering pod coordination, asynchronous documentation craft, and immediate availability." },
+            { id: "app-75", company: "New Era Technology", role: "Scrum Master / Agile Team Coach", location: "Remote / Bengaluru • Hybrid", platform: "Greenhouse", stage: "applied", date: "2026-11-14", contact: "New Era Global Talent Team", notes: "Matched Agile Team Coach & Scrum Master role. Emphasized team autonomy, sprint retrospective facilitation (BalaBoard frameworks), DoR/DoD quality gates, and 0-Day Notice joiner profile." },
+            { id: "app-76", company: "Crisil (S&P Global)", role: "Scrum Master - Financial Intelligence Platforms", location: "Mumbai (Powai) • Hybrid", platform: "Naukri 1-Click", stage: "applied", date: "2026-11-14", contact: "Crisil Talent Acquisition Group", notes: "Submitted via Naukri priority application. Highlighted Mumbai location proximity, BFSI financial analytics project experience, CSM® / SAFe® 6 SSM, CCTC ₹20 LPA, and immediate joining status." },
+            { id: "app-77", company: "Hexaware Technologies", role: "Lead Scrum Master – Cloud Transformation", location: "Mumbai / Navi Mumbai • Hybrid", platform: "Naukri 1-Click", stage: "applied", date: "2026-11-14", contact: "Hexaware Agile COE Team", notes: "Matched Senior/Lead Scrum Master opening. Emphasized 7.5+ years overall IT with 4+ years dedicated Scrum Master / Agile Lead delivery, AWS cloud migration pod facilitation, and 0-Day Notice availability." }
         ];
 
   const STAGES_CONFIG = [
@@ -1406,7 +1411,7 @@
 
   function loadApplications() {
     try {
-      const stored = localStorage.getItem("apptracker_data_v6");
+      const stored = localStorage.getItem("apptracker_data_v7");
       if (stored) {
         const parsed = JSON.parse(stored);
         const existingIds = new Set(parsed.map(a => a.id));
@@ -1427,7 +1432,7 @@
 
   function saveApplications() {
     try {
-      localStorage.setItem("apptracker_data_v6", JSON.stringify(applications));
+      localStorage.setItem("apptracker_data_v7", JSON.stringify(applications));
     } catch (e) {
       console.warn("localStorage write failed", e);
     }
