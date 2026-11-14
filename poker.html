@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="shell-type" content="web_standard">
+  <title>SprintPoker • Precision Agile Estimation Studio | Balaji Palani</title>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            canvas: "#FAF8F5",
+            "canvas-warm": "#F3EFEA",
+            card: "#FFFFFF",
+            ink: "#1F242D",
+            "ink-muted": "#6E7687",
+            "sand-border": "#E3DCD4",
+            forest: "#244B39",
+            "forest-hover": "#1B382B",
+            terracotta: "#B85D3B",
+            sage: "#E8EFEA"
+          },
+          fontFamily: {
+            serif: ["Newsreader", "Georgia", "serif"],
+            sans: ["Hanken Grotesk", "-apple-system", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overflow-x: clip;
+      }
+    }
+
+    /* 3D Card Flip Dynamics */
+    .card-perspective {
+      perspective: 1000px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .card-revealed .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 0.75rem;
+    }
+    .card-front {
+      background: linear-gradient(135deg, #244B39 0%, #152E23 100%);
+      color: #FAF8F5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-back {
+      background: #FFFFFF;
+      color: #1F242D;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: 1.5px solid #E3DCD4;
+    }
+
+    /* Poker Deck Card Selection Glow */
+    .deck-card {
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .deck-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 20px -4px rgba(36, 75, 57, 0.15);
+    }
+    .deck-card.selected {
+      transform: translateY(-12px) scale(1.08);
+      border-color: #244B39;
+      background-color: #E8EFEA;
+      box-shadow: 0 14px 24px -4px rgba(36, 75, 57, 0.25);
+    }
+
+    /* Impeccable vs Amicro Styles */
+    body.mode-impeccable {
+      --active-card-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    body.mode-amicro .deck-card:active {
+      transform: scale(0.95);
+    }
+    body.mode-amicro .poker-chip {
+      animation: floatChip 3s ease-in-out infinite alternate;
+    }
+    @keyframes floatChip {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-4px); }
+    }
+  </style>
+</head>
+
+<body class="bg-canvas text-ink font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-forest/10 selection:text-forest">
+
+  <!-- ========================================================
+       TOP HEADER (Collision-Free Across All 5 Breakpoints)
+       ======================================================== -->
+  <header class="h-16 lg:h-20 bg-canvas/92 backdrop-blur-md border-b border-sand-border/80 sticky top-0 z-40 px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 transition-all">
+    
+    <!-- Left: Brand Block & Return Links -->
+    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+      <a href="https://layyzee.github.io/" class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-muted hover:text-forest py-1.5 px-2 sm:px-2.5 rounded-lg bg-card border border-sand-border hover:border-forest/40 transition-colors shadow-xs shrink-0" title="Return to Main Portfolio">
+        <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+        <span class="hidden sm:inline">Portfolio</span>
+      </a>
+      <a href="index.html" class="hidden md:inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-muted hover:text-forest py-1.5 px-2.5 rounded-lg bg-card border border-sand-border hover:border-forest/40 transition-colors shadow-xs shrink-0" title="Career Portal Hub">
+        <span class="material-symbols-outlined text-[15px]">hub</span>
+        <span>Career Hub</span>
+      </a>
+
+      <div class="h-4 w-px bg-sand-border hidden md:block"></div>
+
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-forest text-white flex items-center justify-center font-mono font-bold text-sm shadow-xs shrink-0">
+          <span class="material-symbols-outlined text-[18px]">style</span>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <h1 class="font-serif text-sm sm:text-base font-bold text-ink leading-none">SprintPoker</h1>
+            <span class="hidden sm:inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-forest/10 text-forest border border-forest/20 uppercase tracking-wider">v2.4 Engine</span>
+          </div>
+          <span class="hidden 2xl:block text-[10px] font-mono text-ink-muted mt-0.5">Zero-Latency Collaborative Planning • Designed by Balaji Palani</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Unified Actions & Controls -->
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      
+      <!-- Deck Type Switcher (Desktop / Tablet) -->
+      <div class="hidden sm:flex items-center bg-card p-0.5 rounded-lg border border-sand-border shadow-xs text-xs font-mono">
+        <select id="deckSelector" onchange="switchDeck(this.value)" class="bg-transparent text-xs font-mono font-medium text-ink px-1.5 py-1 rounded focus:outline-none cursor-pointer">
+          <option value="fibonacci">Fibonacci</option>
+          <option value="tshirt">T-Shirt</option>
+          <option value="risk">Risk</option>
+        </select>
+      </div>
+
+      <!-- Audio Synth Toggle -->
+      <button onclick="toggleAudio()" id="btnAudioToggle" class="h-8 w-8 rounded-md bg-card border border-sand-border hover:border-forest/40 text-forest flex items-center justify-center transition-colors shadow-xs shrink-0" title="Toggle Synthesizer Sound FX">
+        <span id="audioIcon" class="material-symbols-outlined text-[17px]">volume_up</span>
+      </button>
+
+      <!-- Design Mode Quick Toggle -->
+      <button id="btn-mode-quick-toggle" onclick="toggleDesignMode()" class="h-8 px-2 sm:px-2.5 rounded-md bg-canvas-warm hover:bg-sand-border/40 text-ink border border-sand-border shadow-xs flex items-center gap-1 font-mono text-xs transition-colors shrink-0" title="Toggle Design Style">
+        <span id="quick-toggle-icon" class="material-symbols-outlined text-[15px] text-forest">menu_book</span>
+        <span id="quick-toggle-label" class="text-[10px] font-semibold hidden sm:inline">Calm</span>
+      </button>
+
+      <!-- Retro Studio Shortcut (Wide screens only) -->
+      <a href="retro.html" class="hidden xl:inline-flex items-center gap-1 h-8 px-2.5 rounded-md bg-card hover:bg-canvas-warm text-ink border border-sand-border font-mono text-xs transition-colors shadow-xs shrink-0" title="Switch to BalaBoard Retro Studio">
+        <span class="material-symbols-outlined text-[15px] text-forest">draw</span>
+        <span>Retro Studio ↗</span>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- ========================================================
+       MAIN ESTIMATION STAGE
+       ======================================================== -->
+  <main class="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-col gap-6 flex-1">
+    
+    <!-- Active Story Context Card -->
+    <div class="p-4 sm:p-5 rounded-2xl bg-card border border-sand-border shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl bg-forest/10 text-forest flex items-center justify-center font-mono font-bold text-sm shrink-0">
+          <span class="material-symbols-outlined text-[20px]">task_alt</span>
+        </div>
+        <div class="flex flex-col gap-1">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-2 py-0.5 rounded font-mono text-xs font-bold bg-canvas-warm text-forest border border-forest/20">AUTH-402</span>
+            <span class="px-2 py-0.5 rounded font-mono text-xs bg-amber-50 text-amber-800 border border-amber-200">Priority: High</span>
+            <span class="text-xs font-mono text-ink-muted">Sprint 24 • Core Banking Pod</span>
+          </div>
+          <h2 class="font-serif text-base sm:text-xl font-bold text-ink">
+            Implement Passkey Biometric WebAuthn Authentication & Zero-Trust Fallback
+          </h2>
+          <p class="text-xs text-ink-muted line-clamp-1 sm:line-clamp-none">
+            Acceptance Criteria: FIDO2 certified WebAuthn registration, cryptographic challenge signature verification, and seamless SMS fallback.
+          </p>
+        </div>
+      </div>
+
+      <!-- Facilitation Action Buttons -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="btnSimulate" onclick="simulateVotes()" class="h-9 px-3 sm:px-4 rounded-xl bg-card hover:bg-canvas-warm text-ink border border-sand-border font-mono text-xs font-medium flex items-center gap-1.5 transition-all shadow-xs">
+          <span class="material-symbols-outlined text-[16px] text-forest">play_arrow</span>
+          <span>Simulate Squad</span>
+        </button>
+        <button id="btnReveal" onclick="revealCards()" class="h-9 px-3 sm:px-4 rounded-xl bg-forest hover:bg-forest-hover text-white font-mono text-xs font-medium flex items-center gap-1.5 transition-all shadow-xs">
+          <span class="material-symbols-outlined text-[16px]">visibility</span>
+          <span>Reveal Cards</span>
+        </button>
+        <button onclick="resetRound()" class="h-9 w-9 rounded-xl bg-card hover:bg-canvas-warm text-ink-muted hover:text-ink border border-sand-border flex items-center justify-center transition-colors shadow-xs" title="Reset Round">
+          <span class="material-symbols-outlined text-[16px]">refresh</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- The Virtual Poker Arena (6 Seats around Virtual Board) -->
+    <div class="p-4 sm:p-8 rounded-3xl bg-card/60 border border-sand-border/80 shadow-xs relative flex flex-col items-center justify-center min-h-[380px]">
+      
+      <!-- Central Consensus Telemetry Deck -->
+      <div id="tableCenter" class="w-64 sm:w-72 p-4 rounded-2xl bg-canvas border border-sand-border/80 text-center flex flex-col items-center justify-center shadow-xs transition-all z-10">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-ink-muted font-semibold">Table Status</span>
+        <div id="centerStatusTitle" class="font-serif text-lg sm:text-xl font-bold text-ink mt-0.5">
+          Awaiting Votes
+        </div>
+        <p id="centerStatusSubtitle" class="text-xs font-mono text-ink-muted mt-1">
+          Pick your card below or click "Simulate Squad"
+        </p>
+
+        <!-- Hidden Metrics Board (Appears after Reveal) -->
+        <div id="metricsPanel" class="hidden w-full flex flex-col gap-2 pt-3 mt-3 border-t border-sand-border">
+          <div class="grid grid-cols-2 gap-2 text-center">
+            <div class="p-2 rounded-lg bg-card border border-sand-border">
+              <span class="text-[9px] font-mono text-ink-muted uppercase">Consensus</span>
+              <div id="statConsensus" class="font-mono font-bold text-forest text-base">83%</div>
+            </div>
+            <div class="p-2 rounded-lg bg-card border border-sand-border">
+              <span class="text-[9px] font-mono text-ink-muted uppercase">Final Estimate</span>
+              <div id="statAverage" class="font-mono font-bold text-ink text-base">5 pts</div>
+            </div>
+          </div>
+          <button onclick="exportCSV()" class="w-full py-1.5 px-2.5 rounded-lg bg-forest/10 hover:bg-forest/20 text-forest font-mono text-[11px] font-semibold flex items-center justify-center gap-1 transition-colors">
+            <span class="material-symbols-outlined text-[13px]">download</span>
+            <span>Export Estimate (CSV)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 6 Squad Member Seats Around the Table -->
+      <div class="w-full max-w-4xl grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
+        
+        <!-- Seat 1: Balaji Palani (Host / Candidate) -->
+        <div id="seat-balaji" class="squad-seat p-3 sm:p-4 rounded-xl bg-card border-2 border-forest/30 shadow-xs flex flex-col items-center relative transition-all">
+          <div class="w-14 h-20 sm:w-16 sm:h-24 card-perspective mb-2">
+            <div id="card-inner-balaji" class="card-inner">
+              <div class="card-front text-xs font-mono font-bold">
+                <span class="material-symbols-outlined text-sm">lock</span>
+              </div>
+              <div class="card-back font-mono font-extrabold text-lg sm:text-2xl text-forest">
+                <span id="vote-val-balaji">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <img src="assets/img/my-pic.jpg" class="w-5 h-5 rounded-full object-cover ring-1 ring-forest" alt="Balaji" onerror="this.src='https://ui-avatars.com/api/?name=Balaji+Palani&background=244B39&color=fff'">
+            <span class="text-xs font-semibold text-ink">Balaji P.</span>
+          </div>
+          <span class="text-[9px] font-mono text-forest font-semibold">Scrum Master (You)</span>
+        </div>
+
+        <!-- Seat 2: Maya Lin (Tech Lead) -->
+        <div id="seat-maya" class="squad-seat p-3 sm:p-4 rounded-xl bg-card border border-sand-border shadow-xs flex flex-col items-center relative transition-all">
+          <div class="w-14 h-20 sm:w-16 sm:h-24 card-perspective mb-2">
+            <div id="card-inner-maya" class="card-inner">
+              <div class="card-front text-xs font-mono font-bold">
+                <span class="material-symbols-outlined text-sm">lock</span>
+              </div>
+              <div class="card-back font-mono font-extrabold text-lg sm:text-2xl text-ink">
+                <span id="vote-val-maya">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-mono text-[9px] font-bold">ML</div>
+            <span class="text-xs font-semibold text-ink">Maya Lin</span>
+          </div>
+          <span class="text-[9px] font-mono text-ink-muted">Tech Lead</span>
+        </div>
+
+        <!-- Seat 3: Alex Rivera (Senior Backend) -->
+        <div id="seat-alex" class="squad-seat p-3 sm:p-4 rounded-xl bg-card border border-sand-border shadow-xs flex flex-col items-center relative transition-all">
+          <div class="w-14 h-20 sm:w-16 sm:h-24 card-perspective mb-2">
+            <div id="card-inner-alex" class="card-inner">
+              <div class="card-front text-xs font-mono font-bold">
+                <span class="material-symbols-outlined text-sm">lock</span>
+              </div>
+              <div class="card-back font-mono font-extrabold text-lg sm:text-2xl text-ink">
+                <span id="vote-val-alex">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="w-5 h-5 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-mono text-[9px] font-bold">AR</div>
+            <span class="text-xs font-semibold text-ink">Alex Rivera</span>
+          </div>
+          <span class="text-[9px] font-mono text-ink-muted">Senior Backend</span>
+        </div>
+
+        <!-- Seat 4: Priya Sharma (Frontend Architect) -->
+        <div id="seat-priya" class="squad-seat p-3 sm:p-4 rounded-xl bg-card border border-sand-border shadow-xs flex flex-col items-center relative transition-all">
+          <div class="w-14 h-20 sm:w-16 sm:h-24 card-perspective mb-2">
+            <div id="card-inner-priya" class="card-inner">
+              <div class="card-front text-xs font-mono font-bold">
+                <span class="material-symbols-outlined text-sm">lock</span>
+              </div>
+              <div class="card-back font-mono font-extrabold text-lg sm:text-2xl text-ink">
+                <span id="vote-val-priya">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center font-mono text-[9px] font-bold">PS</div>
+            <span class="text-xs font-semibold text-ink">Priya Sharma</span>
+          </div>
+          <span class="text-[9px] font-mono text-ink-muted">Frontend Lead</span>
+        </div>
+
+        <!-- Seat 5: David Kim (QA Automation) -->
+        <div id="seat-david" class="squad-seat p-3 sm:p-4 rounded-xl bg-card border border-sand-border shadow-xs flex flex-col items-center relative transition-all">
+          <div class="w-14 h-20 sm:w-16 sm:h-24 card-perspective mb-2">
+            <div id="card-inner-david" class="card-inner">
+              <div class="card-front text-xs font-mono font-bold">
+                <span class="material-symbols-outlined text-sm">lock</span>
+              </div>
+              <div class="card-back font-mono font-extrabold text-lg sm:text-2xl text-ink">
+                <span id="vote-val-david">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-mono text-[9px] font-bold">DK</div>
+            <span class="text-xs font-semibold text-ink">David Kim</span>
+          </div>
+          <span class="text-[9px] font-mono text-ink-muted">QA Automation</span>
+        </div>
+
+        <!-- Seat 6: Jordan Cole (DevOps / Cloud) -->
+        <div id="seat-jordan" class="squad-seat p-3 sm:p-4 rounded-xl bg-card border border-sand-border shadow-xs flex flex-col items-center relative transition-all">
+          <div class="w-14 h-20 sm:w-16 sm:h-24 card-perspective mb-2">
+            <div id="card-inner-jordan" class="card-inner">
+              <div class="card-front text-xs font-mono font-bold">
+                <span class="material-symbols-outlined text-sm">lock</span>
+              </div>
+              <div class="card-back font-mono font-extrabold text-lg sm:text-2xl text-ink">
+                <span id="vote-val-jordan">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <div class="w-5 h-5 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center font-mono text-[9px] font-bold">JC</div>
+            <span class="text-xs font-semibold text-ink">Jordan Cole</span>
+          </div>
+          <span class="text-[9px] font-mono text-ink-muted">Cloud / DevOps</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Active Estimation Deck Shelf (Pick Your Card) -->
+    <div class="p-4 sm:p-6 rounded-2xl bg-card border border-sand-border shadow-xs flex flex-col gap-3">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px] text-forest">pan_tool</span>
+          <span class="font-serif text-sm sm:text-base font-bold text-ink">Select Your Estimation Card</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <!-- Mobile Deck Switcher (Visible on < sm) -->
+          <div class="sm:hidden flex items-center bg-canvas-warm px-2 py-1 rounded-lg border border-sand-border text-xs font-mono">
+            <select id="mobileDeckSelector" onchange="switchDeck(this.value)" class="bg-transparent text-xs font-mono font-medium text-ink focus:outline-none cursor-pointer">
+              <option value="fibonacci">Fibonacci</option>
+              <option value="tshirt">T-Shirt</option>
+              <option value="risk">Risk</option>
+            </select>
+          </div>
+          <span class="hidden sm:inline text-xs font-mono text-ink-muted">Click a card to submit your estimate</span>
+        </div>
+      </div>
+
+      <div id="deckContainer" class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 py-2 overflow-x-auto">
+        <!-- Rendered dynamically based on selected deck (Fibonacci, T-Shirt, Risk) -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer class="w-full bg-card border-t border-sand-border/80 py-4 px-4 sm:px-8 text-center text-xs font-mono text-ink-muted flex flex-col sm:flex-row items-center justify-between gap-2">
+    <span>SprintPoker™ Engine • Zero-Cold-Start Client Sizing</span>
+    <div class="flex items-center gap-4">
+      <a href="https://layyzee.github.io/" class="hover:text-forest transition-colors">Portfolio</a>
+      <span>·</span>
+      <a href="retro.html" class="hover:text-forest transition-colors">Retro Studio</a>
+      <span>·</span>
+      <a href="tracker.html" class="hover:text-forest transition-colors">AppTracker CRM</a>
+      <span>·</span>
+      <a href="https://github.com/layyzee" target="_blank" rel="noopener noreferrer" class="hover:text-forest transition-colors">GitHub ↗</a>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       SPRINT POKER CORE LOGIC & WEB AUDIO ENGINE
+       ======================================================== -->
+  <script>
+    const DECKS = {
+      fibonacci: ["0", "1", "2", "3", "5", "8", "13", "21", "?", "☕"],
+      tshirt: ["XS", "S", "M", "L", "XL", "XXL", "?"],
+      risk: ["1 (Low)", "2 (Mild)", "3 (Mod)", "4 (High)", "5 (Crit)"]
+    };
+
+    let currentDeckKey = "fibonacci";
+    let mySelectedVote = null;
+    let votesState = {
+      balaji: null,
+      maya: null,
+      alex: null,
+      priya: null,
+      david: null,
+      jordan: null
+    };
+    let isRevealed = false;
+    let audioEnabled = true;
+
+    // Web Audio Synthesizer (Zero External Audio Files Required)
+    let audioCtx = null;
+    function playChord(frequencies = [261.63, 329.63, 392.00]) {
+      if (!audioEnabled) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        frequencies.forEach((freq, index) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime + (index * 0.05));
+          gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.6);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.6);
+        });
+      } catch (err) {}
+    }
+
+    function toggleAudio() {
+      audioEnabled = !audioEnabled;
+      const icon = document.getElementById("audioIcon");
+      if (icon) {
+        icon.textContent = audioEnabled ? "volume_up" : "volume_off";
+        icon.className = audioEnabled ? "material-symbols-outlined text-[17px] text-forest" : "material-symbols-outlined text-[17px] text-ink-muted";
+      }
+    }
+
+    // Render Deck Shelf
+    function renderDeckShelf() {
+      const container = document.getElementById("deckContainer");
+      if (!container) return;
+      container.innerHTML = "";
+
+      const currentDeck = DECKS[currentDeckKey] || DECKS.fibonacci;
+      currentDeck.forEach(cardVal => {
+        const btn = document.createElement("button");
+        btn.className = `deck-card w-12 h-16 sm:w-16 sm:h-22 rounded-xl bg-card border-2 ${mySelectedVote === cardVal ? 'selected border-forest bg-forest/5' : 'border-sand-border'} font-mono font-bold text-sm sm:text-base text-ink flex items-center justify-center shadow-xs cursor-pointer`;
+        btn.textContent = cardVal;
+        btn.onclick = () => selectMyCard(cardVal);
+        container.appendChild(btn);
+      });
+    }
+
+    function switchDeck(deckKey) {
+      currentDeckKey = deckKey;
+      const d1 = document.getElementById("deckSelector");
+      const d2 = document.getElementById("mobileDeckSelector");
+      if (d1) d1.value = deckKey;
+      if (d2) d2.value = deckKey;
+      resetRound();
+      renderDeckShelf();
+    }
+
+    function selectMyCard(val) {
+      if (isRevealed) return;
+      mySelectedVote = val;
+      votesState.balaji = val;
+      playChord([440, 554.37]); // Feedback chime
+
+      // Visual mark on Balaji's seat
+      const cardBalaji = document.getElementById("card-inner-balaji");
+      if (cardBalaji) {
+        cardBalaji.parentElement.parentElement.classList.add("ring-2", "ring-forest");
+      }
+      const valEl = document.getElementById("vote-val-balaji");
+      if (valEl) valEl.textContent = val;
+
+      renderDeckShelf();
+    }
+
+    function simulateVotes() {
+      if (isRevealed) resetRound();
+
+      const squad = ["maya", "alex", "priya", "david", "jordan"];
+      const candidateVotes = currentDeckKey === "fibonacci" ? ["3", "5", "5", "8", "5"] :
+                             currentDeckKey === "tshirt" ? ["M", "M", "L", "M", "S"] :
+                             ["2 (Mild)", "3 (Mod)", "3 (Mod)", "4 (High)", "3 (Mod)"];
+
+      squad.forEach((member, i) => {
+        setTimeout(() => {
+          votesState[member] = candidateVotes[i];
+          const seat = document.getElementById(`seat-${member}`);
+          if (seat) {
+            seat.classList.add("ring-2", "ring-forest/40");
+            const valEl = document.getElementById(`vote-val-${member}`);
+            if (valEl) valEl.textContent = candidateVotes[i];
+          }
+          playChord([330 + (i * 20)]);
+        }, i * 180);
+      });
+
+      // Default candidate's vote if not chosen yet
+      if (!votesState.balaji) {
+        selectMyCard(currentDeckKey === "fibonacci" ? "5" : currentDeckKey === "tshirt" ? "M" : "3 (Mod)");
+      }
+    }
+
+    function revealCards() {
+      if (isRevealed) return;
+      isRevealed = true;
+
+      playChord([261.63, 329.63, 392.00, 523.25]); // Victory chord
+
+      const members = ["balaji", "maya", "alex", "priya", "david", "jordan"];
+      members.forEach((member, i) => {
+        setTimeout(() => {
+          const seat = document.getElementById(`seat-${member}`);
+          if (seat) {
+            seat.querySelector(".card-inner").parentElement.classList.add("card-revealed");
+          }
+        }, i * 90);
+      });
+
+      // Calculate Telemetry
+      setTimeout(computeConsensus, 600);
+    }
+
+    function computeConsensus() {
+      const allVotes = Object.values(votesState).filter(v => v !== null && v !== "?" && v !== "☕");
+      if (allVotes.length === 0) return;
+
+      const title = document.getElementById("centerStatusTitle");
+      const sub = document.getElementById("centerStatusSubtitle");
+      const panel = document.getElementById("metricsPanel");
+      const statConsensus = document.getElementById("statConsensus");
+      const statAvg = document.getElementById("statAverage");
+
+      // Mode / Most Common Vote
+      const frequency = {};
+      let maxFreq = 0;
+      let modeVote = allVotes[0];
+      allVotes.forEach(v => {
+        frequency[v] = (frequency[v] || 0) + 1;
+        if (frequency[v] > maxFreq) {
+          maxFreq = frequency[v];
+          modeVote = v;
+        }
+      });
+
+      const consensusPct = Math.round((maxFreq / allVotes.length) * 100);
+
+      if (title) title.textContent = consensusPct >= 70 ? "🎉 High Consensus" : "⚖️ Discussion Needed";
+      if (sub) sub.textContent = `Squad converged strongly around "${modeVote}"`;
+      if (statConsensus) statConsensus.textContent = `${consensusPct}%`;
+      if (statAvg) statAvg.textContent = `${modeVote} ${currentDeckKey === "fibonacci" ? "pts" : ""}`;
+      if (panel) panel.classList.remove("hidden");
+    }
+
+    function resetRound() {
+      isRevealed = false;
+      mySelectedVote = null;
+      votesState = { balaji: null, maya: null, alex: null, priya: null, david: null, jordan: null };
+
+      const members = ["balaji", "maya", "alex", "priya", "david", "jordan"];
+      members.forEach(m => {
+        const seat = document.getElementById(`seat-${m}`);
+        if (seat) {
+          seat.classList.remove("ring-2", "ring-forest", "ring-forest/40");
+          seat.querySelector(".card-inner").parentElement.classList.remove("card-revealed");
+          const valEl = document.getElementById(`vote-val-${m}`);
+          if (valEl) valEl.textContent = "-";
+        }
+      });
+
+      const title = document.getElementById("centerStatusTitle");
+      const sub = document.getElementById("centerStatusSubtitle");
+      const panel = document.getElementById("metricsPanel");
+
+      if (title) title.textContent = "Awaiting Votes";
+      if (sub) sub.textContent = "Pick your card below or click 'Simulate Squad'";
+      if (panel) panel.classList.add("hidden");
+
+      renderDeckShelf();
+    }
+
+    function exportCSV() {
+      let csv = "Story_ID,Story_Title,Squad_Member,Role,Estimate,Consensus_Rate,Date\n";
+      const members = [
+        { key: "balaji", name: "Balaji Palani", role: "Senior Scrum Master" },
+        { key: "maya", name: "Maya Lin", role: "Tech Lead" },
+        { key: "alex", name: "Alex Rivera", role: "Senior Backend" },
+        { key: "priya", name: "Priya Sharma", role: "Frontend Lead" },
+        { key: "david", name: "David Kim", role: "QA Automation" },
+        { key: "jordan", name: "Jordan Cole", role: "Cloud / DevOps" }
+      ];
+
+      members.forEach(m => {
+        csv += `AUTH-402,"Implement Passkey Biometric WebAuthn",${m.name},${m.role},${votesState[m.key] || "N/A"},83%,${new Date().toISOString().split('T')[0]}\n`;
+      });
+
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", `SprintPoker_AUTH-402_Estimate.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Design Mode (Impeccable vs Amicro)
+    let currentDesignMode = localStorage.getItem('agile_design_mode') || 'impeccable';
+    function toggleDesignMode() {
+      const next = currentDesignMode === 'impeccable' ? 'amicro' : 'impeccable';
+      setDesignMode(next);
+    }
+    function setDesignMode(mode) {
+      currentDesignMode = mode;
+      localStorage.setItem('agile_design_mode', mode);
+      document.body.className = document.body.className.replace(/mode-[a-z]+/g, '');
+      document.body.classList.add(`mode-${mode}`);
+
+      const quickIcon = document.getElementById('quick-toggle-icon');
+      const quickLabel = document.getElementById('quick-toggle-label');
+      if (quickIcon) quickIcon.textContent = mode === 'amicro' ? 'auto_awesome' : 'menu_book';
+      if (quickLabel) quickLabel.textContent = mode === 'amicro' ? 'Motion' : 'Calm';
+    }
+
+    // Init
+    document.addEventListener("DOMContentLoaded", () => {
+      setDesignMode(currentDesignMode);
+      renderDeckShelf();
+    });
+  </script>
+</body>
+</html>

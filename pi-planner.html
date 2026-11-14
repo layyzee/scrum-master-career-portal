@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="shell-type" content="web_standard">
+  <title>PI Planner • SAFe® 6.0 Program Board & Dependency Matrix | Balaji Palani</title>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            canvas: "#FAF8F5",
+            "canvas-warm": "#F3EFEA",
+            card: "#FFFFFF",
+            ink: "#1F242D",
+            "ink-muted": "#6E7687",
+            "sand-border": "#E3DCD4",
+            forest: "#244B39",
+            "forest-hover": "#1B382B",
+            terracotta: "#B85D3B",
+            sage: "#E8EFEA"
+          },
+          fontFamily: {
+            serif: ["Newsreader", "Georgia", "serif"],
+            sans: ["Hanken Grotesk", "-apple-system", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overflow-x: clip;
+      }
+    }
+
+    /* SVG Dependency Overlay Canvas */
+    #dependencyCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 20;
+    }
+    .dep-curve {
+      fill: none;
+      stroke-width: 2.5;
+      stroke-dasharray: 6 3;
+      transition: stroke 0.2s, stroke-width 0.2s;
+    }
+    .dep-curve.critical {
+      stroke: #DC2626;
+      stroke-width: 3;
+      stroke-dasharray: none;
+    }
+    .dep-curve.resolved {
+      stroke: #244B39;
+    }
+    .dep-curve.highlighted {
+      stroke-width: 4.5;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+    }
+
+    /* Program Board Feature Cards */
+    .pi-feature-card {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .pi-feature-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px -4px rgba(36, 75, 57, 0.12);
+      border-color: #244B39;
+    }
+    .pi-feature-card.active-focus {
+      border-color: #244B39;
+      box-shadow: 0 0 0 2px #244B39;
+    }
+  </style>
+</head>
+
+<body class="bg-canvas text-ink font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-forest/10 selection:text-forest">
+
+  <!-- ========================================================
+       TOP HEADER (Collision-Free Across All 5 Breakpoints)
+       ======================================================== -->
+  <header class="h-16 lg:h-20 bg-canvas/92 backdrop-blur-md border-b border-sand-border/80 sticky top-0 z-40 px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4 transition-all">
+    
+    <!-- Left: Brand Block & Return Links -->
+    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+      <a href="https://layyzee.github.io/" class="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-muted hover:text-forest py-1.5 px-2 sm:px-2.5 rounded-lg bg-card border border-sand-border hover:border-forest/40 transition-colors shadow-xs shrink-0" title="Return to Main Portfolio">
+        <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+        <span class="hidden sm:inline">Portfolio</span>
+      </a>
+      <a href="index.html" class="hidden lg:inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-muted hover:text-forest py-1.5 px-2.5 rounded-lg bg-card border border-sand-border hover:border-forest/40 transition-colors shadow-xs shrink-0" title="Career Portal Hub">
+        <span class="material-symbols-outlined text-[15px]">hub</span>
+        <span>Career Hub</span>
+      </a>
+
+      <div class="h-4 w-px bg-sand-border hidden sm:block"></div>
+
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-forest text-white flex items-center justify-center font-mono font-bold text-sm shadow-xs shrink-0">
+          <span class="material-symbols-outlined text-[18px]">account_tree</span>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <h1 class="font-serif text-sm sm:text-base font-bold text-ink leading-none">PI Planner</h1>
+            <span class="hidden sm:inline-block px-1.5 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-forest/10 text-forest border border-forest/20 uppercase tracking-wider">SAFe® 6.0</span>
+          </div>
+          <span class="hidden 2xl:block text-[10px] font-mono text-ink-muted mt-0.5">Program Board &amp; Cross-Squad Dependencies • Designed by Balaji Palani</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Unified Actions & Controls -->
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      
+      <!-- Toggle Dependency Strings -->
+      <button onclick="toggleDependencies()" id="btnToggleDeps" class="h-8 px-2 sm:px-2.5 rounded-md bg-card hover:bg-canvas-warm text-ink border border-sand-border font-mono text-xs flex items-center gap-1.5 transition-colors shadow-xs shrink-0" title="Toggle Cross-Squad Dependency Bézier Lines">
+        <span class="material-symbols-outlined text-[15px] text-terracotta">conversion_path</span>
+        <span class="hidden sm:inline">Dependencies</span>
+      </button>
+
+      <!-- Quick Mode Toggle -->
+      <button id="btn-mode-quick-toggle" onclick="toggleDesignMode()" class="h-8 px-2 sm:px-2.5 rounded-md bg-canvas-warm hover:bg-sand-border/40 text-ink border border-sand-border shadow-xs flex items-center gap-1 font-mono text-xs transition-colors shrink-0" title="Toggle Design Mode">
+        <span id="quick-toggle-icon" class="material-symbols-outlined text-[15px] text-forest">menu_book</span>
+        <span id="quick-toggle-label" class="text-[10px] font-semibold hidden sm:inline">Calm</span>
+      </button>
+
+      <!-- SprintPoker Shortcut -->
+      <a href="poker.html" class="hidden xl:inline-flex items-center gap-1 h-8 px-2.5 rounded-md bg-card hover:bg-canvas-warm text-ink border border-sand-border font-mono text-xs transition-colors shadow-xs shrink-0" title="Open SprintPoker Estimation">
+        <span class="material-symbols-outlined text-[15px] text-forest">style</span>
+        <span>Poker ↗</span>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- ========================================================
+       MAIN PROGRAM BOARD CANVAS & SWIMLANES
+       ======================================================== -->
+  <main class="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 flex flex-col gap-6 flex-1">
+    
+    <!-- Top Command & ART Telemetry Ribbon -->
+    <div class="p-4 sm:p-5 rounded-2xl bg-card border border-sand-border shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-forest/10 text-forest flex items-center justify-center font-mono font-bold text-sm shrink-0">
+          <span class="material-symbols-outlined text-[20px]">layers</span>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-2">
+            <h2 class="font-serif text-base sm:text-xl font-bold text-ink">SAFe® 6.0 Program Board Matrix</h2>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-canvas-warm border border-sand-border text-ink-muted">4 Squads • 14 Features</span>
+          </div>
+          <p class="text-xs text-ink-muted">
+            Interactive cross-squad dependency lines (Bézier curves), feature delivery milestones, and ROAM risk governance.
+          </p>
+        </div>
+      </div>
+
+      <!-- Fist-of-Five Confidence Voting Widget -->
+      <div class="flex items-center gap-3 bg-canvas-warm p-2.5 rounded-xl border border-sand-border shrink-0">
+        <div class="flex flex-col text-right">
+          <span class="text-[9px] font-mono uppercase tracking-wider text-ink-muted font-bold">ART Confidence</span>
+          <span id="artConfidenceDisplay" class="font-mono font-extrabold text-sm text-forest">4.4 / 5.0 (High)</span>
+        </div>
+        <div class="flex items-center gap-1 text-amber-500">
+          <button onclick="setConfidence(1)" class="hover:scale-125 transition-transform"><span class="material-symbols-outlined text-[18px]">star</span></button>
+          <button onclick="setConfidence(2)" class="hover:scale-125 transition-transform"><span class="material-symbols-outlined text-[18px]">star</span></button>
+          <button onclick="setConfidence(3)" class="hover:scale-125 transition-transform"><span class="material-symbols-outlined text-[18px]">star</span></button>
+          <button onclick="setConfidence(4)" class="hover:scale-125 transition-transform"><span class="material-symbols-outlined text-[18px]">star</span></button>
+          <button onclick="setConfidence(5)" class="hover:scale-125 transition-transform"><span class="material-symbols-outlined text-[18px]">star_half</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- The SAFe® Program Board (Columns = Sprints / Rows = Squads) -->
+    <div class="relative rounded-2xl bg-card border border-sand-border shadow-xs overflow-x-auto min-h-[520px]">
+      
+      <!-- SVG Overlay for Bézier Curves -->
+      <svg id="dependencyCanvas"></svg>
+
+      <div class="min-w-[880px] flex flex-col divide-y divide-sand-border">
+        
+        <!-- Header Row: Iterations 1 to 4 + IP Sprint -->
+        <div class="grid grid-cols-12 bg-canvas-warm/70 font-mono text-xs font-semibold text-ink divide-x divide-sand-border text-center">
+          <div class="col-span-3 py-3 px-3 text-left font-bold text-ink flex items-center justify-between">
+            <span>Engineering Squads</span>
+            <span class="text-[10px] text-ink-muted font-normal">Cap: 45 pts/sq</span>
+          </div>
+          <div class="col-span-2 py-3 px-2">
+            <div>Iteration 24.1</div>
+            <span class="text-[10px] font-normal text-ink-muted">Weeks 1–2</span>
+          </div>
+          <div class="col-span-2 py-3 px-2">
+            <div>Iteration 24.2</div>
+            <span class="text-[10px] font-normal text-ink-muted">Weeks 3–4</span>
+          </div>
+          <div class="col-span-2 py-3 px-2">
+            <div>Iteration 24.3</div>
+            <span class="text-[10px] font-normal text-ink-muted">Weeks 5–6</span>
+          </div>
+          <div class="col-span-2 py-3 px-2">
+            <div>Iteration 24.4</div>
+            <span class="text-[10px] font-normal text-ink-muted">Weeks 7–8</span>
+          </div>
+          <div class="col-span-1 py-3 px-1 bg-amber-50/60 text-amber-900 border-l border-amber-200">
+            <div>IP Sprint</div>
+            <span class="text-[9px] font-normal text-amber-700">Weeks 9–10</span>
+          </div>
+        </div>
+
+        <!-- Squad Swimlane 1: Core Banking & Ledger (Balaji P. - Scrum Master) -->
+        <div class="grid grid-cols-12 divide-x divide-sand-border min-h-[110px] relative">
+          <div class="col-span-3 p-3 bg-canvas/40 flex flex-col justify-center">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-forest"></span>
+              <span class="font-bold text-xs text-ink">Core Ledger Squad</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted mt-0.5">Balaji P. • Ex-AWS Lead</span>
+            <div class="w-full bg-sand-border/60 rounded-full h-1.5 mt-2">
+              <div class="bg-forest h-1.5 rounded-full w-[82%]"></div>
+            </div>
+          </div>
+          <!-- S1 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-core-1" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs" onmouseenter="highlightCurve('feat-core-1')" onmouseleave="clearCurveHighlight()">
+              <div class="flex items-center justify-between font-mono text-[9px] text-forest font-bold">
+                <span>FEAT-201</span>
+                <span>8 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Dual-Entry Ledger Engine</div>
+            </div>
+          </div>
+          <!-- S2 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-core-2" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs" onmouseenter="highlightCurve('feat-core-2')" onmouseleave="clearCurveHighlight()">
+              <div class="flex items-center justify-between font-mono text-[9px] text-forest font-bold">
+                <span>FEAT-202</span>
+                <span>13 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">ISO 20022 Swift Router</div>
+            </div>
+          </div>
+          <!-- S3 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-core-3" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs">
+              <div class="flex items-center justify-between font-mono text-[9px] text-forest font-bold">
+                <span>FEAT-203</span>
+                <span>5 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Sub-second Settlement</div>
+            </div>
+          </div>
+          <!-- S4 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-core-4" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs">
+              <div class="flex items-center justify-between font-mono text-[9px] text-forest font-bold">
+                <span>FEAT-204</span>
+                <span>5 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Audit Vault Sync</div>
+            </div>
+          </div>
+          <!-- IP -->
+          <div class="col-span-1 p-2 bg-amber-50/30 flex items-center justify-center text-[10px] font-mono text-amber-800 text-center">
+            Hardening &amp; Demo
+          </div>
+        </div>
+
+        <!-- Squad Swimlane 2: Core Auth & Security Pod -->
+        <div class="grid grid-cols-12 divide-x divide-sand-border min-h-[110px] relative">
+          <div class="col-span-3 p-3 bg-canvas/40 flex flex-col justify-center">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+              <span class="font-bold text-xs text-ink">Auth &amp; Security Pod</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted mt-0.5">Maya Lin • Tech Lead</span>
+            <div class="w-full bg-sand-border/60 rounded-full h-1.5 mt-2">
+              <div class="bg-indigo-600 h-1.5 rounded-full w-[90%]"></div>
+            </div>
+          </div>
+          <!-- S1 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-auth-1" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs" onmouseenter="highlightCurve('feat-auth-1')" onmouseleave="clearCurveHighlight()">
+              <div class="flex items-center justify-between font-mono text-[9px] text-indigo-700 font-bold">
+                <span>AUTH-101</span>
+                <span>8 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">OAuth 2.1 &amp; PKCE Gateway</div>
+            </div>
+          </div>
+          <!-- S2 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-auth-2" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs" onmouseenter="highlightCurve('feat-auth-2')" onmouseleave="clearCurveHighlight()">
+              <div class="flex items-center justify-between font-mono text-[9px] text-indigo-700 font-bold">
+                <span>AUTH-102</span>
+                <span>5 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Passkey WebAuthn API</div>
+            </div>
+          </div>
+          <!-- S3 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-auth-3" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs">
+              <div class="flex items-center justify-between font-mono text-[9px] text-indigo-700 font-bold">
+                <span>AUTH-103</span>
+                <span>8 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Zero-Trust Role RBAC</div>
+            </div>
+          </div>
+          <!-- S4 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5"></div>
+          <!-- IP -->
+          <div class="col-span-1 p-2 bg-amber-50/30 flex items-center justify-center text-[10px] font-mono text-amber-800 text-center">
+            Security PenTest
+          </div>
+        </div>
+
+        <!-- Squad Swimlane 3: Mobile & Frontend Pod -->
+        <div class="grid grid-cols-12 divide-x divide-sand-border min-h-[110px] relative">
+          <div class="col-span-3 p-3 bg-canvas/40 flex flex-col justify-center">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              <span class="font-bold text-xs text-ink">Mobile &amp; Web Pod</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted mt-0.5">Priya Sharma • Architect</span>
+            <div class="w-full bg-sand-border/60 rounded-full h-1.5 mt-2">
+              <div class="bg-rose-500 h-1.5 rounded-full w-[75%]"></div>
+            </div>
+          </div>
+          <!-- S1 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5"></div>
+          <!-- S2 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-mob-1" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs" onmouseenter="highlightCurve('feat-mob-1')" onmouseleave="clearCurveHighlight()">
+              <div class="flex items-center justify-between font-mono text-[9px] text-rose-600 font-bold">
+                <span>MOB-301</span>
+                <span>8 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Biometric Sign-In UI</div>
+            </div>
+          </div>
+          <!-- S3 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-mob-2" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs" onmouseenter="highlightCurve('feat-mob-2')" onmouseleave="clearCurveHighlight()">
+              <div class="flex items-center justify-between font-mono text-[9px] text-rose-600 font-bold">
+                <span>MOB-302</span>
+                <span>13 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Live Transfer Canvas</div>
+            </div>
+          </div>
+          <!-- S4 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-mob-3" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs">
+              <div class="flex items-center justify-between font-mono text-[9px] text-rose-600 font-bold">
+                <span>MOB-303</span>
+                <span>5 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Offline Sync Cache</div>
+            </div>
+          </div>
+          <!-- IP -->
+          <div class="col-span-1 p-2 bg-amber-50/30 flex items-center justify-center text-[10px] font-mono text-amber-800 text-center">
+            App Store Review
+          </div>
+        </div>
+
+        <!-- Squad Swimlane 4: Cloud Infrastructure & DevOps -->
+        <div class="grid grid-cols-12 divide-x divide-sand-border min-h-[110px] relative">
+          <div class="col-span-3 p-3 bg-canvas/40 flex flex-col justify-center">
+            <div class="flex items-center gap-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-cyan-600"></span>
+              <span class="font-bold text-xs text-ink">Cloud Ops &amp; SRE</span>
+            </div>
+            <span class="text-[10px] font-mono text-ink-muted mt-0.5">Jordan Cole • DevOps Lead</span>
+            <div class="w-full bg-sand-border/60 rounded-full h-1.5 mt-2">
+              <div class="bg-cyan-600 h-1.5 rounded-full w-[88%]"></div>
+            </div>
+          </div>
+          <!-- S1 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-ops-1" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs" onmouseenter="highlightCurve('feat-ops-1')" onmouseleave="clearCurveHighlight()">
+              <div class="flex items-center justify-between font-mono text-[9px] text-cyan-700 font-bold">
+                <span>OPS-401</span>
+                <span>5 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Multi-Region Aurora Cluster</div>
+            </div>
+          </div>
+          <!-- S2 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5"></div>
+          <!-- S3 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5">
+            <div id="feat-ops-2" class="pi-feature-card p-2 rounded-lg bg-card border border-sand-border shadow-xs text-xs">
+              <div class="flex items-center justify-between font-mono text-[9px] text-cyan-700 font-bold">
+                <span>OPS-402</span>
+                <span>8 pts</span>
+              </div>
+              <div class="font-semibold text-ink text-[11px] mt-0.5">Canary Deployment Mesh</div>
+            </div>
+          </div>
+          <!-- S4 -->
+          <div class="col-span-2 p-2 flex flex-col gap-1.5"></div>
+          <!-- IP -->
+          <div class="col-span-1 p-2 bg-amber-50/30 flex items-center justify-center text-[10px] font-mono text-amber-800 text-center">
+            Chaos Drills
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ROAM Risk Board (SAFe® 6.0 Program Governance) -->
+    <div class="p-4 sm:p-6 rounded-2xl bg-card border border-sand-border shadow-xs flex flex-col gap-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[20px] text-terracotta">security</span>
+          <h3 class="font-serif text-base sm:text-lg font-bold text-ink">ROAM Risk Governance Matrix</h3>
+        </div>
+        <span class="text-xs font-mono text-ink-muted">SAFe® 6.0 Standard</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <!-- R: Resolved -->
+        <div class="p-3.5 rounded-xl bg-emerald-50/50 border border-emerald-200 flex flex-col gap-2">
+          <div class="flex items-center justify-between font-mono text-xs font-bold text-emerald-800">
+            <span>RESOLVED (R)</span>
+            <span class="px-1.5 py-0.2 rounded bg-emerald-100 text-[10px]">2</span>
+          </div>
+          <div class="p-2 rounded bg-white border border-emerald-200 text-xs shadow-xs">
+            <div class="font-semibold text-ink">AWS KMS Quota Limit</div>
+            <div class="text-[10px] text-emerald-700 font-mono mt-0.5">Resolved via AWS TAM limit increase</div>
+          </div>
+        </div>
+
+        <!-- O: Owned -->
+        <div class="p-3.5 rounded-xl bg-amber-50/50 border border-amber-200 flex flex-col gap-2">
+          <div class="flex items-center justify-between font-mono text-xs font-bold text-amber-800">
+            <span>OWNED (O)</span>
+            <span class="px-1.5 py-0.2 rounded bg-amber-100 text-[10px]">1</span>
+          </div>
+          <div class="p-2 rounded bg-white border border-amber-200 text-xs shadow-xs">
+            <div class="font-semibold text-ink">Swift Gateway SLA Delay</div>
+            <div class="text-[10px] text-amber-800 font-mono mt-0.5">Owner: Balaji P. (Scrum Master)</div>
+          </div>
+        </div>
+
+        <!-- A: Accepted -->
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex flex-col gap-2">
+          <div class="flex items-center justify-between font-mono text-xs font-bold text-slate-700">
+            <span>ACCEPTED (A)</span>
+            <span class="px-1.5 py-0.2 rounded bg-slate-200 text-[10px]">1</span>
+          </div>
+          <div class="p-2 rounded bg-white border border-slate-200 text-xs shadow-xs">
+            <div class="font-semibold text-ink">Legacy XML Payload Parsing</div>
+            <div class="text-[10px] text-slate-600 font-mono mt-0.5">Accepted for legacy compatibility</div>
+          </div>
+        </div>
+
+        <!-- M: Mitigated -->
+        <div class="p-3.5 rounded-xl bg-cyan-50/50 border border-cyan-200 flex flex-col gap-2">
+          <div class="flex items-center justify-between font-mono text-xs font-bold text-cyan-800">
+            <span>MITIGATED (M)</span>
+            <span class="px-1.5 py-0.2 rounded bg-cyan-100 text-[10px]">1</span>
+          </div>
+          <div class="p-2 rounded bg-white border border-cyan-200 text-xs shadow-xs">
+            <div class="font-semibold text-ink">Mobile PenTest Timing</div>
+            <div class="text-[10px] text-cyan-800 font-mono mt-0.5">Mitigated by parallelized static SAST</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer class="w-full bg-card border-t border-sand-border/80 py-4 px-4 sm:px-8 text-center text-xs font-mono text-ink-muted flex flex-col sm:flex-row items-center justify-between gap-2">
+    <span>PI Planner™ SAFe® 6.0 Studio • Zero-Cold-Start ART Board</span>
+    <div class="flex items-center gap-4">
+      <a href="https://layyzee.github.io/" class="hover:text-forest transition-colors">Portfolio</a>
+      <span>·</span>
+      <a href="poker.html" class="hover:text-forest transition-colors">SprintPoker</a>
+      <span>·</span>
+      <a href="retro.html" class="hover:text-forest transition-colors">Retro Studio</a>
+      <span>·</span>
+      <a href="tracker.html" class="hover:text-forest transition-colors">AppTracker CRM</a>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       BÉZIER DEPENDENCY ENGINE & SAFe® LOGIC
+       ======================================================== -->
+  <script>
+    let showDependencies = true;
+    let confidenceScore = 4.4;
+
+    // Defined Cross-Squad Dependencies: [Source Feature -> Target Feature]
+    const DEPENDENCIES = [
+      { from: "feat-ops-1", to: "feat-core-1", type: "resolved", label: "Aurora DB Required" },
+      { from: "feat-auth-2", to: "feat-mob-1", type: "critical", label: "WebAuthn API Required" },
+      { from: "feat-core-2", to: "feat-mob-2", type: "resolved", label: "Swift Engine Required" }
+    ];
+
+    function drawDependencies() {
+      const svg = document.getElementById("dependencyCanvas");
+      if (!svg) return;
+      svg.innerHTML = "";
+
+      if (!showDependencies) return;
+
+      const boardRect = svg.parentElement.getBoundingClientRect();
+      svg.setAttribute("width", svg.parentElement.scrollWidth);
+      svg.setAttribute("height", svg.parentElement.scrollHeight);
+
+      DEPENDENCIES.forEach((dep, index) => {
+        const fromEl = document.getElementById(dep.from);
+        const toEl = document.getElementById(dep.to);
+        if (!fromEl || !toEl) return;
+
+        const fromRect = fromEl.getBoundingClientRect();
+        const toRect = toEl.getBoundingClientRect();
+
+        // Calculate relative coordinates inside scroll container
+        const startX = (fromRect.right - boardRect.left) + svg.parentElement.scrollLeft;
+        const startY = (fromRect.top + fromRect.height / 2 - boardRect.top) + svg.parentElement.scrollTop;
+
+        const endX = (toRect.left - boardRect.left) + svg.parentElement.scrollLeft;
+        const endY = (toRect.top + toRect.height / 2 - boardRect.top) + svg.parentElement.scrollTop;
+
+        // Cubic Bézier control points
+        const deltaX = Math.max(40, (endX - startX) * 0.5);
+        const cp1X = startX + deltaX;
+        const cp1Y = startY;
+        const cp2X = endX - deltaX;
+        const cp2Y = endY;
+
+        const d = `M ${startX} ${startY} C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${endX} ${endY}`;
+
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", d);
+        path.setAttribute("class", `dep-curve ${dep.type}`);
+        path.setAttribute("id", `curve-${dep.from}-${dep.to}`);
+        path.setAttribute("data-from", dep.from);
+        path.setAttribute("data-to", dep.to);
+
+        // Arrow marker or dot
+        const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        dot.setAttribute("cx", endX);
+        dot.setAttribute("cy", endY);
+        dot.setAttribute("r", 4);
+        dot.setAttribute("fill", dep.type === "critical" ? "#DC2626" : "#244B39");
+
+        svg.appendChild(path);
+        svg.appendChild(dot);
+      });
+    }
+
+    function highlightCurve(featureId) {
+      document.querySelectorAll(".dep-curve").forEach(curve => {
+        if (curve.getAttribute("data-from") === featureId || curve.getAttribute("data-to") === featureId) {
+          curve.classList.add("highlighted");
+        } else {
+          curve.style.opacity = "0.2";
+        }
+      });
+    }
+
+    function clearCurveHighlight() {
+      document.querySelectorAll(".dep-curve").forEach(curve => {
+        curve.classList.remove("highlighted");
+        curve.style.opacity = "1";
+      });
+    }
+
+    function toggleDependencies() {
+      showDependencies = !showDependencies;
+      const btn = document.getElementById("btnToggleDeps");
+      if (btn) {
+        btn.classList.toggle("bg-terracotta/10", showDependencies);
+        btn.classList.toggle("border-terracotta", showDependencies);
+      }
+      drawDependencies();
+    }
+
+    function setConfidence(val) {
+      confidenceScore = val;
+      const display = document.getElementById("artConfidenceDisplay");
+      if (display) {
+        const ratingText = val >= 4 ? "High Consensus" : val === 3 ? "Moderate" : "At Risk";
+        display.textContent = `${val}.0 / 5.0 (${ratingText})`;
+      }
+    }
+
+    // Design Mode (Impeccable vs Amicro)
+    let currentDesignMode = localStorage.getItem('agile_design_mode') || 'impeccable';
+    function toggleDesignMode() {
+      const next = currentDesignMode === 'impeccable' ? 'amicro' : 'impeccable';
+      setDesignMode(next);
+    }
+    function setDesignMode(mode) {
+      currentDesignMode = mode;
+      localStorage.setItem('agile_design_mode', mode);
+      document.body.className = document.body.className.replace(/mode-[a-z]+/g, '');
+      document.body.classList.add(`mode-${mode}`);
+
+      const quickIcon = document.getElementById('quick-toggle-icon');
+      const quickLabel = document.getElementById('quick-toggle-label');
+      if (quickIcon) quickIcon.textContent = mode === 'amicro' ? 'auto_awesome' : 'menu_book';
+      if (quickLabel) quickLabel.textContent = mode === 'amicro' ? 'Motion' : 'Calm';
+    }
+
+    // Window Resize & Init
+    window.addEventListener("resize", drawDependencies);
+    document.addEventListener("DOMContentLoaded", () => {
+      setDesignMode(currentDesignMode);
+      setTimeout(drawDependencies, 200);
+    });
+  </script>
+</body>
+</html>
