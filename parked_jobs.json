@@ -438,5 +438,93 @@
     "domain": "Global Systems Integration",
     "ats": "Akima Career Portal",
     "cv_angle": "Delivery lead governance, multi-squad coordination, CSM + SAFe SSM."
+  },
+  {
+    "company": "Global Payments / TSYS",
+    "title": "Scrum Master",
+    "location": "Pune, Maharashtra \u2022 Hybrid",
+    "site": "Layoffs & Hires (TSYS Workday)",
+    "url": "https://tsys.wd1.myworkdayjobs.com/tsys/job/PUNE--INDIA/Scrum-Master_R0076608-1",
+    "domain": "Global Payments & FinTech Transactions",
+    "ats": "TSYS Workday ATS",
+    "cv_angle": "Payments gateway agile delivery, PCI-DSS compliance, sprint cadence, 0-day notice.",
+    "id": "PARK-041"
+  },
+  {
+    "company": "Barclays",
+    "title": "Scrum Master - VP",
+    "location": "Pune, Maharashtra \u2022 Hybrid",
+    "site": "Layoffs & Hires (Barclays Workday)",
+    "url": "https://barclays.wd3.myworkdayjobs.com/external_career_site_barclays/job/Pune-Gera-Commerzone-SEZ/Scrum-Master---VP_JR-0000111694",
+    "domain": "Global Retail & Investment Banking",
+    "ats": "Barclays Workday ATS",
+    "cv_angle": "Executive delivery leadership, VP-level stakeholder alignment, SAFe SSM match.",
+    "id": "PARK-042"
+  },
+  {
+    "company": "Amgen",
+    "title": "Scrum Master (India)",
+    "location": "Hyderabad, Telangana \u2022 Hybrid",
+    "site": "Layoffs & Hires (Amgen Workday)",
+    "url": "https://amgen.wd1.myworkdayjobs.com/careers/job/India---Hyderabad/Scrum-Master_R-250966-1",
+    "domain": "Life Sciences Digital Operations",
+    "ats": "Amgen Workday ATS",
+    "cv_angle": "Pharma cloud platform squads, definition of ready/done automation, CSM.",
+    "id": "PARK-043"
+  },
+  {
+    "company": "S&P Global",
+    "title": "Scrum Master {Functional}",
+    "location": "Hyderabad, Telangana \u2022 Hybrid",
+    "site": "Layoffs & Hires (SPGI Workday)",
+    "url": "https://spgi.wd5.myworkdayjobs.com/spgi_careers/job/Hyderabad-Telangana/Scrum-Master--Functional-_331522-2",
+    "domain": "Financial Market Intelligence & Ratings",
+    "ats": "S&P Global Workday ATS",
+    "cv_angle": "Financial market data delivery, cross-pod release planning, CSM + SAFe SSM.",
+    "id": "PARK-044"
+  },
+  {
+    "company": "CACI",
+    "title": "HCM Cloud SAFe Agile Coach / Scrum Master",
+    "location": "Remote / Any State \u2022 US Contract",
+    "site": "Layoffs & Hires (CACI Workday)",
+    "url": "https://caci.wd1.myworkdayjobs.com/external/job/Remote-Any-State/HCM-Cloud-SAFe-Agile-Coach---Scrum-Master_331842",
+    "domain": "Enterprise Cloud HR & Scaled Agile",
+    "ats": "CACI Workday ATS",
+    "cv_angle": "SAFe 6.0 Scrum Master (SSM) direct hit, enterprise cloud ERP, remote coaching.",
+    "id": "PARK-045"
+  },
+  {
+    "company": "CACI",
+    "title": "Senior Scrum Master",
+    "location": "Remote / Any State \u2022 US Contract",
+    "site": "Layoffs & Hires (CACI Workday)",
+    "url": "https://caci.wd1.myworkdayjobs.com/external/job/Remote-Any-State/Senior-Scrum-Master_333676",
+    "domain": "Mission-Critical Enterprise Systems",
+    "ats": "CACI Workday ATS",
+    "cv_angle": "Senior servant leader, sprint cadence, velocity tracking, USD contractor readiness.",
+    "id": "PARK-046"
+  },
+  {
+    "company": "S&P Global",
+    "title": "Scrum Master (US Remote)",
+    "location": "New York, NY / Remote",
+    "site": "Layoffs & Hires (SPGI Workday)",
+    "url": "https://spgi.wd5.myworkdayjobs.com/spgi_careers/job/New-York-NY/Scrum-Master_331905-1",
+    "domain": "Global Ratings & Financial SaaS",
+    "ats": "S&P Global Workday ATS",
+    "cv_angle": "FinTech SaaS agility, sprint ceremony leadership, backlog refinement, CSM.",
+    "id": "PARK-047"
+  },
+  {
+    "company": "Accenture Federal Services",
+    "title": "Scrum Master (K\u2013K USD)",
+    "location": "United States / Remote",
+    "site": "Layoffs & Hires (Greenhouse)",
+    "url": "https://boards.greenhouse.io/accenturefederalservices/jobs/4726882006?gh_jid=4726882006",
+    "domain": "Digital Technology Consulting",
+    "ats": "Greenhouse ATS",
+    "cv_angle": "Agile delivery lead, sprint backlog readiness, cross-functional engineering.",
+    "id": "PARK-048"
   }
 ]
