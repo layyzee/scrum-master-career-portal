@@ -249,7 +249,7 @@
 </div>
 </div>
 <div class="mt-space-md">
-<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">206</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">208</span>
 <span class="font-label-md text-label-md text-on-surface-variant ml-1">Roles Tracked</span>
 </div>
 <div class="mt-space-sm flex items-center gap-space-xs">
@@ -1540,7 +1540,9 @@
             { id: "app-203", company: "CGI", role: "ServiceNow Scrum Master", location: "Hyderabad • Hybrid", platform: "Naukri Direct Apply", stage: "applied", date: "2026-11-18", contact: "CGI Talent Acquisition", notes: "Global IT & business consulting powerhouse (JID 181126929733). Enterprise ServiceNow squad facilitation, agile governance, CSM® & SAFe® match. Verified HTTP 200 submission." },
             { id: "app-204", company: "Undocked", role: "Scrum Master", location: "Hyderabad • Hybrid", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-18", contact: "Undocked Talent Team", notes: "Digital product & engineering firm (Job ID 4492017170). Posted 1 hr ago. Hybrid/commute confirmed, 0-day notice period entered, Master Resume submitted." },
             { id: "app-205", company: "Magneton Technologies Pvt Ltd", role: "Senior Certified SAFe Agile Practitioners", location: "Bengaluru, Karnataka • Hybrid", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-18", contact: "Magneton Recruitment Team", notes: "Digital transformation & enterprise agile delivery (Job ID 4491809830). Posted 3 hrs ago. SAFe 6.0 Scrum Master (SSM) direct hit, screening completed, Master Resume submitted." },
-            { id: "app-206", company: "360 Technology", role: "Scrum Master", location: "Greater Bengaluru Area • On-site/Hybrid", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-18", contact: "360 Technology Hiring Lead", notes: "Tech solutions provider (Job ID 4491142300). Posted 1 day ago. Salesforce agile workflow match, 4-step screening cleared & confirmed submitted." }
+            { id: "app-206", company: "360 Technology", role: "Scrum Master", location: "Greater Bengaluru Area • On-site/Hybrid", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-18", contact: "360 Technology Hiring Lead", notes: "Tech solutions provider (Job ID 4491142300). Posted 1 day ago. Salesforce agile workflow match, 4-step screening cleared & confirmed submitted." },
+            { id: "app-207", company: "Smart IT Frame LLC", role: "Scrum Master", location: "Minneapolis, MN / Remote Contract", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-18", contact: "Smart IT Frame Recruitment", notes: "US IT consulting & enterprise delivery contract (Job ID 4490662721). Posted 22 hrs ago. Jira & Azure DevOps delivery governance match, 4-step screening cleared & submitted." },
+            { id: "app-208", company: "Brooksource", role: "Scrum Master", location: "Minneapolis, MN / Remote Contract (–/hr)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-18", contact: "Brooksource Talent Acquisition", notes: "High-yield US tech staffing contract (-/hr USD | Job ID 4490940130). Posted 1 day ago. 5-step screening cleared with Bachelor Degree & Master Resume attached. Confirmed submitted." }
         ];
 
   const STAGES_CONFIG = [
@@ -1562,7 +1564,7 @@
 
   function loadApplications() {
     try {
-      const stored = localStorage.getItem("apptracker_data_v11");
+      const stored = localStorage.getItem("apptracker_data_v12");
       if (stored) {
         const parsed = JSON.parse(stored);
         const existingIds = new Set(parsed.map(a => a.id));
@@ -1583,7 +1585,7 @@
 
   function saveApplications() {
     try {
-      localStorage.setItem("apptracker_data_v11", JSON.stringify(applications));
+      localStorage.setItem("apptracker_data_v12", JSON.stringify(applications));
     } catch (e) {
       console.warn("localStorage write failed", e);
     }
