@@ -249,7 +249,7 @@
 </div>
 </div>
 <div class="mt-space-md">
-<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">200</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">201</span>
 <span class="font-label-md text-label-md text-on-surface-variant ml-1">Roles Tracked</span>
 </div>
 <div class="mt-space-sm flex items-center gap-space-xs">
@@ -1534,7 +1534,8 @@
             { id: "app-197", company: "Uplevyl", role: "Technical Project Manager & Scrum Master", location: "Remote / Bengaluru • Hybrid", platform: "Foundit 1-Click Apply", stage: "applied", date: "2026-11-18", contact: "Uplevyl Talent Acquisition", notes: "Digital leadership & community platform (JID 36292663). Technical sprint delivery, product roadmap governance, servant leadership. Confirmed Applied." },
             { id: "app-198", company: "delaPlex", role: "Scrum Master", location: "Nagpur / Pune / Remote • Hybrid", platform: "Foundit 1-Click Apply", stage: "applied", date: "2026-11-18", contact: "delaPlex HR Team", notes: "Global custom software engineering solutions (JID 36366014). Multi-team Scrum rituals, Jira velocity tracking, 0-day notice. Confirmed Applied." },
             { id: "app-199", company: "CSS Corp (Movate)", role: "IT Scrum Master / Project Manager - Cloud", location: "Bengaluru / Chennai • Hybrid", platform: "Foundit 1-Click Apply", stage: "applied", date: "2026-11-18", contact: "Movate Talent Acquisition", notes: "Digital technology & customer experience transformation (JID 48093323). Cloud platform migrations, stakeholder steering, agile ceremonies. Confirmed Applied." },
-            { id: "app-200", company: "HCL Comnet (HCLTech)", role: "Scrum Master", location: "Noida / Bengaluru • Hybrid", platform: "Foundit 1-Click Apply", stage: "applied", date: "2026-11-18", contact: "HCLTech Recruitment", notes: "Enterprise IT infrastructure & digital engineering titan (JID 48702974). Cross-pod agile delivery, release train governance, CSM® & SAFe® 6.0 SSM match. Confirmed Applied." }
+            { id: "app-200", company: "HCL Comnet (HCLTech)", role: "Scrum Master", location: "Noida / Bengaluru • Hybrid", platform: "Foundit 1-Click Apply", stage: "applied", date: "2026-11-18", contact: "HCLTech Recruitment", notes: "Enterprise IT infrastructure & digital engineering titan (JID 48702974). Cross-pod agile delivery, release train governance, CSM® & SAFe® 6.0 SSM match. Confirmed Applied." },
+            { id: "app-201", company: "Infinite Tek Inc.", role: "Certified Sr. Scrum Master", location: "San Francisco, CA / Remote Contract (–/hr)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-18", contact: "Sumitra R. (Sr. Technical Recruiter)", notes: "High-yield US remote contract (-/hr | Job ID 4490686044). Multi-team Agile delivery, servant leadership, Scrum ceremonies, CSM® & SAFe® match. 5-step screening cleared & confirmed submitted." }
         ];
 
   const STAGES_CONFIG = [
@@ -1556,7 +1557,7 @@
 
   function loadApplications() {
     try {
-      const stored = localStorage.getItem("apptracker_data_v7");
+      const stored = localStorage.getItem("apptracker_data_v8");
       if (stored) {
         const parsed = JSON.parse(stored);
         const existingIds = new Set(parsed.map(a => a.id));
@@ -1577,7 +1578,7 @@
 
   function saveApplications() {
     try {
-      localStorage.setItem("apptracker_data_v7", JSON.stringify(applications));
+      localStorage.setItem("apptracker_data_v8", JSON.stringify(applications));
     } catch (e) {
       console.warn("localStorage write failed", e);
     }
