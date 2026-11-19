@@ -7,7 +7,7 @@
 ---
 
 ## 📊 Pipeline Summary
-- **Total Parked Roles:** 48
+- **Total Parked Roles:** 49
 - **Direct Enterprise ATS Portals:** Workday, Taleo, Greenhouse, Eightfold, SuccessFactors
 - **Sourced From:** Layoffs & Hires, Naukri Direct, LinkedIn Enterprise, Indeed & Glassdoor
 - **Career Ops Integration:** Ready for automated report & custom CV generation
@@ -42,7 +42,7 @@
 | **`PARK-022`** | **Allianz PNB Life** | Scrum Master - Agile Methodologies<br>*Pune • Hybrid* | Allianz Portal | [LinkedIn](https://www.linkedin.com/jobs/view/4491778453) | Insurance & Financial Services | Insurance squad agile ceremonies, Jira reporting, sprint velocity. |
 | **`PARK-023`** | **Grundfos Pumps** | Manager & Scrum Master - Embedded Software Development<br>*Chennai, Tamil Nadu* | Grundfos SuccessFactors ATS | [Indeed](https://in.indeed.com/viewjob?jk=d8ce84941883a393) | Industrial IoT & Smart Engineering | Chennai location match, embedded/software hybrid delivery, Anna University degree. |
 | **`PARK-024`** | **NatWest Group** | Release Train Manager, VP<br>*Chennai, Tamil Nadu* | NatWest Workday ATS | [Indeed](https://in.indeed.com/viewjob?jk=2ae40d01ec2edef9) | Global Retail & Commercial Banking | Scaled Agile 6.0 SSM direct hit, release train management, Chennai location. |
-| **`PARK-025`** | **The Cigna Group** | Scrum Master Lead Analyst<br>*Bengaluru, Karnataka* | Cigna Workday ATS | [Glassdoor](https://www.glassdoor.co.in/job-listing/j?jl=1010329580210) | Global Health Services | Agile health data analytics, PI planning, servant leadership. |
+| **`PARK-025`** | **The Cigna Group** | Scrum Master Lead Analyst<br>*Bengaluru, Karnataka* | Cigna Workday ATS | [Layoffs & Hires (Cigna Workday)](https://cigna.wd5.myworkdayjobs.com/cignacareers/job/Bengaluru-India/Scrum-Master-Lead-Analyst_26013022) | Global Health Services | Agile health data analytics, PI planning, servant leadership. |
 | **`PARK-026`** | **p99soft** | Scrum Master<br>*Hyderabad, Telangana* | Company Portal | [Indeed](https://in.indeed.com/viewjob?jk=868211c7bbb0d4a1) | Cloud Consulting & Digital Delivery | Fast-paced delivery squads, Jira dashboards, 0-day notice. |
 | **`PARK-027`** | **HoonarTek** | Junior Project Manager / Scrum Master<br>*Mumbai, Maharashtra* | HoonarTek Portal | [Glassdoor](https://www.glassdoor.co.in/job-listing/j?jl=1010329573396) | Data & Telecom Integration | Mumbai local immediate joiner, telecom data pod facilitation. |
 | **`PARK-028`** | **Acuity Knowledge Partners** | Delivery Lead - Front Office Automation QA<br>*Maharashtra • Hybrid* | Acuity Portal | [Indeed](https://in.indeed.com/viewjob?jk=11aeaa163e0229fc) | Capital Markets & Financial Research | Agile delivery leadership, automated testing cadence, BFSI governance. |
@@ -66,18 +66,19 @@
 | **`PARK-046`** | **CACI** | Senior Scrum Master<br>*Remote / Any State • US Contract* | CACI Workday ATS | [Layoffs & Hires (CACI Workday)](https://caci.wd1.myworkdayjobs.com/external/job/Remote-Any-State/Senior-Scrum-Master_333676) | Mission-Critical Enterprise Systems | Senior servant leader, sprint cadence, velocity tracking, USD contractor readiness. |
 | **`PARK-047`** | **S&P Global** | Scrum Master (US Remote)<br>*New York, NY / Remote* | S&P Global Workday ATS | [Layoffs & Hires (SPGI Workday)](https://spgi.wd5.myworkdayjobs.com/spgi_careers/job/New-York-NY/Scrum-Master_331905-1) | Global Ratings & Financial SaaS | FinTech SaaS agility, sprint ceremony leadership, backlog refinement, CSM. |
 | **`PARK-048`** | **Accenture Federal Services** | Scrum Master (K–K USD)<br>*United States / Remote* | Greenhouse ATS | [Layoffs & Hires (Greenhouse)](https://boards.greenhouse.io/accenturefederalservices/jobs/4726882006?gh_jid=4726882006) | Digital Technology Consulting | Agile delivery lead, sprint backlog readiness, cross-functional engineering. |
+| **`PARK-049`** | **Barclays** | Scrum Master - AVP<br>*Pune, Maharashtra • Hybrid* | Barclays Workday ATS | [Layoffs & Hires (Barclays Workday)](https://barclays.wd3.myworkdayjobs.com/external_career_site_barclays/job/Pune-Gera-Commerzone-SEZ/Scrum-Master---AVP_JR-0000114904-1) | Global Retail & Investment Banking | Assistant Vice President agile delivery governance, banking compliance, cross-pod release train cadence. |
 
 ---
 
 ## 🛠️ Step-by-Step Execution Guide for Career Ops CV Generation
 When you or the agent are ready to generate a tailored ATS CV for any parked role:
-1. **Select Job ID:** Choose a target job from the registry (e.g. `PARK-001` Deutsche Bank or `PARK-041` TSYS).
+1. **Select Job ID:** Choose a target job from the registry (e.g. `PARK-001` Deutsche Bank, `PARK-042` Barclays VP, or `PARK-049` Barclays AVP).
 2. **Trigger Career Ops Engine:**
    ```bash
    cd /Users/layyzee/.career-ops
-   node tracker.mjs query --company "Deutsche Bank"
+   node tracker.mjs query --company "Barclays"
    ```
 3. **Draft Tailored CV & Score Report:** Career Ops creates a tailored 2-page ATS PDF matching the exact keywords of that company's JD, targeting a 4.8+/5.0 score.
 4. **Submit in Browser:** Open the application URL, upload the tailored PDF CV, select 0 days notice, and log the application in tracker!
 
-*Last Updated: November 18, 2026*
+*Last Updated: November 19, 2026*

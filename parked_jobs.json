@@ -268,8 +268,8 @@
     "company": "The Cigna Group",
     "title": "Scrum Master Lead Analyst",
     "location": "Bengaluru, Karnataka",
-    "site": "Glassdoor",
-    "url": "https://www.glassdoor.co.in/job-listing/j?jl=1010329580210",
+    "site": "Layoffs & Hires (Cigna Workday)",
+    "url": "https://cigna.wd5.myworkdayjobs.com/cignacareers/job/Bengaluru-India/Scrum-Master-Lead-Analyst_26013022",
     "domain": "Global Health Services",
     "ats": "Cigna Workday ATS",
     "cv_angle": "Agile health data analytics, PI planning, servant leadership."
@@ -526,5 +526,16 @@
     "ats": "Greenhouse ATS",
     "cv_angle": "Agile delivery lead, sprint backlog readiness, cross-functional engineering.",
     "id": "PARK-048"
+  },
+  {
+    "id": "PARK-049",
+    "company": "Barclays",
+    "title": "Scrum Master - AVP",
+    "location": "Pune, Maharashtra \u2022 Hybrid",
+    "site": "Layoffs & Hires (Barclays Workday)",
+    "url": "https://barclays.wd3.myworkdayjobs.com/external_career_site_barclays/job/Pune-Gera-Commerzone-SEZ/Scrum-Master---AVP_JR-0000114904-1",
+    "domain": "Global Retail & Investment Banking",
+    "ats": "Barclays Workday ATS",
+    "cv_angle": "Assistant Vice President agile delivery governance, banking compliance, cross-pod release train cadence."
   }
 ]
