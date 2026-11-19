@@ -548,5 +548,49 @@
     "domain": "Healthcare Systems & Clinical Tech",
     "ats": "Company ATS",
     "cv_angle": "Application development delivery, Azure DevOps (ADO) boards, multi-team sprint ceremonies, CSM® & SAFe® match."
+  },
+  {
+    "id": "PARK-051",
+    "company": "Deutsche Bank",
+    "title": "Scrum Master - Corporate Bank Technology - DAC, AVP",
+    "location": "Pune, Maharashtra • Hybrid",
+    "site": "Deutsche Bank ATS",
+    "url": "https://careers.db.com/professionals/search-roles/#/professional/job/76755",
+    "domain": "Corporate Banking Technology",
+    "ats": "Deutsche Bank ATS",
+    "cv_angle": "Posted Nov 19. AVP-level Agile leadership, banking transactions delivery, sprint velocity, CSM® match."
+  },
+  {
+    "id": "PARK-052",
+    "company": "Barclays",
+    "title": "Scrum Master - Technical Delivery Lead",
+    "location": "Pune, Maharashtra • Hybrid",
+    "site": "Barclays ATS",
+    "url": "https://www.naukri.com/job-listings-scrum-master-technical-delivery-lead-barclays-shared-services-pune-6-to-11-years-181126502176",
+    "domain": "Global Retail & Investment Banking",
+    "ats": "Barclays ATS",
+    "cv_angle": "Posted Nov 18. Technology transformation, live platform delivery governance, risk management & dependencies."
+  },
+  {
+    "id": "PARK-053",
+    "company": "Aon",
+    "title": "Sr. Scrum master",
+    "location": "Bengaluru, Karnataka • Hybrid",
+    "site": "Aon ATS",
+    "url": "https://www.naukri.com/job-listings-sr-scrum-master-aon-bengaluru-5-to-9-years-191126505239",
+    "domain": "Risk Management & Insurance SaaS",
+    "ats": "Aon ATS",
+    "cv_angle": "Posted Nov 19. Senior Scrum leadership, 5-9 years, sprint ceremonies, backlog grooming."
+  },
+  {
+    "id": "PARK-054",
+    "company": "Mondelez International",
+    "title": "Scrum Master, Platform Delivery",
+    "location": "Mumbai, Maharashtra • Hybrid",
+    "site": "Mondelez ATS",
+    "url": "https://www.naukri.com/job-listings-scrum-master-platform-delivery-mondelez-international-mumbai-7-to-12-years-131126503237",
+    "domain": "Global FMCG Digital Engineering",
+    "ats": "Mondelez ATS",
+    "cv_angle": "Enterprise platform delivery squads, Agile governance, definition of done, Scrum / Kanban ceremonies."
   }
 ]
