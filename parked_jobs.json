@@ -531,11 +531,22 @@
     "id": "PARK-049",
     "company": "Barclays",
     "title": "Scrum Master - AVP",
-    "location": "Pune, Maharashtra \u2022 Hybrid",
+    "location": "Pune, Maharashtra • Hybrid",
     "site": "Layoffs & Hires (Barclays Workday)",
     "url": "https://barclays.wd3.myworkdayjobs.com/external_career_site_barclays/job/Pune-Gera-Commerzone-SEZ/Scrum-Master---AVP_JR-0000114904-1",
     "domain": "Global Retail & Investment Banking",
     "ats": "Barclays Workday ATS",
     "cv_angle": "Assistant Vice President agile delivery governance, banking compliance, cross-pod release train cadence."
+  },
+  {
+    "id": "PARK-050",
+    "company": "HCA Healthcare UK",
+    "title": "Sr - Scrum Master",
+    "location": "Hyderabad • Hybrid",
+    "site": "Naukri (Company ATS)",
+    "url": "https://www.naukri.com/job-listings-sr-scrum-master-hca-healthcare-hyderabad-4-to-8-years-171126506656",
+    "domain": "Healthcare Systems & Clinical Tech",
+    "ats": "Company ATS",
+    "cv_angle": "Application development delivery, Azure DevOps (ADO) boards, multi-team sprint ceremonies, CSM® & SAFe® match."
   }
 ]

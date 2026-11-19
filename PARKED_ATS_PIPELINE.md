@@ -67,6 +67,7 @@
 | **`PARK-047`** | **S&P Global** | Scrum Master (US Remote)<br>*New York, NY / Remote* | S&P Global Workday ATS | [Layoffs & Hires (SPGI Workday)](https://spgi.wd5.myworkdayjobs.com/spgi_careers/job/New-York-NY/Scrum-Master_331905-1) | Global Ratings & Financial SaaS | FinTech SaaS agility, sprint ceremony leadership, backlog refinement, CSM. |
 | **`PARK-048`** | **Accenture Federal Services** | Scrum Master (K–K USD)<br>*United States / Remote* | Greenhouse ATS | [Layoffs & Hires (Greenhouse)](https://boards.greenhouse.io/accenturefederalservices/jobs/4726882006?gh_jid=4726882006) | Digital Technology Consulting | Agile delivery lead, sprint backlog readiness, cross-functional engineering. |
 | **`PARK-049`** | **Barclays** | Scrum Master - AVP<br>*Pune, Maharashtra • Hybrid* | Barclays Workday ATS | [Layoffs & Hires (Barclays Workday)](https://barclays.wd3.myworkdayjobs.com/external_career_site_barclays/job/Pune-Gera-Commerzone-SEZ/Scrum-Master---AVP_JR-0000114904-1) | Global Retail & Investment Banking | Assistant Vice President agile delivery governance, banking compliance, cross-pod release train cadence. |
+| **`PARK-050`** | **HCA Healthcare UK** | Sr - Scrum Master<br>*Hyderabad, Telangana • Hybrid* | Company ATS | [Naukri Listing](https://www.naukri.com/job-listings-sr-scrum-master-hca-healthcare-hyderabad-4-to-8-years-171126506656) | Healthcare Systems & Clinical Tech | Application development delivery, Azure DevOps (ADO) boards, multi-team sprint ceremonies, CSM® & SAFe® match. |
 
 ---
 
