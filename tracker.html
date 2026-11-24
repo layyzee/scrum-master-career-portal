@@ -249,7 +249,7 @@
 </div>
 </div>
 <div class="mt-space-md">
-<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">287</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">290</span>
 <span class="font-label-md text-label-md text-on-surface-variant ml-1">Roles Tracked</span>
 </div>
 <div class="mt-space-sm flex items-center gap-space-xs">
@@ -1626,7 +1626,10 @@
             { id: "app-284", company: "Quantum Integrators", role: "Project Manager Scrum Master", location: "Pune District • On-site (EST overlap)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-24", contact: "Quantum Talent Acquisition", notes: "Agile delivery, sprint ceremonies, blocker removal, Waterfall/Agile hybrid governance. Screening cleared: 0-day immediate joiner, 4 yrs PM/Scrum exp, EST shift & Pune onsite confirmed. Confirmed submitted via LinkedIn Easy Apply." },
             { id: "app-285", company: "Capgemini", role: "FBS Scrum Master I", location: "Pune Division, Maharashtra • Hybrid", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-24", contact: "Capgemini Talent Practice", notes: "Financial Services Business Squad (FBS). Agile delivery ceremonies, sprint forecasting, dependency & impediment tracking. CSM® + SAFe® SSM, 0-day immediate joiner verified. Confirmed submitted via LinkedIn Easy Apply." },
             { id: "app-286", company: "Persistent Systems", role: "Senior Scrum Master", location: "Pune City, Maharashtra • On-site", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-24", contact: "Persistent Systems Talent Acquisition", notes: "Enterprise digital engineering leader (Pune HQ). Scrum ceremony orchestration, cross-functional delivery predictability, impediment resolution. CSM® + SAFe® SSM, 0-day notice verified. Confirmed submitted via LinkedIn Easy Apply." },
-            { id: "app-287", company: "Capgemini", role: "Scrum Master", location: "Greater Bengaluru Area • Hybrid", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-24", contact: "Capgemini Talent Practice", notes: "Agile delivery, squad coaching, sprint ceremonies, Jira telemetry. Questionnaire cleared: Current CTC 20 LPA, Expected CTC 24 LPA, Notice Period 0 Days. Confirmed submitted via LinkedIn Easy Apply." }
+            { id: "app-287", company: "Capgemini", role: "Scrum Master", location: "Greater Bengaluru Area • Hybrid", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-24", contact: "Capgemini Talent Practice", notes: "Agile delivery, squad coaching, sprint ceremonies, Jira telemetry. Questionnaire cleared: Current CTC 20 LPA, Expected CTC 24 LPA, Notice Period 0 Days. Confirmed submitted via LinkedIn Easy Apply." },
+            { id: "app-288", company: "Capgemini", role: "FBS Scrum Master I", location: "Hyderabad, Telangana • Hybrid (₹22–₹25 LPA)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-24", contact: "Capgemini Talent Practice", notes: "Financial Services Business Squad (FBS). Agile delivery ceremonies, sprint forecasting, dependency & impediment tracking. Questionnaire cleared: Current CTC 20 LPA, Expected CTC 24 LPA, Notice Period 0 Days. Confirmed submitted via LinkedIn Easy Apply (Job ID 4484656468)." },
+            { id: "app-289", company: "emagine", role: "Scrum Master", location: "Pune, Maharashtra • Hybrid (₹22–₹25 LPA)", platform: "Foundit 1-Click Apply", stage: "applied", date: "2026-11-24", contact: "emagine Talent Practice", notes: "Agile & SAFe transformation delivery squad. Guiding teams through full Scaled Agile Framework adoption, sprint planning, telemetry & impediment resolution. CSM® + SAFe® SSM certified, Pune resident, 0-day immediate joiner. Confirmed applied via Foundit 1-Click Apply (Job ID 69877916)." },
+            { id: "app-290", company: "Infosys Limited", role: "Senior Scrum Master", location: "Hyderabad, Telangana • Hybrid (₹22–₹25 LPA)", platform: "Foundit 1-Click Apply", stage: "applied", date: "2026-11-24", contact: "Infosys Talent Acquisition", notes: "Global technology consulting leader. Agile squad governance, sprint planning, daily standups, backlog grooming, blocker removal. CSM® + SAFe® SSM verified, 0-day immediate joiner. Early applicant confirmed submitted via Foundit 1-Click Apply (Job ID 69882380)." }
         ];
 
   const STAGES_CONFIG = [
@@ -1648,7 +1651,7 @@
 
   function loadApplications() {
     try {
-      const stored = localStorage.getItem("apptracker_data_v12");
+      const stored = localStorage.getItem("apptracker_data_v13");
       if (stored) {
         const parsed = JSON.parse(stored);
         const existingIds = new Set(parsed.map(a => a.id));
