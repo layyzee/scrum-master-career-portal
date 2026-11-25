@@ -249,7 +249,7 @@
 </div>
 </div>
 <div class="mt-space-md">
-<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">294</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">296</span>
 <span class="font-label-md text-label-md text-on-surface-variant ml-1">Roles Tracked</span>
 </div>
 <div class="mt-space-sm flex items-center gap-space-xs">
@@ -1633,7 +1633,9 @@
             { id: "app-291", company: "Cvent", role: "Scrum Master II", location: "Bengaluru, Karnataka • Hybrid (₹22–₹25 LPA)", platform: "LinkedIn / Foundit", stage: "applied", date: "2026-11-25", contact: "Cvent Talent Acquisition", notes: "SaaS enterprise event technology platform. Multi-squad Scrum delivery, velocity predictability, impediment removal, agile maturity coaching. CSM® + SAFe® SSM verified, 0-day immediate joiner. Verified applied on LinkedIn (Job ID 4486713012)." },
             { id: "app-292", company: "Skills Outsource Think Pvt Ltd", role: "Junior Product Owner(Scrum Master)", location: "Indiranagar, Bengaluru, Karnataka • On-site (₹22 LPA)", platform: "Indeed Smart Apply", stage: "applied", date: "2026-11-25", contact: "Skills Outsource Talent Team", notes: "International IT consulting for European clients. Agile Scrum facilitation & product backlog coordination. Questionnaire cleared: 5 yrs Scrum exp, CCTC 20 LPA, ECTC 22 LPA, Immediate (0 Days Notice), Relocation confirmed. Confirmed submitted via Indeed Smart Apply (Job Key 7a4cc3c0ab0c8fe1)." },
             { id: "app-293", company: "JiBe ERP", role: "Scrum Master", location: "Navi Mumbai, Maharashtra • On-site (₹22–₹25 LPA)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-25", contact: "JiBe ERP Talent Team", notes: "Maritime ERP & enterprise SaaS delivery. Agile ceremonies, sprint predictability, blocker resolution. Early applicant (posted 1 hr ago), Mumbai resident, 0-day immediate joiner. Confirmed submitted via LinkedIn Easy Apply (Job ID 4494772685)." },
-            { id: "app-294", company: "Capgemini", role: "FBS Scrum Master III", location: "Pune Division, Maharashtra • Hybrid (₹22–₹25 LPA)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-25", contact: "Capgemini Talent Practice", notes: "Financial Services Business Squad (FBS). Agile squad governance, sprint forecasting, dependency & blocker removal. Screening cleared: 5 yrs SM exp, CCTC 20 LPA, ECTC 24 LPA. Early applicant confirmed Applied via LinkedIn Easy Apply." }
+            { id: "app-294", company: "Capgemini", role: "FBS Scrum Master III", location: "Pune Division, Maharashtra • Hybrid (₹22–₹25 LPA)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-25", contact: "Capgemini Talent Practice", notes: "Financial Services Business Squad (FBS). Agile squad governance, sprint forecasting, dependency & blocker removal. Screening cleared: 5 yrs SM exp, CCTC 20 LPA, ECTC 24 LPA. Early applicant confirmed Applied via LinkedIn Easy Apply." },
+            { id: "app-295", company: "Capgemini", role: "FBS Scrum Master II", location: "Hyderabad, Telangana • Hybrid (₹22–₹25 LPA)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-25", contact: "Capgemini Talent Practice", notes: "Financial Services Business Squad (FBS) — SAFe Scrum Master delivery. Screening cleared: 5 yrs SM exp, CCTC 20 LPA, ECTC 24 LPA. Confirmed Applied via LinkedIn Easy Apply." },
+            { id: "app-296", company: "HoonarTek", role: "Junior Project Manager / Scrum Master", location: "Mumbai, Maharashtra • On-site (₹22–₹24 LPA)", platform: "Company Careers Portal (SenseHQ)", stage: "applied", date: "2026-11-25", contact: "HoonarTek Talent Acquisition", notes: "Enterprise data analytics & transformation partner in Mumbai. Submitted 99/100 ATS Master CV directly on SenseHQ ATS (7.5 yrs total exp, <15 days notice, CCTC 20, ECTC 24, Mumbai). Confirmed 'Application Received On 25/11/2026' (Job ID 55454)." }
         ];
 
   const STAGES_CONFIG = [
@@ -1655,7 +1657,7 @@
 
   function loadApplications() {
     try {
-      const stored = localStorage.getItem("apptracker_data_v18");
+      const stored = localStorage.getItem("apptracker_data_v19");
       if (stored) {
         const parsed = JSON.parse(stored);
         const existingIds = new Set(parsed.map(a => a.id));
