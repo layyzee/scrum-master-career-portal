@@ -249,7 +249,7 @@
 </div>
 </div>
 <div class="mt-space-md">
-<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">341</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">352</span>
 <span class="font-label-md text-label-md text-on-surface-variant ml-1">Roles Tracked</span>
 </div>
 <div class="mt-space-sm flex items-center gap-space-xs">
@@ -1681,6 +1681,17 @@
             { id: "app-339", company: "SENTINEL TECHNOLOGIES PRIVATE LIMITED", role: "Technical Product Manager & Scrum Master", location: "India (Remote / Hybrid)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-28", contact: "LinkedIn Job #4495337999", notes: "Submitted via LinkedIn Easy Apply (verified confirmation). Technical Product Manager & Scrum Master role, 0-day notice immediate joiner." },
             { id: "app-340", company: "Turing", role: "Project Manager (Agile / Remote Freelance)", location: "Worldwide / US (Remote)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-28", contact: "LinkedIn Job #4495098102", notes: "Submitted via LinkedIn Easy Apply (verified confirmation). Remote agile freelance/contract PM role, 0-day notice immediate joiner." },
             { id: "app-341", company: "HiJob.work", role: "Project Manager (Web Development • Agile/Scrum)", location: "Worldwide (Remote Freelance)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-28", contact: "LinkedIn Job #4493890899", notes: "Submitted via LinkedIn Easy Apply (verified confirmation). Global remote freelance agile web delivery PM role, 0-day notice." },
+            { id: "app-342", company: "PeopleFirst (Tier 1 IT)", role: "Scrum Master (Immediate Joiners ONLY)", location: "Hyderabad / Remote", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "aparna@peoplefirst.co.in", notes: "Sent direct 0-day notice email pitch with live resume to recruiter Aparna. Verified in Sent box." },
+            { id: "app-343", company: "Kudzu Infotech", role: "Scrum Master (Immediate Joiner)", location: "Mumbai (Local)", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "sarthak.s@kudzuinfotech.com", notes: "Sent direct 0-day notice email pitch with live resume to recruiter Sarthak S. Verified in Sent box." },
+            { id: "app-344", company: "Delmon Solutions", role: "Scrum Master (SAFe, Azure DevOps)", location: "Pune (Hybrid)", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "anjali.lad@delmonsolutions.com", notes: "Sent direct 0-day notice email pitch with live resume to recruiter Anjali Lad. Verified in Sent box." },
+            { id: "app-345", company: "Adlerqa Technologies", role: "Scrum Master (CSM/SAFe)", location: "100% Remote", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "dewansh@adlerqa.in", notes: "Sent direct 0-day notice email pitch with live resume to recruiter Dewansh Barethia. Verified in Sent box." },
+            { id: "app-346", company: "PeopleFirst", role: "Senior Scrum Master (CSM/SSM)", location: "Hyderabad", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "santosh@peoplefirst.co.in", notes: "Sent direct 0-day notice email pitch with live resume to recruiter Santosh. Verified in Sent box." },
+            { id: "app-347", company: "Mergen Corp", role: "Agile Master (SAFe, Scrum, Kanban)", location: "Pune (Hybrid)", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "parna.sireesha@mergencorp.com", notes: "Sent direct 0-day notice email pitch with live resume to recruiter Sireesha Parna. Verified in Sent box." },
+            { id: "app-348", company: "NLB Tech", role: "SAFe Delivery Manager / Scrum Master", location: "Pan India / Remote", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "Nirmalyo.banerjee@nlbtech.in", notes: "Sent direct 0-day notice email pitch with live resume to recruiter Nirmalyo Banerjee. Verified in Sent box." },
+            { id: "app-349", company: "IngeniumNext", role: "Senior Scrum Master", location: "Pan India", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "resumes@ingeniumnext.com", notes: "Sent direct 0-day notice email pitch with live resume to talent team. Verified in Sent box." },
+            { id: "app-350", company: "EA29 Management Services", role: "Scrum Master (SAFe, Immediate)", location: "Bangalore", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "business@ea29management.com", notes: "Sent direct 0-day notice email pitch with live resume to hiring team. Verified in Sent box." },
+            { id: "app-351", company: "Velion IT Consulting", role: "Scrum Master (SAFe, Immediate)", location: "Bangalore", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "velionitpvtltd@gmail.com", notes: "Sent direct 0-day notice email pitch with live resume to Velion IT team. Verified in Sent box." },
+            { id: "app-352", company: "Miracle Software Systems", role: "Scrum Master / PM", location: "Hyderabad / Vizag", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "akaragani@miraclesoft.com", notes: "Sent direct 0-day notice email pitch with live resume to recruiter Anil Karagani. Verified in Sent box." },
         ];
 
   const STAGES_CONFIG = [
@@ -1702,7 +1713,7 @@
 
   function loadApplications() {
     try {
-      const stored = localStorage.getItem("apptracker_data_v23");
+      const stored = localStorage.getItem("apptracker_data_v24");
       if (stored) {
         const parsed = JSON.parse(stored);
         const existingIds = new Set(parsed.map(a => a.id));
@@ -1723,7 +1734,7 @@
 
   function saveApplications() {
     try {
-      localStorage.setItem("apptracker_data_v23", JSON.stringify(applications));
+      localStorage.setItem("apptracker_data_v24", JSON.stringify(applications));
     } catch (e) {
       console.warn("localStorage write failed", e);
     }
