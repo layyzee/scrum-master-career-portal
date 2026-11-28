@@ -249,7 +249,7 @@
 </div>
 </div>
 <div class="mt-space-md">
-<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">339</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">341</span>
 <span class="font-label-md text-label-md text-on-surface-variant ml-1">Roles Tracked</span>
 </div>
 <div class="mt-space-sm flex items-center gap-space-xs">
@@ -1679,6 +1679,8 @@
             { id: "app-337", company: "Capgemini", role: "FBS Scrum Master III", location: "Hyderabad, Telangana", platform: "Indeed (SmartApply)", stage: "applied", date: "2026-11-27", contact: "Indeed Job jk=5a52fe625b0a6a21", notes: "Submitted via Indeed SmartApply (verified confirmation). FBS Scrum Master III role." },
             { id: "app-338", company: "Cvent", role: "Scrum Master II", location: "Bengaluru, Karnataka (Hybrid)", platform: "Indeed (SmartApply)", stage: "applied", date: "2026-11-27", contact: "Indeed Job jk=7cbd20cbfd0afa2e", notes: "Submitted via Indeed SmartApply (verified confirmation). Scrum Master II role (numeric notice field required >=1, submitted 1)." },
             { id: "app-339", company: "SENTINEL TECHNOLOGIES PRIVATE LIMITED", role: "Technical Product Manager & Scrum Master", location: "India (Remote / Hybrid)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-28", contact: "LinkedIn Job #4495337999", notes: "Submitted via LinkedIn Easy Apply (verified confirmation). Technical Product Manager & Scrum Master role, 0-day notice immediate joiner." },
+            { id: "app-340", company: "Turing", role: "Project Manager (Agile / Remote Freelance)", location: "Worldwide / US (Remote)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-28", contact: "LinkedIn Job #4495098102", notes: "Submitted via LinkedIn Easy Apply (verified confirmation). Remote agile freelance/contract PM role, 0-day notice immediate joiner." },
+            { id: "app-341", company: "HiJob.work", role: "Project Manager (Web Development • Agile/Scrum)", location: "Worldwide (Remote Freelance)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-28", contact: "LinkedIn Job #4493890899", notes: "Submitted via LinkedIn Easy Apply (verified confirmation). Global remote freelance agile web delivery PM role, 0-day notice." },
         ];
 
   const STAGES_CONFIG = [
@@ -1700,7 +1702,7 @@
 
   function loadApplications() {
     try {
-      const stored = localStorage.getItem("apptracker_data_v22");
+      const stored = localStorage.getItem("apptracker_data_v23");
       if (stored) {
         const parsed = JSON.parse(stored);
         const existingIds = new Set(parsed.map(a => a.id));
@@ -1721,7 +1723,7 @@
 
   function saveApplications() {
     try {
-      localStorage.setItem("apptracker_data_v22", JSON.stringify(applications));
+      localStorage.setItem("apptracker_data_v23", JSON.stringify(applications));
     } catch (e) {
       console.warn("localStorage write failed", e);
     }
