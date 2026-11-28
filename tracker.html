@@ -249,7 +249,7 @@
 </div>
 </div>
 <div class="mt-space-md">
-<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">352</span>
+<span class="font-headline-lg text-headline-lg text-on-surface font-headline-xl" id="kpi-total-roles">360</span>
 <span class="font-label-md text-label-md text-on-surface-variant ml-1">Roles Tracked</span>
 </div>
 <div class="mt-space-sm flex items-center gap-space-xs">
@@ -1692,6 +1692,14 @@
             { id: "app-350", company: "EA29 Management Services", role: "Scrum Master (SAFe, Immediate)", location: "Bangalore", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "business@ea29management.com", notes: "Sent direct 0-day notice email pitch with live resume to hiring team. Verified in Sent box." },
             { id: "app-351", company: "Velion IT Consulting", role: "Scrum Master (SAFe, Immediate)", location: "Bangalore", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "velionitpvtltd@gmail.com", notes: "Sent direct 0-day notice email pitch with live resume to Velion IT team. Verified in Sent box." },
             { id: "app-352", company: "Miracle Software Systems", role: "Scrum Master / PM", location: "Hyderabad / Vizag", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "akaragani@miraclesoft.com", notes: "Sent direct 0-day notice email pitch with live resume to recruiter Anil Karagani. Verified in Sent box." },
+            { id: "app-353", company: "Arohana Tech Solutions", role: "Scrum Master", location: "Dubai, UAE", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-28", contact: "LinkedIn Job #4492574909", notes: "Submitted via LinkedIn Easy Apply (verified confirmation). Dubai UAE Scrum Master role, 0-day notice immediate joiner." },
+            { id: "app-354", company: "TMC Middle East", role: "Scrum Master", location: "Abu Dhabi, UAE (Contract)", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-28", contact: "LinkedIn Job #4487473522", notes: "Submitted via LinkedIn Easy Apply (verified confirmation). Abu Dhabi contract Scrum Master role, hiring manager Habib Touil." },
+            { id: "app-355", company: "SteerAI", role: "Scrum Master, SteerAI", location: "Abu Dhabi, UAE", platform: "LinkedIn Easy Apply", stage: "applied", date: "2026-11-28", contact: "LinkedIn Job #4484313630", notes: "Submitted via LinkedIn Easy Apply (verified confirmation). Autonomous AI mobility venture Scrum Master, 5 yrs Jira experience." },
+            { id: "app-356", company: "Techcarrot", role: "Project Manager / Scrum Master", location: "Dubai, UAE", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "chithresh.shivashankar@techcarrot.ae", notes: "Sent direct 0-day notice pitch with live resume to recruiter Chithresh. Verified in Sent box." },
+            { id: "app-357", company: "Dicetek UAE", role: "Scrum Master – Banking", location: "Dubai, UAE", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "sumi@dicetekuae.com", notes: "Sent direct 0-day notice pitch with live resume to recruiter Sumi for UAE banking client. Verified in Sent box." },
+            { id: "app-358", company: "Bourntec Solutions ME", role: "Scrum Master – Strategic Program", location: "Dubai, UAE (6M Contract)", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "vijin.a@bourntec.com", notes: "Sent direct 0-day notice pitch with live resume to Vijin Appukuttan. Verified in Sent box." },
+            { id: "app-359", company: "Atain (Dubai)", role: "Scrum Master – Airline Domain", location: "Dubai, UAE", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "meenakshi.gill@atain.com", notes: "Sent direct 0-day notice pitch with live resume to recruiter Meenakshi Gill. Verified in Sent box." },
+            { id: "app-360", company: "ITCAN", role: "Scrum Master – Insurance", location: "Kuala Lumpur / APAC Remote", platform: "Direct Recruiter Outreach", stage: "applied", date: "2026-11-28", contact: "rehan@itcan.biz", notes: "Sent direct 0-day notice pitch with live resume to recruiter Rehan. Verified in Sent box." },
         ];
 
   const STAGES_CONFIG = [
@@ -1713,7 +1721,7 @@
 
   function loadApplications() {
     try {
-      const stored = localStorage.getItem("apptracker_data_v24");
+      const stored = localStorage.getItem("apptracker_data_v25");
       if (stored) {
         const parsed = JSON.parse(stored);
         const existingIds = new Set(parsed.map(a => a.id));
@@ -1734,7 +1742,7 @@
 
   function saveApplications() {
     try {
-      localStorage.setItem("apptracker_data_v24", JSON.stringify(applications));
+      localStorage.setItem("apptracker_data_v25", JSON.stringify(applications));
     } catch (e) {
       console.warn("localStorage write failed", e);
     }
